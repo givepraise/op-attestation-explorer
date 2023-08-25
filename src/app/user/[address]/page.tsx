@@ -33,7 +33,12 @@ const query = gql`
   }
 `;
 
-async function UserPageInner({ address }: { address: string }) {
+export default async function UserPage({
+  params,
+}: {
+  params: { address: string };
+}) {
+  const { address } = params;
   const result = await getClient().query<SchemaResponseData>({
     query,
     fetchPolicy: "cache-first",
@@ -74,17 +79,5 @@ async function UserPageInner({ address }: { address: string }) {
         ))}
       </ol>
     </div>
-  );
-}
-
-export default function AttestationPage({
-  params,
-}: {
-  params: { address: string };
-}) {
-  return (
-    <Suspense fallback={"Loading..."}>
-      <UserPageInner address={params.address} />
-    </Suspense>
   );
 }

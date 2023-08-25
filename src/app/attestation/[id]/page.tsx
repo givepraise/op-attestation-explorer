@@ -41,7 +41,12 @@ type SchemaType = {
   value: Value;
 };
 
-async function AttestationPageInner({ id }: { id: string }) {
+export default async function AttestationPage({
+  params,
+}: {
+  params: { id: string };
+}) {
+  const { id } = params;
   dayjs.extend(relativeTime);
   const result = await getClient().query<AttestationResponseData>({
     query,
@@ -106,17 +111,5 @@ async function AttestationPageInner({ id }: { id: string }) {
         ))}
       </div>
     </div>
-  );
-}
-
-export default function AttestationPage({
-  params,
-}: {
-  params: { id: string };
-}) {
-  return (
-    <Suspense fallback={"Loading..."}>
-      <AttestationPageInner id={params.id} />
-    </Suspense>
   );
 }

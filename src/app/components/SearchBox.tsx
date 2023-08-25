@@ -31,6 +31,7 @@ export function SearchBox() {
         placeholder="Search by Address / Txn hash "
         className="w-full bg-black border-white p-2 text-sm focus:border-white focus:bg-white focus:bg-opacity-10 focus:outline-none"
         onKeyUp={handleKeyUp}
+        spellCheck={false}
       />
       {error && <div className="text-red-500 pt-2">{error}</div>}
     </div>
