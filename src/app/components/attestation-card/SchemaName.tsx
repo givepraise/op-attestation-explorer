@@ -5,7 +5,7 @@ type SchemaNameProps = {
 };
 
 export function SchemaName({ attestation }: SchemaNameProps) {
-  const name = attestation.schema.schemaNames[0]?.name || "No schema name";
+  const name = attestation.schema.schemaNames[0]?.name || "Praise";
 
   return <div className="border p-3">{name}</div>;
 }

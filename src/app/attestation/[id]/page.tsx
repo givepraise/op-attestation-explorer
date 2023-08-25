@@ -1,10 +1,9 @@
-"use client";
-
 import { AttestationResponseData } from "../../eas/types/attestation-response-data.type";
 import { SchemaName } from "../../components/attestation-card/SchemaName";
 import { Suspense } from "react";
 import { UserIcon } from "../../components/UserIcon";
 import dayjs from "dayjs";
+import { getClient } from "../../apollo/getClient";
 import { gql } from "@apollo/client";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { shortenEthAddress } from "../../util/string";
@@ -42,15 +41,12 @@ type SchemaType = {
   value: Value;
 };
 
-function AttestationPageInner({ id }: { id: string }) {
+async function AttestationPageInner({ id }: { id: string }) {
   dayjs.extend(relativeTime);
-  const result = useSuspenseQuery<AttestationResponseData>(query, {
+  const result = await getClient().query<AttestationResponseData>({
+    query,
     fetchPolicy: "cache-first",
-    variables: {
-      where: {
-        id,
-      },
-    },
+    variables: { where: { id } },
   });
 
   const attestation = result.data.attestation;

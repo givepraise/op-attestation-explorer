@@ -1,16 +1,31 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import { ImageIcon } from "./user-icon/ImageIcon";
+import { PraiseUserAccount } from "../praise/types/user-account";
+import { SvgIcon } from "./user-icon/SvgIcon";
+import { getPraiseUser } from "../praise/getPraiseUser";
 
 type UserIconProps = {
   address: string;
 };
 
-export function UserIcon({ address }: UserIconProps) {
-  return (
-    <div className="flex">
-      <div>
-        <FontAwesomeIcon icon={faUserCircle} size="2x" />
-      </div>
-    </div>
-  );
+const discordAvatarUrl = (account: PraiseUserAccount): string => {
+  return `https://cdn.discordapp.com/avatars/${account.accountId}/${account.avatarId}.webp?size=128`;
+};
+
+export async function UserIcon({ address }: UserIconProps) {
+  const praiseUser = await getPraiseUser(address);
+
+  let url;
+  if (praiseUser) {
+    if (Array.isArray(praiseUser.accounts) && praiseUser.accounts.length > 0) {
+      for (const account of praiseUser.accounts) {
+        // Prefer DISCORD over others
+        if (account.avatarId && account.platform === "DISCORD") {
+          url = discordAvatarUrl(account);
+          break;
+        }
+      }
+    }
+  }
+
+  return url ? <ImageIcon url={url} /> : <SvgIcon />;
 }

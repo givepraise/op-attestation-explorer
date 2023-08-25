@@ -1,10 +1,9 @@
-"use client";
-
 import { AttestationCard } from "../../components/AttestationCard";
-import { PRAISE_SCHEMA_UID } from "../../eas/eas.constants";
+import { PRAISE_SCHEMA_UID } from "../../../constants";
 import { SchemaResponseData } from "../../eas/types/schema-response-data.type";
 import { Suspense } from "react";
 import { UserIcon } from "../../components/UserIcon";
+import { getClient } from "../../apollo/getClient";
 import { gql } from "@apollo/client";
 import { shortenEthAddress } from "../../util/string";
 import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
@@ -34,8 +33,9 @@ const query = gql`
   }
 `;
 
-function UserPageInner({ address }: { address: string }) {
-  const result = useSuspenseQuery<SchemaResponseData>(query, {
+async function UserPageInner({ address }: { address: string }) {
+  const result = await getClient().query<SchemaResponseData>({
+    query,
     fetchPolicy: "cache-first",
     variables: {
       where: {
