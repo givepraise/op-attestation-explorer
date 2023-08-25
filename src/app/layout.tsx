@@ -1,11 +1,8 @@
 import "./globals.css";
 
 import { ApolloWrapper } from "./ApolloWrapper";
-import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import { Nav } from "./components/Nav";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,9 +16,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <Nav />
-        <ApolloWrapper>{children}</ApolloWrapper>
+        <ApolloWrapper>
+          <main className="flex flex-col items-center">
+            <div className="pb-20">Optimism Attestation Explorer</div>
+            <div className="flex flex-col w-[800px] items-center justify-between font-mono text-sm gap-5">
+              {children}
+            </div>
+          </main>
+        </ApolloWrapper>
       </body>
     </html>
   );

@@ -1,9 +1,12 @@
 "use client";
 
 import { AttestationResponseData } from "../../eas/types/attestation-response-data.type";
+import { SchemaName } from "../../components/attestation-card/SchemaName";
 import { Suspense } from "react";
 import { UserIcon } from "../../components/UserIcon";
+import dayjs from "dayjs";
 import { gql } from "@apollo/client";
+import relativeTime from "dayjs/plugin/relativeTime";
 import { shortenEthAddress } from "../../util/string";
 import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
 
@@ -26,7 +29,21 @@ const query = gql`
   }
 `;
 
+type Value = {
+  name: string;
+  value: string;
+  type: string;
+};
+
+type SchemaType = {
+  name: string;
+  type: string;
+  signature: string;
+  value: Value;
+};
+
 function AttestationPageInner({ id }: { id: string }) {
+  dayjs.extend(relativeTime);
   const result = useSuspenseQuery<AttestationResponseData>(query, {
     fetchPolicy: "cache-first",
     variables: {
@@ -37,23 +54,61 @@ function AttestationPageInner({ id }: { id: string }) {
   });
 
   const attestation = result.data.attestation;
-
-  console.log(attestation);
+  const json = JSON.parse(attestation.decodedDataJson);
 
   return (
     <div className="w-full flex flex-col items-center gap-5 overflow-">
       <UserIcon address={attestation.recipient} />
-      <div>UID {shortenEthAddress(attestation.id)}</div>
-      <div>From {shortenEthAddress(attestation.attester)}</div>
-      <div>Time {attestation.time.toString()}</div>
-      <div>Revoked {attestation.revoked ? "Yes" : "No"}</div>
       <div>
-        Expiration{" "}
-        {attestation.expirationTime > 0
-          ? attestation.expirationTime.toString()
-          : "Does not expire"}
+        UID:{" "}
+        <a
+          href={`https://optimism.easscan.org/attestation/view/${attestation.id}`}
+          target="_blank"
+        >
+          {shortenEthAddress(attestation.id)}
+        </a>
       </div>
-      <div>Data {attestation.decodedDataJson}</div>
+      <div>
+        From:{" "}
+        <a
+          href={`https://optimism.easscan.org/address/${attestation.attester}`}
+        >
+          {shortenEthAddress(attestation.attester)}
+        </a>
+      </div>
+
+      <div className="flex justify-between w-full">
+        <div className="flex flex-col">
+          <div>
+            Created:{" "}
+            {dayjs.unix(parseInt(attestation.time.toString())).fromNow()}
+          </div>
+          <div>
+            Expires:{" "}
+            {attestation.expirationTime > 0
+              ? attestation.expirationTime.toString()
+              : "Does not expire"}
+          </div>
+          <div>Revoked: {attestation.revoked ? "Yes" : "No"}</div>
+        </div>
+
+        <div className="flex flex-col">
+          <SchemaName attestation={attestation} />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-3 w-full">
+        <div>Name</div>
+        <div>Type</div>
+        <div>Value</div>
+        {json.map((item: SchemaType) => (
+          <>
+            <div>{item.value.name}</div>
+            <div>{item.value.type}</div>
+            <div>{item.value.value.toString()}</div>
+          </>
+        ))}
+      </div>
     </div>
   );
 }
@@ -64,13 +119,8 @@ export default function AttestationPage({
   params: { id: string };
 }) {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="flex flex-col max-w-5xl items-center justify-between font-mono text-sm gap-5">
-        Optimism Attestation Explorer
-        <Suspense fallback={"Loading..."}>
-          <AttestationPageInner id={params.id} />
-        </Suspense>
-      </div>
-    </main>
+    <Suspense fallback={"Loading..."}>
+      <AttestationPageInner id={params.id} />
+    </Suspense>
   );
 }

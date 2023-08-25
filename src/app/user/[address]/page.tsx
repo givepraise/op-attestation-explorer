@@ -58,7 +58,13 @@ function UserPageInner({ address }: { address: string }) {
   return (
     <div className="w-full flex flex-col items-center gap-5">
       <UserIcon address={address} />
-      {shortenEthAddress(address)}
+      <a
+        href={`https://optimism.easscan.org/address/${address}`}
+        target="_blank"
+      >
+        {shortenEthAddress(address)}
+      </a>
+
       <div>Number of attestations: {attestations.length}</div>
       <ol className="w-full">
         {attestations.map((att) => (
@@ -77,13 +83,8 @@ export default function AttestationPage({
   params: { address: string };
 }) {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="flex flex-col max-w-5xl items-center justify-between font-mono text-sm gap-5">
-        Optimism Attestation Explorer
-        <Suspense fallback={"Loading..."}>
-          <UserPageInner address={params.address} />
-        </Suspense>
-      </div>
-    </main>
+    <Suspense fallback={"Loading..."}>
+      <UserPageInner address={params.address} />
+    </Suspense>
   );
 }

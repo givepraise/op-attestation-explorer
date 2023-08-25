@@ -55,21 +55,17 @@ export function UsersListInner() {
     },
   });
 
-  console.log(result);
-
   if (!result.data || !result.data.schema) {
     return <div>No attestations found</div>;
   }
 
   const uniqueUsers = getUniqueUsers(result.data);
 
-  console.log(uniqueUsers);
-
   if (!uniqueUsers || uniqueUsers.length === 0) {
     return <div>No attestations found</div>;
   }
   return (
-    <div className="w-full grid grid-cols-4 gap-5">
+    <div className="w-full grid grid-cols-3 gap-5">
       {uniqueUsers.map((user) => (
         <UserCard user={user} key={user.address} />
       ))}

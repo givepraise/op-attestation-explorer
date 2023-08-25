@@ -12,7 +12,6 @@ type AttestationCardProps = {
 };
 
 export function AttestationCard({ attestation }: AttestationCardProps) {
-  console.log(attestation);
   return (
     <Link href={`/attestation/${attestation.id}`}>
       <div className="flex justify-between border p-5 w-full gap-x-5 hover:bg-white hover:bg-opacity-10">
