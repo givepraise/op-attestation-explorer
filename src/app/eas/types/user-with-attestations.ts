@@ -1,6 +1,6 @@
-import { SchemaResponseAttestation } from "./schema-response-data.type";
+import { Attestation } from "./attestation.type";
 
 export type UserWithAttestations = {
   address: string;
-  attestations: SchemaResponseAttestation[];
+  attestations: Attestation[];
 };

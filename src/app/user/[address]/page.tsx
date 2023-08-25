@@ -34,7 +34,7 @@ const query = gql`
   }
 `;
 
-export function UserPageInner({ address }: { address: string }) {
+function UserPageInner({ address }: { address: string }) {
   const result = useSuspenseQuery<SchemaResponseData>(query, {
     fetchPolicy: "cache-first",
     variables: {

@@ -26,7 +26,7 @@ const query = gql`
   }
 `;
 
-export function AttestationPageInner({ id }: { id: string }) {
+function AttestationPageInner({ id }: { id: string }) {
   const result = useSuspenseQuery<AttestationResponseData>(query, {
     fetchPolicy: "cache-first",
     variables: {

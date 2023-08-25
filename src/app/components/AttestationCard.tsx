@@ -1,4 +1,4 @@
-import { AttestationsResponseAttestation } from "../eas/types/attestations-response-data.type";
+import { Attestation } from "../eas/types/attestation.type";
 import { From } from "./attestation-card/From";
 import Link from "next/link";
 import { Recipient } from "./attestation-card/Recipient";
@@ -8,7 +8,7 @@ import { Uid } from "./attestation-card/Uid";
 import { UserIcon } from "./UserIcon";
 
 type AttestationCardProps = {
-  attestation: AttestationsResponseAttestation;
+  attestation: Attestation;
 };
 
 export function AttestationCard({ attestation }: AttestationCardProps) {

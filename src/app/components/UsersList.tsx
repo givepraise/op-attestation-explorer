@@ -1,19 +1,11 @@
 "use client";
 
-import {
-  SchemaResponseAttestation,
-  SchemaResponseData,
-} from "../eas/types/schema-response-data.type";
-import { Suspense, useEffect } from "react";
-
-import { Attestation } from "@ethereum-attestation-service/eas-sdk";
-import { AttestationCard } from "./AttestationCard";
-import { AttestationsResponseData } from "../eas/types/attestations-response-data.type";
 import { PRAISE_SCHEMA_UID } from "../eas/eas.constants";
+import { SchemaResponseData } from "../eas/types/schema-response-data.type";
+import { Suspense } from "react";
 import { UserCard } from "./UserCard";
 import { UserWithAttestations } from "../eas/types/user-with-attestations";
 import { gql } from "@apollo/client";
-import { type } from "os";
 import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
 
 const listQuery = gql`

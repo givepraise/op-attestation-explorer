@@ -1,7 +1,7 @@
-import { AttestationsResponseAttestation } from "../../eas/types/attestations-response-data.type";
+import { Attestation } from "../../eas/types/attestation.type";
 
 type SchemaNameProps = {
-  attestation: AttestationsResponseAttestation;
+  attestation: Attestation;
 };
 
 export function SchemaName({ attestation }: SchemaNameProps) {
