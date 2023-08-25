@@ -1,6 +1,5 @@
 "use client";
 
-import { Attestation } from "@ethereum-attestation-service/eas-sdk";
 import { AttestationCard } from "./AttestationCard";
 import { AttestationsResponseData } from "../eas/types/attestations-response-data.type";
 import { PRAISE_SCHEMA_UID } from "../eas/eas.constants";
