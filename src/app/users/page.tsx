@@ -43,7 +43,7 @@ function getUniqueUsers(data: SchemaResponseData) {
   return uniqueUsers;
 }
 
-export async function UsersList() {
+async function UsersList() {
   const result = await getClient().query<SchemaResponseData>({
     query,
     fetchPolicy: "cache-first",

@@ -30,7 +30,7 @@ query Attestations {
 }
 `;
 
-export async function AttestationListInner() {
+async function AttestationList() {
   const result = await getClient().query<AttestationsResponseData>({ query });
 
   if (
@@ -51,11 +51,11 @@ export async function AttestationListInner() {
   );
 }
 
-export default function AttestationList() {
+export default function AttestationListPage() {
   return (
     <>
       <SearchBox />
-      <AttestationListInner />
+      <AttestationList />
     </>
   );
 }
