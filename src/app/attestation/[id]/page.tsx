@@ -21,11 +21,7 @@ const query = gql`
       decodedDataJson
       expirationTime
       revoked
-      schema {
-        schemaNames(take: 1) {
-          name
-        }
-      }
+      schemaId
     }
   }
 `;

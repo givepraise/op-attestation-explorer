@@ -1,4 +1,4 @@
-import { PRAISE_SCHEMA_UID } from "../../constants";
+import { EAS_SCHEMAS } from "../../constants";
 import { PraiseUser } from "../praise/types/user";
 import { SchemaWithAttestations } from "./types/schema-with-attestations.type";
 import { UserAttestationsAndPraiseUser } from "./types/user-attestations-and-praise-user.type";
@@ -22,15 +22,28 @@ const query = gql`
         data
         expirationTime
         revoked
-        schema {
-          schemaNames(take: 1) {
-            name
-          }
-        }
+        schemaId
       }
     }
   }
 `;
+
+function getUserAttestations(schemaUid: string, address: string) {
+  return getClient().query<SchemaWithAttestations>({
+    query,
+    fetchPolicy: "cache-first",
+    variables: {
+      where: {
+        id: schemaUid,
+      },
+      attestationsWhere: {
+        recipient: {
+          equals: address,
+        },
+      },
+    },
+  });
+}
 
 export async function getUserAttestationsAndPraiseUser(
   ref: string
@@ -50,28 +63,25 @@ export async function getUserAttestationsAndPraiseUser(
     address = praiseUser.identityEthAddress;
   }
 
-  const result = await getClient().query<SchemaWithAttestations>({
-    query,
-    fetchPolicy: "cache-first",
-    variables: {
-      where: {
-        id: PRAISE_SCHEMA_UID,
-      },
-      attestationsWhere: {
-        recipient: {
-          equals: address,
-        },
-      },
-    },
-  });
+  const getAllUserAttestations = EAS_SCHEMAS.map((schema) =>
+    getUserAttestations(schema.uid, address)
+  );
+  const results = await Promise.all(getAllUserAttestations);
 
-  if (result.error) {
-    throw result.error;
-  }
+  // Join all attestations into one array
+  const attestations = results.flatMap(
+    (result) => result.data.schema.attestations
+  );
+
+  attestations.sort((a, b) => {
+    if (a < b) return -1;
+    if (a > b) return 1;
+    return 0;
+  });
 
   return {
     address,
-    attestations: result.data.schema.attestations,
+    attestations,
     praiseUser,
   };
 }

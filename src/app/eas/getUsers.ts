@@ -1,6 +1,6 @@
 import { GetUsersSortBy, GetUsersSortOrder } from "./types/get-users-sort.type";
 
-import { PRAISE_SCHEMA_UID } from "../../constants";
+import { EAS_SCHEMAS } from "../../constants";
 import { SchemaWithAttestations } from "./types/schema-with-attestations.type";
 import { UserAttestationsAndPraiseUser } from "./types/user-attestations-and-praise-user.type";
 import { getClient } from "../apollo/getClient";
@@ -20,40 +20,47 @@ const query = gql`
   }
 `;
 
-export async function getUsers(
-  sort: GetUsersSortBy = "attestations",
-  order: GetUsersSortOrder = "desc"
-) {
-  const result = await getClient().query<SchemaWithAttestations>({
+function getSchemaAttestations(schemaUid: string) {
+  return getClient().query<SchemaWithAttestations>({
     query,
     fetchPolicy: "cache-first",
     variables: {
       where: {
-        id: PRAISE_SCHEMA_UID,
+        id: schemaUid,
       },
     },
   });
+}
 
-  if (!result.data || !result.data.schema) {
-    throw new Error("No attestations found");
-  }
+export async function getUsers(
+  sort: GetUsersSortBy = "attestations",
+  order: GetUsersSortOrder = "desc"
+) {
+  const getAllSchemaAttestations = EAS_SCHEMAS.map((schema) =>
+    getSchemaAttestations(schema.uid)
+  );
+  const results = await Promise.all(getAllSchemaAttestations);
 
   // Unique users and the number of attestations they have received
   const users: UserAttestationsAndPraiseUser[] = [];
 
   // Loop through all attestations
-  for (const attestation of result.data.schema.attestations) {
-    // Check if the user is already in the list
-    const existingUser = users.find((u) => u.address === attestation.recipient);
-    if (existingUser) {
-      // If they are, add the attestation to their attestations array
-      existingUser.attestations.push(attestation);
-    } else {
-      // If they are not, create a new user object and add it to the list
-      users.push({
-        address: attestation.recipient,
-        attestations: [attestation],
-      });
+  for (const result of results) {
+    for (const attestation of result.data.schema.attestations) {
+      // Check if the user is already in the list
+      const existingUser = users.find(
+        (u) => u.address === attestation.recipient
+      );
+      if (existingUser) {
+        // If they are, add the attestation to their attestations array
+        existingUser.attestations.push(attestation);
+      } else {
+        // If they are not, create a new user object and add it to the list
+        users.push({
+          address: attestation.recipient,
+          attestations: [attestation],
+        });
+      }
     }
   }
 

@@ -1,6 +1,6 @@
 import { AttestationCard } from "./components/AttestationCard";
 import { AttestationsResponseData } from "./eas/types/attestations-response-data.type";
-import { PRAISE_SCHEMA_UID } from "../constants";
+import { EAS_SCHEMAS } from "../constants";
 import { SearchAndSort } from "./components/SearchAndSort";
 import { SearchBox } from "./components/SearchBox";
 import { SubNav } from "./components/SubNav";
@@ -13,7 +13,7 @@ query Attestations {
     schema: {
       is: {
         id: {
-          equals: "${PRAISE_SCHEMA_UID}"
+          in: [${EAS_SCHEMAS.map((schema) => `"${schema.uid}"`).join(",")}]
         }
       }
     }
@@ -23,11 +23,7 @@ query Attestations {
     attester
     recipient
     decodedDataJson
-    schema {
-      schemaNames(take: 1) { 
-        name
-      }
-    }
+    schemaId
   }
 }
 `;
