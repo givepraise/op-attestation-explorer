@@ -44,7 +44,7 @@ export function UserSortBy() {
   return (
     <div className="relative flex justify-center">
       <Listbox value={selectedOption} onChange={changeOption}>
-        <Listbox.Button className="p-2 text-left bg-opacity-50 cursor-pointer bg-slate-500 hover:bg-opacity-100">
+        <Listbox.Button className="p-2 text-left cursor-pointer border hover:bg-opacity-10 hover:bg-white">
           <div className="flex w-full">
             {selectedOption ? selectedOption.name : "Sort order"}
             <FontAwesomeIcon icon={faChevronDown} className="pl-2 w-4 h-4" />
@@ -55,7 +55,7 @@ export function UserSortBy() {
             <Listbox.Option
               key={person.id}
               value={person}
-              className="px-3 my-1 py-1 cursor-pointer w-72 ui-active:bg-slate-500 ui-active:text-white whitespace-nowrap"
+              className="px-3 my-1 py-1 cursor-pointer w-72 ui-active:bg-white ui-active:bg-opacity-10 ui-active:text-white whitespace-nowrap"
             >
               {person.name}
               <FontAwesomeIcon
