@@ -1,6 +1,7 @@
 import { AttestationCard } from "./components/AttestationCard";
 import { AttestationsResponseData } from "./eas/types/attestations-response-data.type";
 import { PRAISE_SCHEMA_UID } from "../constants";
+import { SearchAndSort } from "./components/SearchAndSort";
 import { SearchBox } from "./components/SearchBox";
 import { SubNav } from "./components/SubNav";
 import { getClient } from "./apollo/getClient";
@@ -56,7 +57,7 @@ export default function AttestationListPage() {
   return (
     <>
       <SubNav />
-      <SearchBox />
+      <SearchAndSort />
       <AttestationList />
     </>
   );
