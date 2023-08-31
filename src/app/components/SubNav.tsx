@@ -14,7 +14,9 @@ export function SubNav() {
         <a href="/">Attestations</a>
       </div>
       <div
-        className={path === "/users" ? activeClassNames : inactiveClassNames}
+        className={
+          path.startsWith("/users") ? activeClassNames : inactiveClassNames
+        }
       >
         <a href="/users">Users</a>
       </div>

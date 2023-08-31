@@ -25,7 +25,7 @@ export function SearchBox() {
   }
 
   return (
-    <div className="w-full">
+    <div className="flex-grow">
       <input
         type="text"
         placeholder="Search by Address / Txn hash "
