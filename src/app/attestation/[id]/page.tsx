@@ -1,9 +1,11 @@
 import { AttestationResponseData } from "../../eas/types/attestation-response-data.type";
+import Link from "next/link";
 import { SchemaName } from "../../components/attestation-card/SchemaName";
 import { Suspense } from "react";
 import { UserIcon } from "../../components/UserIcon";
 import dayjs from "dayjs";
 import { getClient } from "../../apollo/getClient";
+import { getPraiseUserByAddress } from "../../praise/getPraiseUserByAddress";
 import { gql } from "@apollo/client";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { shortenEthAddress } from "../../util/string";
@@ -54,30 +56,55 @@ export default async function AttestationPage({
     variables: { where: { id } },
   });
 
+  const praiseUser = await getPraiseUserByAddress(
+    result.data.attestation.recipient
+  );
+
   const attestation = result.data.attestation;
   const json = JSON.parse(attestation.decodedDataJson);
 
   return (
-    <div className="w-full flex flex-col items-center gap-5 overflow-">
-      <UserIcon address={attestation.recipient} />
-      <div>
-        UID:{" "}
-        <a
-          href={`https://optimism.easscan.org/attestation/view/${attestation.id}`}
-          target="_blank"
-        >
-          {shortenEthAddress(attestation.id)}
-        </a>
-      </div>
-      <div>
-        From:{" "}
-        <a
-          href={`https://optimism.easscan.org/address/${attestation.attester}`}
-        >
-          {shortenEthAddress(attestation.attester)}
-        </a>
-      </div>
+    <>
+      <div className="w-full flex">
+        <div className="w-full flex flex-col items-start">
+          <div>
+            UID:{" "}
+            <a
+              href={`https://optimism.easscan.org/attestation/view/${attestation.id}`}
+              target="_blank"
+            >
+              {shortenEthAddress(attestation.id)}
+            </a>
+          </div>
+          <div>
+            From:{" "}
+            <a
+              href={`https://optimism.easscan.org/address/${attestation.attester}`}
+            >
+              {shortenEthAddress(attestation.attester)}
+            </a>
+          </div>
 
+          <div>
+            To:{" "}
+            <a
+              href={`https://optimism.easscan.org/address/${attestation.recipient}`}
+            >
+              {shortenEthAddress(attestation.recipient)}
+            </a>
+          </div>
+        </div>
+        <div className="border flex flex-col gap-5 p-5 items-center">
+          <UserIcon address={attestation.recipient} />
+          {praiseUser?.username && (
+            <div>
+              <Link href={`/user/${praiseUser.username}`}>
+                {praiseUser.username}
+              </Link>
+            </div>
+          )}
+        </div>
+      </div>
       <div className="flex justify-between w-full">
         <div className="flex flex-col">
           <div>
@@ -110,6 +137,6 @@ export default async function AttestationPage({
           </>
         ))}
       </div>
-    </div>
+    </>
   );
 }

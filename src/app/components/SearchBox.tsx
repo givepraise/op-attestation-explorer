@@ -14,12 +14,9 @@ export function SearchBox() {
           window.location.href = `/attestation/${value}`;
           return;
         }
-        if (value.length === 42) {
-          // search by user
-          window.location.href = `/user/${value}`;
-          return;
-        }
-        setError("Invalid address or transaction hash");
+        // search by user address or username
+        window.location.href = `/user/${value}`;
+        return;
       }
     }
   }
@@ -28,7 +25,7 @@ export function SearchBox() {
     <div className="flex-grow">
       <input
         type="text"
-        placeholder="Search by Address / Txn hash "
+        placeholder="Search by Username / Address / Txn hash "
         className="w-full bg-black border-white p-2 text-sm focus:border-white focus:bg-white focus:bg-opacity-10 focus:outline-none"
         onKeyUp={handleKeyUp}
         spellCheck={false}

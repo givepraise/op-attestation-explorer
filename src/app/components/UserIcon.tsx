@@ -1,7 +1,7 @@
 import { ImageIcon } from "./user-icon/ImageIcon";
 import { PraiseUserAccount } from "../praise/types/user-account";
 import { SvgIcon } from "./user-icon/SvgIcon";
-import { getPraiseUser } from "../praise/getPraiseUser";
+import { getPraiseUserByAddress } from "../praise/getPraiseUserByAddress";
 
 type UserIconProps = {
   address: string;
@@ -12,7 +12,7 @@ const discordAvatarUrl = (account: PraiseUserAccount): string => {
 };
 
 export async function UserIcon({ address }: UserIconProps) {
-  const praiseUser = await getPraiseUser(address);
+  const praiseUser = await getPraiseUserByAddress(address);
 
   let url;
   if (praiseUser) {

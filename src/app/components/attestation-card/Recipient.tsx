@@ -1,4 +1,4 @@
-import { getPraiseUser } from "../../praise/getPraiseUser";
+import { getPraiseUserByAddress } from "../../praise/getPraiseUserByAddress";
 import { shortenEthAddress } from "../../util/string";
 
 type RecipientProps = {
@@ -6,7 +6,7 @@ type RecipientProps = {
 };
 
 export async function Recipient({ recipient }: RecipientProps) {
-  const praiseUser = await getPraiseUser(recipient);
+  const praiseUser = await getPraiseUserByAddress(recipient);
 
   if (recipient === "0x0000000000000000000000000000000000000000") {
     return <div>No recipient</div>;

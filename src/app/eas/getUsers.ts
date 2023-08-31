@@ -1,10 +1,10 @@
 import { GetUsersSortBy, GetUsersSortOrder } from "./types/get-users-sort.type";
 
 import { PRAISE_SCHEMA_UID } from "../../constants";
-import { SchemaResponseData } from "./types/schema-response-data.type";
-import { UserWithAttestations } from "./types/user-with-attestations";
+import { SchemaWithAttestations } from "./types/schema-with-attestations.type";
+import { UserAttestationsAndPraiseUser } from "./types/user-attestations-and-praise-user.type";
 import { getClient } from "../apollo/getClient";
-import { getPraiseUser } from "../praise/getPraiseUser";
+import { getPraiseUserByAddress } from "../praise/getPraiseUserByAddress";
 import { gql } from "@apollo/client";
 
 const query = gql`
@@ -24,7 +24,7 @@ export async function getUsers(
   sort: GetUsersSortBy = "attestations",
   order: GetUsersSortOrder = "desc"
 ) {
-  const result = await getClient().query<SchemaResponseData>({
+  const result = await getClient().query<SchemaWithAttestations>({
     query,
     fetchPolicy: "cache-first",
     variables: {
@@ -39,7 +39,7 @@ export async function getUsers(
   }
 
   // Unique users and the number of attestations they have received
-  const users: UserWithAttestations[] = [];
+  const users: UserAttestationsAndPraiseUser[] = [];
 
   // Loop through all attestations
   for (const attestation of result.data.schema.attestations) {
@@ -59,7 +59,7 @@ export async function getUsers(
 
   // Add praise user data to each user
   for (const user of users) {
-    const praiseUser = await getPraiseUser(user.address);
+    const praiseUser = await getPraiseUserByAddress(user.address);
     user.praiseUser = praiseUser;
   }
 
