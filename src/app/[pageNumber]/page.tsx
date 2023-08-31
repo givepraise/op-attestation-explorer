@@ -1,6 +1,7 @@
 import AttestationList from "./components/AttestationsList";
 import AttestationsPageChooser from "./components/AttestationsPageChooser";
-import { SearchAndSort } from "../components/SearchAndSort";
+import SchemaButtons from "./components/SchemaButtons";
+import { SearchAndSort } from "./components/SearchAndSort";
 import { SubNav } from "../components/SubNav";
 
 export default async function AttestationListPage({
@@ -12,6 +13,7 @@ export default async function AttestationListPage({
     <>
       <SubNav />
       <SearchAndSort />
+      <SchemaButtons />
       <AttestationList page={params.pageNumber} />
       <AttestationsPageChooser currentPage={params.pageNumber} />
     </>
