@@ -121,15 +121,17 @@ export default async function AttestationPage({
         </div>
       </div>
 
-      <div className="grid grid-cols-3 w-full">
+      <div className="grid  w-full grid-cols-5">
         <div>Name</div>
         <div>Type</div>
-        <div>Value</div>
+        <div className="col-span-3">Value</div>
         {json.map((item: SchemaType) => (
           <>
             <div>{item.value.name}</div>
             <div>{item.value.type}</div>
-            <div>{item.value.value.toString()}</div>
+            <div className="col-span-3 text-ellipsis overflow-clip">
+              {item.value.value.toString()}
+            </div>
           </>
         ))}
       </div>
