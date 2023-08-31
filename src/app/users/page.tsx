@@ -1,6 +1,7 @@
 import { PRAISE_SCHEMA_UID } from "../../constants";
 import { SchemaResponseData } from "../eas/types/schema-response-data.type";
 import { SearchBox } from "../components/SearchBox";
+import { SubNav } from "../components/SubNav";
 import { UserCard } from "../components/UserCard";
 import { UserWithAttestations } from "../eas/types/user-with-attestations";
 import { getClient } from "../apollo/getClient";
@@ -75,6 +76,7 @@ async function UsersList() {
 export default function UsersPage() {
   return (
     <>
+      <SubNav />
       <SearchBox />
       <UsersList />
     </>

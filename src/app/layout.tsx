@@ -1,7 +1,7 @@
 import "./globals.css";
 
+import { MainNav } from "./components/MainNav";
 import type { Metadata } from "next";
-import { Nav } from "./components/Nav";
 
 export const metadata: Metadata = {
   title: "Optimism Attestation Explorer",
@@ -16,9 +16,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Nav />
+        <MainNav />
         <main className="flex flex-col items-center">
-          <div className="pb-20">Optimism Attestation Explorer</div>
           <div className="flex flex-col w-[800px] items-center justify-between font-mono text-sm gap-5">
             {children}
           </div>
