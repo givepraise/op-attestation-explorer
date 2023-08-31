@@ -10,7 +10,11 @@ export function SubNav() {
 
   return (
     <div className="w-full flex">
-      <div className={path === "/" ? activeClassNames : inactiveClassNames}>
+      <div
+        className={
+          path.startsWith("/users") ? inactiveClassNames : activeClassNames
+        }
+      >
         <a href="/">Attestations</a>
       </div>
       <div
