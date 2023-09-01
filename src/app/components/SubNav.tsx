@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export function SubNav() {
@@ -15,14 +16,14 @@ export function SubNav() {
           path.startsWith("/users") ? inactiveClassNames : activeClassNames
         }
       >
-        <a href="/">Attestations</a>
+        <Link href="/">Attestations</Link>
       </div>
       <div
         className={
           path.startsWith("/users") ? activeClassNames : inactiveClassNames
         }
       >
-        <a href="/users">Users</a>
+        <Link href="/users">Users</Link>
       </div>
       <div className="border-b-2 border-white grow" />
     </div>
