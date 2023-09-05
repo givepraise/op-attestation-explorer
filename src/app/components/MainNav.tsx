@@ -9,8 +9,7 @@ export function MainNav() {
           Attestations
         </Link>
       </div>
-      <Link href="/">Explore</Link>
-      <Link href="/about">About</Link>
+      <Link href="/1">Explore</Link>
     </div>
   );
 }
