@@ -11,3 +11,7 @@ h1 {
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
+
+*:focus {
+  @apply outline-none;
+}
