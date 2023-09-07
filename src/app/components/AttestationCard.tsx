@@ -14,17 +14,15 @@ type AttestationCardProps = {
 export function AttestationCard({ attestation }: AttestationCardProps) {
   return (
     <Link href={`/attestation/${attestation.id}`}>
-      <div className="flex justify-between border p-5 w-full gap-x-5 hover:bg-white hover:bg-opacity-10">
-        <div className="flex items-center content-center gap-5">
-          <UserIcon address={attestation.recipient} />
-          <div>
-            <Recipient recipient={attestation.recipient} />
-            <Time time={attestation.time.toString()} />
-          </div>
-        </div>
-        <div className="flex flex-col justify-center">
-          <From from={attestation.attester} />
-          <Uid uid={attestation.id} />
+      <div className="flex justify-between items-center p-5 w-full gap-x-5 hover:ring-4 hover:ring-theme-3 rounded-xl shadow-theme-shadow-1 bg-white">
+        <UserIcon address={attestation.recipient} />
+        <Recipient recipient={attestation.recipient} />
+        <Time time={attestation.time.toString()} />
+        <div className="grid grid-cols-3">
+          <div>From</div>
+          <From from={attestation.attester} className="col-span-2" />
+          <div>Uid</div>
+          <Uid uid={attestation.id} className="col-span-2" />
         </div>
         <SchemaName attestation={attestation} />
       </div>

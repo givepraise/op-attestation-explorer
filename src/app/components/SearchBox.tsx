@@ -2,6 +2,9 @@
 
 import { KeyboardEvent, useState } from "react";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+
 export function SearchBox() {
   const [error, setError] = useState<string>();
 
@@ -22,11 +25,15 @@ export function SearchBox() {
   }
 
   return (
-    <div className="flex-grow">
+    <div className="flex-grow relative">
+      <FontAwesomeIcon
+        icon={faSearch}
+        className="w-4 h-4 absolute top-3 left-3"
+      />
       <input
         type="text"
         placeholder="Search by Username / Address / Txn hash "
-        className="w-full bg-black border-white p-2 text-sm focus:border-white focus:bg-white focus:bg-opacity-10 focus:outline-none"
+        className="w-full border-none p-2 hover:ring-4 hover:ring-theme-3 focus:ring-1 focus:ring-theme-3 rounded-xl pl-10 shadow-theme-shadow-1 focus:shadow-theme-shadow-1"
         onKeyUp={handleKeyUp}
         spellCheck={false}
       />

@@ -12,5 +12,9 @@ export async function Recipient({ recipient }: RecipientProps) {
     return <div>No recipient</div>;
   }
 
-  return <div>{praiseUser?.username || shortenEthAddress(recipient)}</div>;
+  return (
+    <div className="font-medium w-32 overflow-clip overflow-ellipsis">
+      {praiseUser?.username || shortenEthAddress(recipient)}
+    </div>
+  );
 }

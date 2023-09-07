@@ -5,8 +5,7 @@ export function MainNav() {
     <div className="w-full flex p-10 gap-10">
       <div>
         <Link href="/">
-          Optimism <br />
-          Attestations
+          <img src="/optimism.svg" alt="Optimism" />
         </Link>
       </div>
       <Link href="/1">Explore</Link>

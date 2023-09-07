@@ -6,8 +6,8 @@ import { usePathname } from "next/navigation";
 export function SubNav() {
   const path = usePathname();
 
-  const activeClassNames = "border-b-2 border-white border-opacity-20 p-5";
-  const inactiveClassNames = "border-b-2 border-white p-5";
+  const inactiveClassNames = "border-b-2 border-theme-gray-1 p-5";
+  const activeClassNames = "border-b-2 border-theme-1 p-5";
 
   return (
     <div className="w-full flex">
@@ -16,7 +16,7 @@ export function SubNav() {
           path.startsWith("/users") ? inactiveClassNames : activeClassNames
         }
       >
-        <Link href="/">Attestations</Link>
+        <Link href="/1">Attestations</Link>
       </div>
       <div
         className={
@@ -25,7 +25,7 @@ export function SubNav() {
       >
         <Link href="/users">Users</Link>
       </div>
-      <div className="border-b-2 border-white grow" />
+      <div className="border-b-2 border-theme-gray-1 grow" />
     </div>
   );
 }
