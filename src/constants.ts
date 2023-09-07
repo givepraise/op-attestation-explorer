@@ -13,6 +13,6 @@ export const EAS_SCHEMAS: SchemaListItem[] = [
 
 export const PRAISE_API_URL = "https://gnosisdao.givepraise.xyz/api/users";
 
-export const USERS_PER_PAGE = 3;
+export const USERS_PER_PAGE = 6;
 
-export const ATTESTATIONS_PER_PAGE = 5;
+export const ATTESTATIONS_PER_PAGE = 6;
