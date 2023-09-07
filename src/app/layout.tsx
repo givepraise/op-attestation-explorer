@@ -2,6 +2,7 @@ import "./globals.css";
 
 import { MainNav } from "./components/MainNav";
 import type { Metadata } from "next";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Optimism Attestation Explorer",
@@ -16,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Toaster position="top-center" reverseOrder={false} />
         <MainNav />
         <main className="flex flex-col items-center">
           <div className="flex flex-col w-[1024px] items-center justify-between gap-5">
