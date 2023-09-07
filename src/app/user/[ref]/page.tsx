@@ -1,6 +1,6 @@
 import { AttestationCard } from "../../components/AttestationCard";
 import { UserAttestationsAndPraiseUser } from "../../eas/types/user-attestations-and-praise-user.type";
-import { UserIcon } from "../../components/UserIcon";
+import { UserIcon } from "../components/UserIcon";
 import { getUserAttestationsAndPraiseUser } from "../../eas/getUserAttestationsAndPraiseUser";
 import { shortenEthAddress } from "../../util/string";
 

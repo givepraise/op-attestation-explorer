@@ -4,7 +4,7 @@ import {
 } from "../../eas/types/get-users-sort.type";
 
 import { USERS_PER_PAGE } from "../../../constants";
-import { UserCard } from "../../components/UserCard";
+import { UserCard } from "../../user/components/UserCard";
 import { getUsers } from "../../eas/getUsers";
 
 type UsersListProps = {

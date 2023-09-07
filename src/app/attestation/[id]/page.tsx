@@ -2,7 +2,7 @@ import { AttestationResponseData } from "../../eas/types/attestation-response-da
 import Link from "next/link";
 import { SchemaName } from "../../components/attestation-card/SchemaName";
 import { Suspense } from "react";
-import { UserIcon } from "../../components/UserIcon";
+import { UserIcon } from "../../user/components/UserIcon";
 import dayjs from "dayjs";
 import { getClient } from "../../apollo/getClient";
 import { getPraiseUserByAddress } from "../../praise/getPraiseUserByAddress";

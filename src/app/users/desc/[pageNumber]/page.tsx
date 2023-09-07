@@ -1,9 +1,9 @@
 import { SearchAndSort } from "../../components/SearchAndSort";
 import { SubNav } from "../../../components/SubNav";
 import { Suspense } from "react";
-import { UsersList } from "../../components/UserList";
-import { UsersLoadingList } from "../../../components/UsersLoadingList";
-import UsersPageChooser from "../../components/UserPageChooser";
+import { UsersList } from "../../components/UsersList";
+import { UsersLoadingList } from "../../components/UsersLoadingList";
+import UsersPageChooser from "../../components/UsersPageChooser";
 
 export default function UsersPage({
   params,

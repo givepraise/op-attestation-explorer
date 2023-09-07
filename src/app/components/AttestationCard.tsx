@@ -5,7 +5,7 @@ import { Recipient } from "./attestation-card/Recipient";
 import { SchemaName } from "./attestation-card/SchemaName";
 import { Time } from "./attestation-card/Time";
 import { Uid } from "./attestation-card/Uid";
-import { UserIcon } from "./UserIcon";
+import { UserIcon } from "../user/components/UserIcon";
 
 type AttestationCardProps = {
   attestation: Attestation;

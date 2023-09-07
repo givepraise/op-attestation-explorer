@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { UserAttestationsAndPraiseUser } from "../eas/types/user-attestations-and-praise-user.type";
+import { UserAttestationsAndPraiseUser } from "../../eas/types/user-attestations-and-praise-user.type";
 import { UserIcon } from "./UserIcon";
-import { shortenEthAddress } from "../util/string";
+import { shortenEthAddress } from "../../util/string";
 
 type UserCardProps = {
   user: UserAttestationsAndPraiseUser;
