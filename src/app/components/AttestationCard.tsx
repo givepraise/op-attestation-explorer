@@ -18,7 +18,7 @@ export function AttestationCard({ attestation }: AttestationCardProps) {
         <UserIcon address={attestation.recipient} />
         <Recipient recipient={attestation.recipient} />
         <Time time={attestation.time.toString()} />
-        <div className="grid grid-cols-3">
+        <div className="grid grid-cols-3 w-32">
           <div>From</div>
           <From from={attestation.attester} className="col-span-2" />
           <div>Uid</div>

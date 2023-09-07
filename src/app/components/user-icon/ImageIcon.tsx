@@ -6,10 +6,19 @@ import { useState } from "react";
 
 type ImageIconProps = {
   url: string;
+  variant?: "round" | "square";
+  size?: "small" | "large";
 };
 
-export function ImageIcon({ url }: ImageIconProps) {
+export function ImageIcon({
+  url,
+  variant = "round",
+  size = "small",
+}: ImageIconProps) {
   const [imageLoadError, setImageLoadError] = useState<boolean>(false);
+
+  const roundedClass = variant === "round" ? "rounded-full" : "rounded-3xl";
+  const sizeClass = size === "small" ? "h-10 w-10" : "h-20 w-20";
 
   if (imageLoadError) {
     return <SvgIcon />;
@@ -20,9 +29,9 @@ export function ImageIcon({ url }: ImageIconProps) {
       src={url}
       onError={(): void => setImageLoadError(true)}
       alt="avatar"
-      width={30}
-      height={30}
-      className="object-contain h-10 w-10 rounded-full"
+      width={60}
+      height={60}
+      className={`object-contain ${roundedClass} ${sizeClass}`}
     />
   );
 }

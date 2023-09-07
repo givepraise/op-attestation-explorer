@@ -5,13 +5,19 @@ import { getPraiseUserByAddress } from "../praise/getPraiseUserByAddress";
 
 type UserIconProps = {
   address: string;
+  variant?: "round" | "square";
+  size?: "small" | "large";
 };
 
 const discordAvatarUrl = (account: PraiseUserAccount): string => {
   return `https://cdn.discordapp.com/avatars/${account.accountId}/${account.avatarId}.webp?size=128`;
 };
 
-export async function UserIcon({ address }: UserIconProps) {
+export async function UserIcon({
+  address,
+  variant = "round",
+  size = "small",
+}: UserIconProps) {
   const praiseUser = await getPraiseUserByAddress(address);
 
   let url;
@@ -27,5 +33,9 @@ export async function UserIcon({ address }: UserIconProps) {
     }
   }
 
-  return url ? <ImageIcon url={url} /> : <SvgIcon />;
+  return url ? (
+    <ImageIcon url={url} variant={variant} size={size} />
+  ) : (
+    <SvgIcon size={size} />
+  );
 }
