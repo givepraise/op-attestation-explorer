@@ -61,64 +61,78 @@ export default async function AttestationPage({
 
   return (
     <>
-      <div className="w-full flex">
-        <div className="w-full flex flex-col items-start">
-          <div>
-            UID:{" "}
-            <a
-              href={`https://optimism.easscan.org/attestation/view/${attestation.id}`}
-              target="_blank"
-            >
-              {shortenEthAddress(attestation.id)}
-            </a>
-          </div>
-          <div>
-            From:{" "}
-            <a
-              href={`https://optimism.easscan.org/address/${attestation.attester}`}
-            >
-              {shortenEthAddress(attestation.attester)}
-            </a>
-          </div>
+      <div className="w-full flex-col rounded-xl shadow-theme-shadow-1 bg-white p-5 space-y-5">
+        <div className="text-2xl font-semibold">Attestation</div>
 
-          <div>
-            To:{" "}
-            <a
-              href={`https://optimism.easscan.org/address/${attestation.recipient}`}
-            >
-              {shortenEthAddress(attestation.recipient)}
-            </a>
-          </div>
-        </div>
-        <div className="border flex flex-col gap-5 p-5 items-center">
-          <UserIcon address={attestation.recipient} />
-          {praiseUser?.username && (
+        <div className="flex justify-between w-full">
+          <div className="flex flex-col items-start">
             <div>
-              <Link href={`/user/${praiseUser.username}`}>
-                {praiseUser.username}
-              </Link>
+              To:{" "}
+              {praiseUser?.username ? (
+                <Link
+                  href={`/user/${praiseUser.username}`}
+                  className="font-medium"
+                >
+                  {praiseUser.username}
+                </Link>
+              ) : (
+                <a
+                  href={`https://optimism.easscan.org/address/${attestation.recipient}`}
+                >
+                  {shortenEthAddress(attestation.recipient)}
+                </a>
+              )}
             </div>
-          )}
+            <div>
+              From:{" "}
+              <a
+                href={`https://optimism.easscan.org/address/${attestation.attester}`}
+              >
+                {shortenEthAddress(attestation.attester)}
+              </a>
+            </div>
+            <div>
+              UID:{" "}
+              <a
+                href={`https://optimism.easscan.org/attestation/view/${attestation.id}`}
+                target="_blank"
+              >
+                {shortenEthAddress(attestation.id)}
+              </a>
+            </div>
+          </div>
+          <div className="flex flex-col justify-center">
+            <div className="text-sm text-gray-500">Created</div>
+            <div>
+              {dayjs.unix(parseInt(attestation.time.toString())).fromNow()}
+            </div>
+          </div>
+          <div className="flex flex-col justify-center">
+            <div className="text-sm text-gray-500">Expires</div>
+            <div>
+              {attestation.expirationTime > 0
+                ? attestation.expirationTime.toString()
+                : "Does not expire"}
+            </div>
+          </div>
+          <div className="flex flex-col justify-center">
+            <div className="text-sm text-gray-500">Revoked</div>
+            <div>{attestation.revoked ? "Yes" : "No"} </div>
+          </div>
+          <div className="flex flex-col justify-center">
+            <SchemaName attestation={attestation} />
+          </div>
+          <div>
+            <UserIcon
+              address={attestation.recipient}
+              variant="square"
+              size="large"
+            />
+          </div>
         </div>
       </div>
-      <div className="flex justify-between w-full">
-        <div className="flex flex-col">
-          <div>
-            Created:{" "}
-            {dayjs.unix(parseInt(attestation.time.toString())).fromNow()}
-          </div>
-          <div>
-            Expires:{" "}
-            {attestation.expirationTime > 0
-              ? attestation.expirationTime.toString()
-              : "Does not expire"}
-          </div>
-          <div>Revoked: {attestation.revoked ? "Yes" : "No"}</div>
-        </div>
-
-        <div className="flex flex-col">
-          <SchemaName attestation={attestation} />
-        </div>
+      <div className="w-full border-b-4 border-theme-gray-1">
+        <div className="text-2xl font-semibold">Raw data</div>
       </div>
 
       <div className="grid  w-full grid-cols-5">
