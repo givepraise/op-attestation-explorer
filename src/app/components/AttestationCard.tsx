@@ -14,7 +14,7 @@ type AttestationCardProps = {
 export function AttestationCard({ attestation }: AttestationCardProps) {
   return (
     <Link href={`/attestation/${attestation.id}`}>
-      <div className="flex justify-between items-center p-5 w-full gap-x-5 hover:ring-4 hover:ring-theme-3 rounded-xl shadow-theme-shadow-1 bg-white">
+      <div className="flex justify-between items-center p-5 w-full gap-x-5 hover:ring-4 hover:ring-theme-3 hover:ring-opacity-40 rounded-xl shadow-theme-shadow-1 bg-white">
         <UserIcon address={attestation.recipient} />
         <Recipient recipient={attestation.recipient} />
         <Time time={attestation.time.toString()} />
