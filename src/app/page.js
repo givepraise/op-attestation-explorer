@@ -1,24 +1,37 @@
 import Link from "next/link";
+import { AttestationList } from "../components/attestations/AttestationsList";
 
 export default function Page() {
   return (
-    <div className="flex flex-col items-center justify-center gap-10">
-      <div className="section">
+    <div className="flex flex-col items-start justify-center gap-10 max-w-xl">
+      <div>
         <h1>Optimism Attestation Explorer</h1>
         <p>
-          Welcome to the Optimism Attestation Explorer. Our goal is to highlight
-          attestations that are particularly relevant for the Citizens
-          eligibility process.
+          Welcome to the Optimism Attestation Explorer. The goal of this website
+          is to present attestations that are particularly relevant for the
+          Citizens eligibility process.
         </p>
       </div>
 
-      <div className="section">
-        <Link href="/1" className="underline">
-          [EXPLORE BUTTON]
+      <div>
+        <h1>Attestation types</h1>
+        <p>Praise, Regen Score (logos)</p>
+      </div>
+
+      <div className="w-full">
+        <h1>Latest Attestations</h1>
+        <AttestationList page={1} />
+      </div>
+
+      <div className="flex w-full justify-center">
+        <Link href="/1">
+          <div className="px-8 py-3 rounded-full bg-theme-1 text-white font-semibold text-2xl hover:bg-theme-2">
+            Explore
+          </div>
         </Link>
       </div>
 
-      <div className="section">
+      <div>
         <h1>Jonas quote with profile image:</h1>
         <p>
           The determination of citizenship distribution will eventually be the
@@ -28,7 +41,7 @@ export default function Page() {
         </p>
       </div>
 
-      <div className="section">
+      <div>
         <h1>Kristofer with profile image:</h1>
         <p>
           As part of the Praise on OP project, we will build an OP branded
@@ -40,7 +53,7 @@ export default function Page() {
         </p>
       </div>
 
-      <div className="section">
+      <div>
         <h1>What Are Attestations?</h1>
         <p>
           Attestations are digital signatures on a structured piece of
@@ -51,7 +64,7 @@ export default function Page() {
         </p>
       </div>
 
-      <div className="section">
+      <div>
         <h1>What is EAS?</h1>
         <p>
           Ethereum Attestation Service (EAS) is a public infrastructure for
@@ -60,7 +73,7 @@ export default function Page() {
           anything, providing a decentralized ledger for attestations.
         </p>
       </div>
-      <div className="section">
+      <div>
         <h1>Why Trust Matters</h1>
         <p>
           In a world filled with both genuine and deceptive information, trust
@@ -69,14 +82,13 @@ export default function Page() {
           onchain.
         </p>
       </div>
-      <div className="section">
-        <h1>Latest Attestations</h1>
-        <p>[ATTESTATION LIST]</p>
-        <p>
-          <Link href="/1" className="underline">
-            [EXPLORE BUTTON]
-          </Link>
-        </p>
+
+      <div className="flex w-full justify-center">
+        <Link href="/1">
+          <div className="px-8 py-3 rounded-full bg-theme-1 text-white font-semibold text-2xl hover:bg-theme-2">
+            Explore
+          </div>
+        </Link>
       </div>
     </div>
   );

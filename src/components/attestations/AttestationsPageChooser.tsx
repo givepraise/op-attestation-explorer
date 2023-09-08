@@ -18,8 +18,8 @@ async function AttestationsPageChooser({
   currentPage = Number(currentPage);
 
   return (
-    <div className="flex justify-between w-full">
-      <div className="w-52">
+    <div className="flex justify-between w-full items-center">
+      <div className="w-40">
         {/* First Button */}
         <div className="hover:border-b-2 inline-block hover:border-theme-1 mr-4">
           {currentPage > 1 && (
@@ -43,11 +43,11 @@ async function AttestationsPageChooser({
       </div>
 
       {/* Current Page Info */}
-      <div>
-        page {currentPage} of {totalPages}
+      <div className="text-sm text-gray-500 whitespace-nowrap">
+        {currentPage} of {totalPages}
       </div>
 
-      <div className="w-52 flex justify-end">
+      <div className="w-40 flex justify-end">
         {/* Next Button */}
         <div className="hover:border-b-2 inline-block hover:border-theme-1 mr-4">
           {currentPage < totalPages && (

@@ -23,7 +23,7 @@ export function PraiseCustomDisplay({ attestation }: CustomDisplayProps) {
 
   return (
     <div className="w-full flex flex-col gap-10">
-      <div className="w-full flex gap-10">
+      <div className="w-full flex flex-col sm:flex-row gap-10">
         <div className="flex flex-col">
           <div className="text-2xl font-semibold">{receivedScore}</div>
           <div className="text-sm text-gray-500">Received Score</div>
@@ -72,7 +72,7 @@ export function PraiseCustomDisplay({ attestation }: CustomDisplayProps) {
         )}
       </div>
 
-      <div className="w-full flex gap-10">
+      <div className="w-full flex flex-col sm:flex-row gap-10">
         <div className="flex flex-col">
           <div className="text-2xl font-semibold">{givenScore}</div>
           <div className="text-sm text-gray-500">Given Score</div>

@@ -19,8 +19,8 @@ export default function RootLayout({
       <body>
         <Toaster position="top-center" reverseOrder={false} />
         <MainNav />
-        <main className="flex flex-col items-center pt-10">
-          <div className="flex flex-col w-[1024px] items-center justify-between gap-5">
+        <main className="flex flex-col items-center pt-10 pb-10">
+          <div className="flex flex-col w-full px-5 lg:w-[1024px] items-center justify-between gap-5">
             {children}
           </div>
         </main>

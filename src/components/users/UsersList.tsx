@@ -29,7 +29,7 @@ export async function UsersList({
   const paginatedUsers = users.slice(startIndex, endIndex);
 
   return (
-    <div className="w-full grid grid-cols-3 gap-5">
+    <div className="w-full grid md:grid-cols-2 lg:grid-cols-3 gap-5">
       {paginatedUsers.map((user) => (
         <UserCard user={user} key={user.address} />
       ))}

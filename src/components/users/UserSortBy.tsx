@@ -42,9 +42,9 @@ export function UserSortBy() {
   };
 
   return (
-    <div className="relative flex justify-center">
+    <div className="relative justify-center">
       <Listbox value={selectedOption} onChange={changeOption}>
-        <Listbox.Button className="border-none p-2 hover:ring-4 hover:ring-theme-3 hover:ring-opacity-40 focus:ring-1 focus:ring-theme-3 rounded-xl shadow-theme-shadow-1 focus:shadow-theme-shadow-1">
+        <Listbox.Button className="border-none w-full p-2 hover:ring-4 hover:ring-theme-3 hover:ring-opacity-40 focus:ring-1 focus:ring-theme-3 rounded-xl shadow-theme-shadow-1 focus:shadow-theme-shadow-1">
           <div className="flex w-full items-center">
             {selectedOption ? selectedOption.name : "Sort order"}
             <FontAwesomeIcon icon={faChevronDown} className="pl-2 w-4 h-4" />

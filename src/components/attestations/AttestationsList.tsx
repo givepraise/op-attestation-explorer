@@ -6,7 +6,7 @@ import { getAllAttestations } from "../../eas/getAllAttestations";
 type AttestationListProps = {
   page: number;
 };
-export default async function AttestationList({ page }: AttestationListProps) {
+export async function AttestationList({ page }: AttestationListProps) {
   let attestations: Attestation[] = [];
   try {
     attestations = await getAllAttestations();
@@ -20,7 +20,7 @@ export default async function AttestationList({ page }: AttestationListProps) {
   const paginatedAttestaions = attestations.slice(startIndex, endIndex);
 
   return (
-    <ol className="w-full">
+    <ol className="w-full @container">
       {paginatedAttestaions.map((att) => (
         <li key={att.id} className="pb-5">
           <AttestationCard attestation={att} />

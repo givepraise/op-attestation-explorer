@@ -26,22 +26,22 @@ export function RawData({ data }: RawDataProps): JSX.Element {
                 )}
               </div>
             </Disclosure.Button>
-            <Disclosure.Panel className="text-left w-full">
-              <div className="grid w-full grid-cols-5">
+            <Disclosure.Panel className="text-left w-full text-xs sm:text-base">
+              <div className="grid w-full grid-cols-4">
                 <div>
                   <strong>Name</strong>
                 </div>
                 <div>
                   <strong>Type</strong>
                 </div>
-                <div className="col-span-3">
+                <div className="col-span-2">
                   <strong>Value</strong>
                 </div>
                 {data.map((item: DataType) => (
                   <>
                     <div>{item.value.name}</div>
                     <div>{item.value.type}</div>
-                    <div className="col-span-3 text-ellipsis overflow-clip">
+                    <div className="col-span-2 text-ellipsis overflow-clip">
                       {item.value.value.toString()}
                     </div>
                   </>

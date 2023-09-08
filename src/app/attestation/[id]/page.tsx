@@ -53,48 +53,62 @@ export default async function AttestationPage({
   return (
     <>
       <div className="w-full flex-col rounded-xl shadow-theme-shadow-1 bg-white p-5 space-y-5">
-        <div className="text-2xl font-semibold">Attestation</div>
+        <div className="flex justify-between">
+          <div className="text-2xl font-semibold">Attestation</div>
+          <div className="flex flex-col justify-center">
+            <SchemaName attestation={attestation} />
+          </div>
+        </div>
 
-        <div className="flex justify-between w-full">
-          <div className="flex flex-col items-start">
-            <div className="flex items-center">
-              <div className="w-12 text-sm text-gray-500">To </div>
-              {praiseUser?.username ? (
-                <Link
-                  href={`/user/${praiseUser.username}`}
-                  className="font-medium"
-                >
-                  {praiseUser.username}
-                </Link>
-              ) : (
-                <>
-                  <a
-                    href={`https://optimism.easscan.org/address/${attestation.recipient}`}
+        <div className="flex flex-col md:flex-row md:justify-between gap-5 w-full">
+          <div className="flex justify-between">
+            <div className="flex flex-col items-start">
+              <div className="flex items-center">
+                <div className="w-12 text-sm text-gray-500">To </div>
+                {praiseUser?.username ? (
+                  <Link
+                    href={`/user/${praiseUser.username}`}
+                    className="font-medium"
                   >
-                    {shortenEthAddress(attestation.recipient)}
-                  </a>
-                  <CopyButton textToCopy={attestation.recipient} />
-                </>
-              )}
+                    {praiseUser.username}
+                  </Link>
+                ) : (
+                  <>
+                    <a
+                      href={`https://optimism.easscan.org/address/${attestation.recipient}`}
+                    >
+                      {shortenEthAddress(attestation.recipient)}
+                    </a>
+                    <CopyButton textToCopy={attestation.recipient} />
+                  </>
+                )}
+              </div>
+              <div className="flex items-center">
+                <div className="w-12 text-sm text-gray-500">From</div>
+                <a
+                  href={`https://optimism.easscan.org/address/${attestation.attester}`}
+                >
+                  {shortenEthAddress(attestation.attester)}
+                </a>
+                <CopyButton textToCopy={attestation.attester} />
+              </div>
+              <div className="flex items-center">
+                <div className="w-12 text-sm text-gray-500">Uid</div>
+                <a
+                  href={`https://optimism.easscan.org/attestation/view/${attestation.id}`}
+                  target="_blank"
+                >
+                  {shortenEthAddress(attestation.id)}
+                </a>
+                <CopyButton textToCopy={attestation.id} />
+              </div>
             </div>
-            <div className="flex items-center">
-              <div className="w-12 text-sm text-gray-500">From</div>
-              <a
-                href={`https://optimism.easscan.org/address/${attestation.attester}`}
-              >
-                {shortenEthAddress(attestation.attester)}
-              </a>
-              <CopyButton textToCopy={attestation.attester} />
-            </div>
-            <div className="flex items-center">
-              <div className="w-12 text-sm text-gray-500">Uid</div>
-              <a
-                href={`https://optimism.easscan.org/attestation/view/${attestation.id}`}
-                target="_blank"
-              >
-                {shortenEthAddress(attestation.id)}
-              </a>
-              <CopyButton textToCopy={attestation.id} />
+            <div className="md:hidden">
+              <UserIcon
+                address={attestation.recipient}
+                variant="square"
+                size="large"
+              />
             </div>
           </div>
           <div className="flex flex-col justify-center">
@@ -115,10 +129,7 @@ export default async function AttestationPage({
             <div className="text-sm text-gray-500">Revoked</div>
             <div>{attestation.revoked ? "Yes" : "No"} </div>
           </div>
-          <div className="flex flex-col justify-center">
-            <SchemaName attestation={attestation} />
-          </div>
-          <div>
+          <div className="hidden md:block">
             <UserIcon
               address={attestation.recipient}
               variant="square"
