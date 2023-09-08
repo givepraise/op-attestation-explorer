@@ -1,8 +1,12 @@
 import "./globals.css";
 
+import { chains, wagmiConfig } from "../wagmi/wagmiConfig";
+
 import { MainNav } from "../components/MainNav";
 import type { Metadata } from "next";
+import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { Toaster } from "react-hot-toast";
+import { WagmiConfig } from "wagmi";
 
 export const metadata: Metadata = {
   title: "Optimism Attestation Explorer",

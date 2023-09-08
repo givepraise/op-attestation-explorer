@@ -1,3 +1,10 @@
+"use client";
+
+import { RainbowKitProvider, lightTheme } from "@rainbow-me/rainbowkit";
+import { WagmiConfig, useAccount } from "wagmi";
+import { chains, wagmiConfig } from "../wagmi/wagmiConfig";
+
+import ConnectWallet from "./ConnectWallet";
 import Link from "next/link";
 
 export function MainNav() {
@@ -16,7 +23,22 @@ export function MainNav() {
           Explore
         </Link>
       </div>
-      <div>Connect wallet</div>
+
+      <WagmiConfig config={wagmiConfig}>
+        <RainbowKitProvider
+          modalSize="compact"
+          theme={lightTheme({
+            accentColor: "#d82e2a",
+            accentColorForeground: "white",
+            borderRadius: "large",
+            fontStack: "system",
+            overlayBlur: "small",
+          })}
+          chains={chains}
+        >
+          <ConnectWallet />
+        </RainbowKitProvider>
+      </WagmiConfig>
     </div>
   );
 }
