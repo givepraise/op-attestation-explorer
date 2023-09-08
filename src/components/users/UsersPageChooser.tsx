@@ -3,7 +3,7 @@ import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import React from "react";
-import { USERS_PER_PAGE } from "../../../constants";
+import { USERS_PER_PAGE } from "../../constants";
 import { getUsers } from "../../eas/getUsers";
 
 type UsersPageChooserProps = {

@@ -1,21 +1,18 @@
-import { AttestationResponseData } from "../../eas/types/attestation-response-data.type";
-import { CopyButton } from "../../components/CopyButton";
-import { CustomDisplay } from "../../components/attestation/CustomDisplay";
-import { DecodedData } from "../../eas/types/decoded-data.type";
-import { Disclosure } from "@headlessui/react";
+import { AttestationResponseData } from "../../../eas/types/attestation-response-data.type";
+import { CopyButton } from "../../../components/CopyButton";
+import { CustomDisplay } from "../../../components/attestation/CustomDisplay";
+import { DecodedData } from "../../../eas/types/decoded-data.type";
 import Link from "next/link";
-import { RawData } from "../../components/attestation/RawData";
-import { SchemaName } from "../../components/attestation-card/SchemaName";
-import { Suspense } from "react";
-import { UserIcon } from "../../user/components/UserIcon";
+import { RawData } from "../../../components/attestation/RawData";
+import { SchemaName } from "../../../components/attestation-card/SchemaName";
+import { UserIcon } from "../../../components/user/UserIcon";
 import dayjs from "dayjs";
-import { getClient } from "../../apollo/getClient";
-import { getPraiseUserByAddress } from "../../praise/getPraiseUserByAddress";
-import { getSchemaData } from "../../eas/getSchemaData";
+import { getClient } from "../../../apollo/getClient";
+import { getPraiseUserByAddress } from "../../../praise/getPraiseUserByAddress";
+import { getSchemaData } from "../../../eas/getSchemaData";
 import { gql } from "@apollo/client";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { shortenEthAddress } from "../../util/string";
-import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
+import { shortenEthAddress } from "../../../util/string";
 
 const query = gql`
   query Attestation($where: AttestationWhereUniqueInput!) {

@@ -1,5 +1,5 @@
 import { Attestation } from "../../eas/types/attestation.type";
-import { EAS_SCHEMAS } from "../../../constants";
+import { EAS_SCHEMAS } from "../../constants";
 
 type SchemaNameProps = {
   attestation: Attestation;

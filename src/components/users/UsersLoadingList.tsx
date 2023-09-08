@@ -1,4 +1,4 @@
-import { UserLoadingCard } from "../../user/components/UserLoadingCard";
+import { UserLoadingCard } from "../user/UserLoadingCard";
 
 export function UsersLoadingList() {
   return (

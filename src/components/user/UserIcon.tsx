@@ -1,6 +1,6 @@
-import { ImageIcon } from "../../components/user-icon/ImageIcon";
+import { ImageIcon } from "./user-icon/ImageIcon";
 import { PraiseUserAccount } from "../../praise/types/user-account";
-import { SvgIcon } from "../../components/user-icon/SvgIcon";
+import { SvgIcon } from "./user-icon/SvgIcon";
 import { getPraiseUserByAddress } from "../../praise/getPraiseUserByAddress";
 
 type UserIconProps = {

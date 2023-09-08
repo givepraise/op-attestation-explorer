@@ -1,4 +1,4 @@
-import { EAS_SCHEMAS } from "../../../constants";
+import { EAS_SCHEMAS } from "../../constants";
 
 export default function SchemaButtons() {
   return (

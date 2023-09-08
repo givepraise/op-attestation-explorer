@@ -1,5 +1,5 @@
 import { AttestationsResponseData } from "./types/attestations-response-data.type";
-import { EAS_SCHEMAS } from "../../constants";
+import { EAS_SCHEMAS } from "../constants";
 import { getClient } from "../apollo/getClient";
 import { gql } from "@apollo/client";
 

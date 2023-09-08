@@ -1,6 +1,6 @@
 import "./globals.css";
 
-import { MainNav } from "./components/MainNav";
+import { MainNav } from "../components/MainNav";
 import type { Metadata } from "next";
 import { Toaster } from "react-hot-toast";
 

@@ -1,4 +1,4 @@
-import { EAS_SCHEMAS } from "../../constants";
+import { EAS_SCHEMAS } from "../constants";
 import { PraiseUser } from "../praise/types/user";
 import { SchemaWithAttestations } from "./types/schema-with-attestations.type";
 import { UserAttestationsAndPraiseUser } from "./types/user-attestations-and-praise-user.type";

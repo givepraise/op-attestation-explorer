@@ -1,6 +1,6 @@
-import { ATTESTATIONS_PER_PAGE } from "../../../constants";
+import { ATTESTATIONS_PER_PAGE } from "../../constants";
 import { Attestation } from "../../eas/types/attestation.type";
-import { AttestationCard } from "../../components/AttestationCard";
+import { AttestationCard } from "../attestation/AttestationCard";
 import { getAllAttestations } from "../../eas/getAllAttestations";
 
 type AttestationListProps = {

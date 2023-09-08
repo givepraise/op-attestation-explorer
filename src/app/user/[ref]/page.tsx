@@ -1,10 +1,9 @@
-import { AttestationCard } from "../../components/AttestationCard";
-import { AttestationCardAlt } from "../../components/AttestationCardAlt";
-import { CopyButton } from "../../components/CopyButton";
-import { UserAttestationsAndPraiseUser } from "../../eas/types/user-attestations-and-praise-user.type";
-import { UserIcon } from "../components/UserIcon";
-import { getUserAttestationsAndPraiseUser } from "../../eas/getUserAttestationsAndPraiseUser";
-import { shortenEthAddress } from "../../util/string";
+import { CopyButton } from "../../../components/CopyButton";
+import { UserAttestationsAndPraiseUser } from "../../../eas/types/user-attestations-and-praise-user.type";
+import { UserIcon } from "../../../components/user/UserIcon";
+import { getUserAttestationsAndPraiseUser } from "../../../eas/getUserAttestationsAndPraiseUser";
+import { shortenEthAddress } from "../../../util/string";
+import { AttestationCardAlt } from "../../../components/attestation/AttestationCardAlt";
 
 export default async function UserPage({
   params,

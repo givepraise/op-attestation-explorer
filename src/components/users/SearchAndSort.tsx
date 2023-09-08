@@ -1,4 +1,4 @@
-import { SearchBox } from "../../components/SearchBox";
+import { SearchBox } from "../SearchBox";
 import { UserSortBy } from "./UserSortBy";
 import { UserSortOrder } from "./UserSortOrder";
 

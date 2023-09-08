@@ -1,4 +1,4 @@
-import { AttestationLoadingCard } from "../../components/AttestationLoadingCard";
+import { AttestationLoadingCard } from "../AttestationLoadingCard";
 
 export function AttestationsLoadingList() {
   return (

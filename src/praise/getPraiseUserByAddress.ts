@@ -1,4 +1,4 @@
-import { PRAISE_API_URL } from "../../constants";
+import { PRAISE_API_URL } from "../constants";
 import { PraiseUser } from "./types/user";
 import { fetchAllPraiseUsers } from "./fetchAllPraiseUsers";
 

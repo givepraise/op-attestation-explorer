@@ -1,5 +1,5 @@
-import { PraiseCustomDisplay } from "./app/components/attestation/custom-displays/PraiseCustomDisplay";
-import { SchemaListItem } from "./app/eas/types/schema-list-item.type";
+import { PraiseCustomDisplay } from "./components/attestation/custom-displays/PraiseCustomDisplay";
+import { SchemaListItem } from "./eas/types/schema-list-item.type";
 
 export const EAS_SCHEMAS: SchemaListItem[] = [
   {

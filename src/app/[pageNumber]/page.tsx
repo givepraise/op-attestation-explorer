@@ -1,10 +1,10 @@
-import AttestationList from "./components/AttestationsList";
-import { AttestationsLoadingList } from "./components/AttestationsLoadingList";
-import AttestationsPageChooser from "./components/AttestationsPageChooser";
-import SchemaButtons from "./components/SchemaButtons";
-import { SearchAndSort } from "./components/SearchAndSort";
-import { SubNav } from "../components/SubNav";
+import AttestationList from "../../components/attestations/AttestationsList";
+import { AttestationsLoadingList } from "../../components/attestations/AttestationsLoadingList";
+import AttestationsPageChooser from "../../components/attestations/AttestationsPageChooser";
+import SchemaButtons from "../../components/attestations/SchemaButtons";
+import { SubNav } from "../../components/SubNav";
 import { Suspense } from "react";
+import { SearchAndSort } from "../../components/users/SearchAndSort";
 
 export default async function AttestationListPage({
   params,

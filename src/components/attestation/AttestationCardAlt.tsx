@@ -1,11 +1,9 @@
-import { Attestation } from "../eas/types/attestation.type";
-import { From } from "./attestation-card/From";
 import Link from "next/link";
-import { Recipient } from "./attestation-card/Recipient";
-import { SchemaName } from "./attestation-card/SchemaName";
-import { Time } from "./attestation-card/Time";
-import { Uid } from "./attestation-card/Uid";
-import { UserIcon } from "../user/components/UserIcon";
+import { Attestation } from "../../eas/types/attestation.type";
+import { From } from "../attestation-card/From";
+import { SchemaName } from "../attestation-card/SchemaName";
+import { Time } from "../attestation-card/Time";
+import { Uid } from "../attestation-card/Uid";
 
 type AttestationCardAltProps = {
   attestation: Attestation;
