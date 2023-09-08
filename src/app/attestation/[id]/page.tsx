@@ -1,11 +1,17 @@
 import { AttestationResponseData } from "../../eas/types/attestation-response-data.type";
+import { CopyButton } from "../../components/CopyButton";
+import { CustomDisplay } from "../../components/attestation/CustomDisplay";
+import { DecodedData } from "../../eas/types/decoded-data.type";
+import { Disclosure } from "@headlessui/react";
 import Link from "next/link";
+import { RawData } from "../../components/attestation/RawData";
 import { SchemaName } from "../../components/attestation-card/SchemaName";
 import { Suspense } from "react";
 import { UserIcon } from "../../user/components/UserIcon";
 import dayjs from "dayjs";
 import { getClient } from "../../apollo/getClient";
 import { getPraiseUserByAddress } from "../../praise/getPraiseUserByAddress";
+import { getSchemaData } from "../../eas/getSchemaData";
 import { gql } from "@apollo/client";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { shortenEthAddress } from "../../util/string";
@@ -26,19 +32,6 @@ const query = gql`
   }
 `;
 
-type Value = {
-  name: string;
-  value: string;
-  type: string;
-};
-
-type SchemaType = {
-  name: string;
-  type: string;
-  signature: string;
-  value: Value;
-};
-
 export default async function AttestationPage({
   params,
 }: {
@@ -57,7 +50,8 @@ export default async function AttestationPage({
   );
 
   const attestation = result.data.attestation;
-  const json = JSON.parse(attestation.decodedDataJson);
+  const json: DecodedData = JSON.parse(attestation.decodedDataJson);
+  const schemaData = getSchemaData(attestation.schemaId);
 
   return (
     <>
@@ -66,8 +60,8 @@ export default async function AttestationPage({
 
         <div className="flex justify-between w-full">
           <div className="flex flex-col items-start">
-            <div>
-              To:{" "}
+            <div className="flex items-center">
+              <div className="w-12 text-sm text-gray-500">To </div>
               {praiseUser?.username ? (
                 <Link
                   href={`/user/${praiseUser.username}`}
@@ -76,29 +70,34 @@ export default async function AttestationPage({
                   {praiseUser.username}
                 </Link>
               ) : (
-                <a
-                  href={`https://optimism.easscan.org/address/${attestation.recipient}`}
-                >
-                  {shortenEthAddress(attestation.recipient)}
-                </a>
+                <>
+                  <a
+                    href={`https://optimism.easscan.org/address/${attestation.recipient}`}
+                  >
+                    {shortenEthAddress(attestation.recipient)}
+                  </a>
+                  <CopyButton textToCopy={attestation.recipient} />
+                </>
               )}
             </div>
-            <div>
-              From:{" "}
+            <div className="flex items-center">
+              <div className="w-12 text-sm text-gray-500">From</div>
               <a
                 href={`https://optimism.easscan.org/address/${attestation.attester}`}
               >
                 {shortenEthAddress(attestation.attester)}
               </a>
+              <CopyButton textToCopy={attestation.attester} />
             </div>
-            <div>
-              UID:{" "}
+            <div className="flex items-center">
+              <div className="w-12 text-sm text-gray-500">Uid</div>
               <a
                 href={`https://optimism.easscan.org/attestation/view/${attestation.id}`}
                 target="_blank"
               >
                 {shortenEthAddress(attestation.id)}
               </a>
+              <CopyButton textToCopy={attestation.id} />
             </div>
           </div>
           <div className="flex flex-col justify-center">
@@ -131,24 +130,30 @@ export default async function AttestationPage({
           </div>
         </div>
       </div>
-      <div className="w-full border-b-4 border-theme-gray-1">
-        <div className="text-2xl font-semibold">Raw data</div>
-      </div>
 
-      <div className="grid  w-full grid-cols-5">
-        <div>Name</div>
-        <div>Type</div>
-        <div className="col-span-3">Value</div>
-        {json.map((item: SchemaType) => (
-          <>
-            <div>{item.value.name}</div>
-            <div>{item.value.type}</div>
-            <div className="col-span-3 text-ellipsis overflow-clip">
-              {item.value.value.toString()}
-            </div>
-          </>
-        ))}
-      </div>
+      {schemaData?.description && (
+        <>
+          <div className="w-full border-b-4 border-theme-gray-1">
+            <div className="text-2xl font-semibold">Description</div>
+          </div>
+
+          <div>{schemaData.description}</div>
+          <div className="w-full text-left">
+            Project link:{" "}
+            <a
+              href={schemaData.projectUrl}
+              target="_blank"
+              className="underline"
+            >
+              {schemaData.name}
+            </a>
+          </div>
+        </>
+      )}
+
+      <CustomDisplay attestation={attestation} />
+
+      <RawData data={json} />
     </>
   );
 }
