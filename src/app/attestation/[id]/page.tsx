@@ -52,7 +52,7 @@ export default async function AttestationPage({
 
   return (
     <>
-      <div className="w-full flex-col rounded-xl shadow-theme-shadow-1 bg-white p-5 space-y-5">
+      <div className="flex-col w-full p-5 bg-white rounded-xl shadow-theme-shadow-1 space-y-5">
         <div className="flex justify-between">
           <div className="text-2xl font-semibold">Attestation</div>
           <div className="flex flex-col justify-center">
@@ -60,7 +60,7 @@ export default async function AttestationPage({
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row md:justify-between gap-5 w-full">
+        <div className="flex flex-col w-full md:flex-row md:justify-between gap-5">
           <div className="flex justify-between">
             <div className="flex flex-col items-start">
               <div className="flex items-center">

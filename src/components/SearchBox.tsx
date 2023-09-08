@@ -25,19 +25,19 @@ export function SearchBox() {
   }
 
   return (
-    <div className="flex-grow relative">
+    <div className="relative flex-grow">
       <FontAwesomeIcon
         icon={faSearch}
-        className="w-4 h-4 absolute top-3 left-3"
+        className="absolute w-4 h-4 top-3 left-3"
       />
       <input
         type="text"
         placeholder="Search by Username / Address / Txn hash "
-        className="w-full border-none p-2 hover:ring-4 hover:ring-theme-3 hover:ring-opacity-40 focus:ring-1 focus:ring-theme-3 rounded-xl pl-10 shadow-theme-shadow-1 focus:shadow-theme-shadow-1"
+        className="w-full p-2 pl-10 border-none hover:ring-4 hover:ring-theme-3 hover:ring-opacity-40 focus:ring-1 focus:ring-theme-3 rounded-xl shadow-theme-shadow-1 focus:shadow-theme-shadow-1"
         onKeyUp={handleKeyUp}
         spellCheck={false}
       />
-      {error && <div className="text-red-500 pt-2">{error}</div>}
+      {error && <div className="pt-2 text-red-500">{error}</div>}
     </div>
   );
 }

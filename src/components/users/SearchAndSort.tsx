@@ -4,7 +4,7 @@ import { UserSortOrder } from "./UserSortOrder";
 
 export function SearchAndSort() {
   return (
-    <div className="flex md:flex-row flex-col gap-5 w-full">
+    <div className="flex flex-col w-full md:flex-row gap-5">
       <SearchBox />
       <UserSortOrder />
       <UserSortBy />

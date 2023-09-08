@@ -12,7 +12,7 @@ export function SubNav() {
     "border-b-4 border-theme-1 p-5 hover:bg-theme-3 hover:bg-opacity-20";
 
   return (
-    <div className="w-full flex">
+    <div className="flex w-full">
       <Link href="/1">
         <div
           className={

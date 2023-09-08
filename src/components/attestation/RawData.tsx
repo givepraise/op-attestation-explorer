@@ -26,8 +26,8 @@ export function RawData({ data }: RawDataProps): JSX.Element {
                 )}
               </div>
             </Disclosure.Button>
-            <Disclosure.Panel className="text-left w-full text-xs sm:text-base">
-              <div className="grid w-full grid-cols-4">
+            <Disclosure.Panel className="w-full text-xs text-left sm:text-base">
+              <div className="w-full grid grid-cols-4">
                 <div>
                   <strong>Name</strong>
                 </div>

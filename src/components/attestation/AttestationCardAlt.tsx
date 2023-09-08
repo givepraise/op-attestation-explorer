@@ -12,8 +12,8 @@ type AttestationCardAltProps = {
 export function AttestationCardAlt({ attestation }: AttestationCardAltProps) {
   return (
     <Link href={`/attestation/${attestation.id}`}>
-      <div className="flex justify-between items-center p-5 w-full gap-x-5 hover:ring-4 hover:ring-theme-3 hover:ring-opacity-40 rounded-xl shadow-theme-shadow-1 bg-white">
-        <div className="grid grid-cols-3 w-32">
+      <div className="flex items-center justify-between w-full p-5 bg-white gap-x-5 hover:ring-4 hover:ring-theme-3 hover:ring-opacity-40 rounded-xl shadow-theme-shadow-1">
+        <div className="w-32 grid grid-cols-3">
           <div>From</div>
           <From from={attestation.attester} className="col-span-2" />
           <div>Uid</div>

@@ -1,9 +1,9 @@
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
+import { ATTESTATIONS_PER_PAGE } from "../../constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import React from "react";
-import { ATTESTATIONS_PER_PAGE } from "../../constants";
 import { getAllAttestations } from "../../eas/getAllAttestations";
 
 type AttestationsPageChooserProps = {
@@ -18,10 +18,10 @@ async function AttestationsPageChooser({
   currentPage = Number(currentPage);
 
   return (
-    <div className="flex justify-between w-full items-center">
+    <div className="flex items-center justify-between w-full">
       <div className="w-40">
         {/* First Button */}
-        <div className="hover:border-b-2 inline-block hover:border-theme-1 mr-4">
+        <div className="inline-block mr-4 hover:border-b-2 hover:border-theme-1">
           {currentPage > 1 && (
             <Link href="/1">
               <FontAwesomeIcon icon={faArrowLeft} className="w-4 h-4 pr-2" />
@@ -31,7 +31,7 @@ async function AttestationsPageChooser({
         </div>
 
         {/* Previous Button */}
-        <div className="hover:border-b-2 inline-block hover:border-theme-1">
+        <div className="inline-block hover:border-b-2 hover:border-theme-1">
           {currentPage > 1 && (
             <Link href={`/${currentPage - 1}`}>
               {" "}
@@ -47,23 +47,23 @@ async function AttestationsPageChooser({
         {currentPage} of {totalPages}
       </div>
 
-      <div className="w-40 flex justify-end">
+      <div className="flex justify-end w-40">
         {/* Next Button */}
-        <div className="hover:border-b-2 inline-block hover:border-theme-1 mr-4">
+        <div className="inline-block mr-4 hover:border-b-2 hover:border-theme-1">
           {currentPage < totalPages && (
             <Link href={`/${currentPage + 1}`}>
               Next
-              <FontAwesomeIcon icon={faArrowRight} className="pl-2 w-4 h-4" />
+              <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4 pl-2" />
             </Link>
           )}
         </div>
 
         {/* Last Button */}
-        <div className="hover:border-b-2 inline-block hover:border-theme-1">
+        <div className="inline-block hover:border-b-2 hover:border-theme-1">
           {currentPage < totalPages && (
             <Link href={`/${totalPages}`}>
               Last
-              <FontAwesomeIcon icon={faArrowRight} className="pl-2 w-4 h-4" />
+              <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4 pl-2" />
             </Link>
           )}
         </div>

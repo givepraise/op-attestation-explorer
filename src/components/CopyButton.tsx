@@ -11,7 +11,7 @@ interface CopyButtonProps {
 export function CopyButton({ textToCopy }: CopyButtonProps): JSX.Element {
   return (
     <div
-      className="flex cursor-pointer p-2 hover:bg-theme-3 hover:bg-opacity-20 rounded-full text-theme-3"
+      className="flex p-2 rounded-full cursor-pointer hover:bg-theme-3 hover:bg-opacity-20 text-theme-3"
       onClick={(): void => {
         void navigator.clipboard.writeText(textToCopy);
         toast.success("Copied to clipboard");

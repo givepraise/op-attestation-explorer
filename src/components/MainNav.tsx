@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export function MainNav() {
   return (
-    <div className="w-full flex mt-3 px-7 items-center justify-between">
-      <div className="flex gap-5 items-center">
+    <div className="flex items-center justify-between w-full mt-3 px-7">
+      <div className="flex items-center gap-5">
         <div className="py-5">
           <Link href="/">
             <img src="/optimism-attestations.svg" alt="Optimism Attestations" />
@@ -11,7 +11,7 @@ export function MainNav() {
         </div>
         <Link
           href="/1"
-          className="hover:bg-theme-3 hover:bg-opacity-20 p-5 hidden md:inline-block"
+          className="hidden p-5 hover:bg-theme-3 hover:bg-opacity-20 md:inline-block"
         >
           Explore
         </Link>

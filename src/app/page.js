@@ -3,7 +3,7 @@ import { AttestationList } from "../components/attestations/AttestationsList";
 
 export default function Page() {
   return (
-    <div className="flex flex-col items-start justify-center gap-10 max-w-xl">
+    <div className="flex flex-col items-start justify-center max-w-xl gap-10">
       <div>
         <h1>Optimism Attestation Explorer</h1>
         <p>
@@ -23,9 +23,9 @@ export default function Page() {
         <AttestationList page={1} />
       </div>
 
-      <div className="flex w-full justify-center">
+      <div className="flex justify-center w-full">
         <Link href="/1">
-          <div className="px-8 py-3 rounded-full bg-theme-1 text-white font-semibold text-2xl hover:bg-theme-2">
+          <div className="px-8 py-3 text-2xl font-semibold text-white rounded-full bg-theme-1 hover:bg-theme-2">
             Explore
           </div>
         </Link>
@@ -83,9 +83,9 @@ export default function Page() {
         </p>
       </div>
 
-      <div className="flex w-full justify-center">
+      <div className="flex justify-center w-full">
         <Link href="/1">
-          <div className="px-8 py-3 rounded-full bg-theme-1 text-white font-semibold text-2xl hover:bg-theme-2">
+          <div className="px-8 py-3 text-2xl font-semibold text-white rounded-full bg-theme-1 hover:bg-theme-2">
             Explore
           </div>
         </Link>

@@ -24,15 +24,15 @@ export default async function UserPage({
   const { address, attestations, praiseUser } = attestationsAndUser;
 
   return (
-    <div className="w-full flex flex-col items-center gap-5">
-      <div className="flex flex-col sm:flex-row justify-between w-full items-center rounded-xl shadow-theme-shadow-1 bg-white p-5 gap-5">
-        <div className="flex gap-10 items-center">
+    <div className="flex flex-col items-center w-full gap-5">
+      <div className="flex flex-col items-center justify-between w-full p-5 bg-white sm:flex-row rounded-xl shadow-theme-shadow-1 gap-5">
+        <div className="flex items-center gap-10">
           <UserIcon address={address} variant="square" size="large" />
           <div className="flex flex-col items-start whitespace-nowrap gap-2">
             {praiseUser?.username && (
-              <div className="font-semibold text-xl">{praiseUser.username}</div>
+              <div className="text-xl font-semibold">{praiseUser.username}</div>
             )}
-            <div className="flex gap-1 items-center">
+            <div className="flex items-center gap-1">
               <a
                 href={`https://optimism.easscan.org/address/${address}`}
                 target="_blank"
@@ -43,9 +43,9 @@ export default async function UserPage({
             </div>
           </div>
         </div>
-        <div className="bg-theme-gray-1 px-3 py-1 rounded-xl w-40 flex justify-between items-center">
+        <div className="flex items-center justify-between w-40 px-3 py-1 bg-theme-gray-1 rounded-xl">
           <span className="text-sm">Attestations</span>{" "}
-          <span className="font-semibold text-xl">{attestations.length}</span>
+          <span className="text-xl font-semibold">{attestations.length}</span>
         </div>
       </div>
       <div className="w-full border-b-4 border-theme-gray-1">
