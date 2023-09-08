@@ -1,9 +1,9 @@
+import { AttestationCardAlt } from "../../../components/attestation/AttestationCardAlt";
 import { CopyButton } from "../../../components/CopyButton";
 import { UserAttestationsAndPraiseUser } from "../../../eas/types/user-attestations-and-praise-user.type";
 import { UserIcon } from "../../../components/user/UserIcon";
 import { getUserAttestationsAndPraiseUser } from "../../../eas/getUserAttestationsAndPraiseUser";
 import { shortenEthAddress } from "../../../util/string";
-import { AttestationCardAlt } from "../../../components/attestation/AttestationCardAlt";
 
 export default async function UserPage({
   params,
@@ -25,10 +25,10 @@ export default async function UserPage({
 
   return (
     <div className="flex flex-col items-center w-full gap-5">
-      <div className="flex flex-col items-center justify-between w-full p-5 bg-white sm:flex-row rounded-xl shadow-theme-shadow-1 gap-5">
+      <div className="flex flex-col items-center justify-between w-full gap-5 p-5 bg-white sm:flex-row rounded-xl shadow-theme-shadow-1">
         <div className="flex items-center gap-10">
           <UserIcon address={address} variant="square" size="large" />
-          <div className="flex flex-col items-start whitespace-nowrap gap-2">
+          <div className="flex flex-col items-start gap-2 whitespace-nowrap">
             {praiseUser?.username && (
               <div className="text-xl font-semibold">{praiseUser.username}</div>
             )}
@@ -51,13 +51,17 @@ export default async function UserPage({
       <div className="w-full border-b-4 border-theme-gray-1">
         <div className="text-2xl font-semibold">Attestations</div>
       </div>
-      <ol className="w-full">
-        {attestations.map((att) => (
-          <li key={att.id} className="pb-5">
-            <AttestationCardAlt attestation={att} />
-          </li>
-        ))}
-      </ol>
+      {attestations.length === 0 && <div>No attestations found</div>}
+
+      {attestations.length > 0 && (
+        <ol className="w-full">
+          {attestations.map((att) => (
+            <li key={att.id} className="pb-5">
+              <AttestationCardAlt attestation={att} />
+            </li>
+          ))}
+        </ol>
+      )}
     </div>
   );
 }

@@ -1,9 +1,13 @@
-import Link from "next/link";
 import { AttestationList } from "../components/attestations/AttestationsList";
+import Link from "next/link";
 
 export default function Page() {
   return (
     <div className="flex flex-col items-start justify-center max-w-xl gap-10">
+      <div className="p-5 bg-theme-3">
+        This website is work in progress. The attestation data displayed is
+        dummy data.
+      </div>
       <div>
         <h1>Optimism Attestation Explorer</h1>
         <p>
