@@ -20,9 +20,9 @@ export function RawData({ data }: RawDataProps): JSX.Element {
               <div className="text-2xl font-semibold text-left">
                 Raw data{" "}
                 {open ? (
-                  <FontAwesomeIcon icon={faChevronDown} className="w-5 h-5" />
-                ) : (
                   <FontAwesomeIcon icon={faChevronUp} className="w-5 h-5" />
+                ) : (
+                  <FontAwesomeIcon icon={faChevronDown} className="w-5 h-5" />
                 )}
               </div>
             </Disclosure.Button>

@@ -20,7 +20,7 @@ async function UsersPageChooser({
   currentPage = Number(currentPage);
 
   return (
-    <div className="flex items-center justify-between w-full">
+    <div className="flex items-baseline justify-between w-full">
       <div className="w-40">
         {/* First Button */}
         <div className="inline-block mr-4 hover:border-b-2 hover:border-theme-1">

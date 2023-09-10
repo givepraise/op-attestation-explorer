@@ -1,5 +1,4 @@
-import { Attestation } from "../../eas/types/attestation.type";
-import { EAS_SCHEMAS } from "../../constants";
+import { Attestation } from "../../eas/types/gql/attestation.type";
 import { getSchemaData } from "../../eas/getSchemaData";
 
 type CustomDisplayProps = {

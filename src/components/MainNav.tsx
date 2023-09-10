@@ -1,11 +1,11 @@
 "use client";
 
 import { RainbowKitProvider, lightTheme } from "@rainbow-me/rainbowkit";
-import { WagmiConfig, useAccount } from "wagmi";
 import { chains, wagmiConfig } from "../wagmi/wagmiConfig";
 
 import ConnectWallet from "./ConnectWallet";
 import Link from "next/link";
+import { WagmiConfig } from "wagmi";
 
 export function MainNav() {
   return (

@@ -1,11 +1,10 @@
 "use client";
 
 import { faCheck, faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { useParams, usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Listbox } from "@headlessui/react";
-import { useState } from "react";
 
 type SortOrderOption = {
   id: number;
@@ -18,8 +17,6 @@ const options: SortOrderOption[] = [
 ];
 
 export function UserSortOrder() {
-  // const [selectedPerson, setSelectedPerson] = useState(people[0]);
-
   const router = useRouter();
   const pathName = usePathname();
 

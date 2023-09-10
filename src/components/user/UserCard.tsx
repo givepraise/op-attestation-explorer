@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { UserAttestationsAndPraiseUser } from "../../eas/types/user-attestations-and-praise-user.type";
+import { RecipientWithPraiseUser } from "../../eas/types/gql/recipent-with-praise-user.type";
 import { UserIcon } from "./UserIcon";
 import { shortenEthAddress } from "../../util/string";
 
 type UserCardProps = {
-  user: UserAttestationsAndPraiseUser;
+  user: RecipientWithPraiseUser;
 };
 
 export async function UserCard({ user }: UserCardProps) {
@@ -21,9 +21,7 @@ export async function UserCard({ user }: UserCardProps) {
           <div>{shortenEthAddress(user.address)}</div>
           <div className="flex items-center justify-between w-40 px-3 py-1 bg-theme-gray-1 rounded-xl">
             <span className="text-sm">Attestations</span>{" "}
-            <span className="text-xl font-semibold">
-              {user.attestations.length}
-            </span>
+            <span className="text-xl font-semibold">{user.attestations}</span>
           </div>
         </div>
       </div>

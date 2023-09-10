@@ -1,4 +1,4 @@
-import { Attestation } from "./attestation.type";
+import { Attestation } from "./gql/attestation.type";
 
 type DisplayComponentProps = {
   attestation: Attestation;

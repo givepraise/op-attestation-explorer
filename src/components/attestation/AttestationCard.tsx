@@ -1,4 +1,4 @@
-import { Attestation } from "../../eas/types/attestation.type";
+import { Attestation } from "../../eas/types/gql/attestation.type";
 import { From } from "../attestation-card/From";
 import Link from "next/link";
 import { Recipient } from "../attestation-card/Recipient";

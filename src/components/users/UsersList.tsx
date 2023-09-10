@@ -21,7 +21,7 @@ export async function UsersList({
   const users = await getUsers(sortBy, sortOrder);
 
   if (!users || users.length === 0) {
-    return <div>No attestations found</div>;
+    return <div>No users found</div>;
   }
 
   const startIndex = (page - 1) * USERS_PER_PAGE;

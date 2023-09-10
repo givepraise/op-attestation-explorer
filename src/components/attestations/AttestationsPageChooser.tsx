@@ -4,7 +4,7 @@ import { ATTESTATIONS_PER_PAGE } from "../../constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import React from "react";
-import { getAllAttestations } from "../../eas/getAllAttestations";
+import { getAllAttestationsCount } from "../../eas/getAllAttestationsCount";
 
 type AttestationsPageChooserProps = {
   currentPage: number;
@@ -13,12 +13,12 @@ type AttestationsPageChooserProps = {
 async function AttestationsPageChooser({
   currentPage,
 }: AttestationsPageChooserProps) {
-  const attestations = await getAllAttestations();
-  const totalPages = Math.ceil(attestations.length / ATTESTATIONS_PER_PAGE);
+  const attestationsCount = await getAllAttestationsCount();
+  const totalPages = Math.ceil(attestationsCount / ATTESTATIONS_PER_PAGE);
   currentPage = Number(currentPage);
 
   return (
-    <div className="flex items-center justify-between w-full">
+    <div className="flex items-baseline justify-between w-full">
       <div className="w-40">
         {/* First Button */}
         <div className="inline-block mr-4 hover:border-b-2 hover:border-theme-1">

@@ -1,4 +1,3 @@
-import { AttestationResponseData } from "../../../eas/types/attestation-response-data.type";
 import { CopyButton } from "../../../components/CopyButton";
 import { CustomDisplay } from "../../../components/attestation/CustomDisplay";
 import { DecodedData } from "../../../eas/types/decoded-data.type";
@@ -7,27 +6,12 @@ import { RawData } from "../../../components/attestation/RawData";
 import { SchemaName } from "../../../components/attestation-card/SchemaName";
 import { UserIcon } from "../../../components/user/UserIcon";
 import dayjs from "dayjs";
-import { getClient } from "../../../apollo/getClient";
+import { getAllPraiseUsers } from "../../../praise/getAllPraiseUsers";
+import { getAttestation } from "../../../eas/getAttestation";
 import { getPraiseUserByAddress } from "../../../praise/getPraiseUserByAddress";
 import { getSchemaData } from "../../../eas/getSchemaData";
-import { gql } from "@apollo/client";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { shortenEthAddress } from "../../../util/string";
-
-const query = gql`
-  query Attestation($where: AttestationWhereUniqueInput!) {
-    attestation(where: $where) {
-      id
-      time
-      attester
-      recipient
-      decodedDataJson
-      expirationTime
-      revoked
-      schemaId
-    }
-  }
-`;
 
 export default async function AttestationPage({
   params,
@@ -36,17 +20,11 @@ export default async function AttestationPage({
 }) {
   const { id } = params;
   dayjs.extend(relativeTime);
-  const result = await getClient().query<AttestationResponseData>({
-    query,
-    fetchPolicy: "cache-first",
-    variables: { where: { id } },
-  });
 
-  const praiseUser = await getPraiseUserByAddress(
-    result.data.attestation.recipient
-  );
+  const attestation = await getAttestation(id);
+  const praiseUsers = await getAllPraiseUsers();
+  const praiseUser = getPraiseUserByAddress(praiseUsers, attestation.recipient);
 
-  const attestation = result.data.attestation;
   const json: DecodedData = JSON.parse(attestation.decodedDataJson);
   const schemaData = getSchemaData(attestation.schemaId);
 

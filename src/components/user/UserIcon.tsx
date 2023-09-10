@@ -1,10 +1,11 @@
 import { ImageIcon } from "./user-icon/ImageIcon";
 import { PraiseUserAccount } from "../../praise/types/user-account";
 import { SvgIcon } from "./user-icon/SvgIcon";
+import { getAllPraiseUsers } from "../../praise/getAllPraiseUsers";
 import { getPraiseUserByAddress } from "../../praise/getPraiseUserByAddress";
 
 type UserIconProps = {
-  address: string;
+  address?: string;
   variant?: "round" | "square";
   size?: "small" | "large";
 };
@@ -18,7 +19,12 @@ export async function UserIcon({
   variant = "round",
   size = "small",
 }: UserIconProps) {
-  const praiseUser = await getPraiseUserByAddress(address);
+  if (!address) {
+    return <SvgIcon size={size} />;
+  }
+
+  const praiseUsers = await getAllPraiseUsers();
+  const praiseUser = getPraiseUserByAddress(praiseUsers, address);
 
   let url;
   if (praiseUser) {

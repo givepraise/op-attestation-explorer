@@ -1,5 +1,5 @@
 import { Attestation } from "./attestation.type";
 
-export type AttestationResponseData = {
+export type AttestationResult = {
   attestation: Attestation;
 };

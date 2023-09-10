@@ -8,9 +8,10 @@ import { registerApolloClient } from "@apollo/experimental-nextjs-app-support/rs
 
 export const { getClient } = registerApolloClient(() => {
   return new NextSSRApolloClient({
-    cache: new NextSSRInMemoryCache(),
+    cache: new NextSSRInMemoryCache({}),
     link: new HttpLink({
       uri: "https://optimism.easscan.org/graphql",
+      fetchOptions: { next: { revalidate: 900 } },
     }),
   });
 });

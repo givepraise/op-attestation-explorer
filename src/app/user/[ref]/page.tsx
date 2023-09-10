@@ -1,8 +1,11 @@
 import { AttestationCardAlt } from "../../../components/attestation/AttestationCardAlt";
 import { CopyButton } from "../../../components/CopyButton";
-import { UserAttestationsAndPraiseUser } from "../../../eas/types/user-attestations-and-praise-user.type";
+import { PraiseUser } from "../../../praise/types/user";
 import { UserIcon } from "../../../components/user/UserIcon";
-import { getUserAttestationsAndPraiseUser } from "../../../eas/getUserAttestationsAndPraiseUser";
+import { getAllPraiseUsers } from "../../../praise/getAllPraiseUsers";
+import { getAllRecipientAttestations } from "../../../eas/getAllRecipientAttestations";
+import { getPraiseUserByAddress } from "../../../praise/getPraiseUserByAddress";
+import { getPraiseUserByUsername } from "../../../praise/getPraiseUserByUsername";
 import { shortenEthAddress } from "../../../util/string";
 
 export default async function UserPage({
@@ -13,33 +16,44 @@ export default async function UserPage({
   // Ref is user address or username
   const { ref } = params;
 
-  let attestationsAndUser: UserAttestationsAndPraiseUser;
-  try {
-    attestationsAndUser = await getUserAttestationsAndPraiseUser(ref);
-  } catch (e) {
-    console.error(e);
-    return <div>{(e as Error).message}</div>;
+  const users = await getAllPraiseUsers();
+
+  let praiseUser: PraiseUser | undefined;
+  if (ref.startsWith("0x")) {
+    praiseUser = getPraiseUserByAddress(users, ref);
+  } else {
+    praiseUser = getPraiseUserByUsername(users, ref);
   }
 
-  const { address, attestations, praiseUser } = attestationsAndUser;
+  if (!praiseUser?.identityEthAddress) {
+    return <div>User not found</div>;
+  }
+
+  const attestations = await getAllRecipientAttestations(
+    praiseUser.identityEthAddress
+  );
 
   return (
     <div className="flex flex-col items-center w-full gap-5">
       <div className="flex flex-col items-center justify-between w-full gap-5 p-5 bg-white sm:flex-row rounded-xl shadow-theme-shadow-1">
         <div className="flex items-center gap-10">
-          <UserIcon address={address} variant="square" size="large" />
+          <UserIcon
+            address={praiseUser.identityEthAddress}
+            variant="square"
+            size="large"
+          />
           <div className="flex flex-col items-start gap-2 whitespace-nowrap">
             {praiseUser?.username && (
               <div className="text-xl font-semibold">{praiseUser.username}</div>
             )}
             <div className="flex items-center gap-1">
               <a
-                href={`https://optimism.easscan.org/address/${address}`}
+                href={`https://optimism.easscan.org/address/${praiseUser.identityEthAddress}`}
                 target="_blank"
               >
-                {shortenEthAddress(address)}
+                {shortenEthAddress(praiseUser.identityEthAddress)}
               </a>
-              <CopyButton textToCopy={address} />
+              <CopyButton textToCopy={praiseUser.identityEthAddress} />
             </div>
           </div>
         </div>
