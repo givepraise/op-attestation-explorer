@@ -16,8 +16,11 @@ export default function UsersPage({
       <SearchAndSort />
       <Suspense fallback={<UsersLoadingList />}>
         <UsersList page={params.pageNumber} sortOrder="desc" />
+        <UsersPageChooser
+          currentPage={params.pageNumber}
+          baseUrl="/users/desc"
+        />
       </Suspense>
-      <UsersPageChooser currentPage={params.pageNumber} baseUrl="/users/desc" />
     </>
   );
 }

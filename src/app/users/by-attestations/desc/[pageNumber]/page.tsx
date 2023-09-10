@@ -20,11 +20,11 @@ export default function UsersPage({
           sortOrder="desc"
           sortBy="attestations"
         />
+        <UsersPageChooser
+          currentPage={params.pageNumber}
+          baseUrl="/users/by-attestations/desc"
+        />
       </Suspense>
-      <UsersPageChooser
-        currentPage={params.pageNumber}
-        baseUrl="/users/by-attestations/desc"
-      />
     </>
   );
 }
