@@ -19,13 +19,13 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Toaster position="top-center" reverseOrder={false} />
-        <MainNav />
-        <main className="flex flex-col items-center pt-10 pb-10 min">
-          <div className="flex flex-col w-full px-5 lg:w-[1024px] items-center justify-between gap-5">
+        <main className="flex flex-col min-h-screen items-center">
+          <MainNav />
+          <div className="flex flex-grow flex-col w-full px-5 lg:w-[1024px] items-center gap-5">
             {children}
           </div>
+          <Footer />
         </main>
-        <Footer />
       </body>
     </html>
   );
