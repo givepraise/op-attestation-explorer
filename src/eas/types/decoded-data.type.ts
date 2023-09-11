@@ -1,6 +1,6 @@
 type DataTypeValue = {
   name: string;
-  value: string | number | boolean;
+  value: string | number | boolean | { hex: string };
   type: string;
 };
 

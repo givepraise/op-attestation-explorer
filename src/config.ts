@@ -1,4 +1,5 @@
 import { PraiseCustomDisplay } from "./components/attestation/custom-displays/PraiseCustomDisplay";
+import { RegenScoreCustomDisplay } from "./components/attestation/custom-displays/RegenScoreCustomDisplay";
 import { SchemaListItem } from "./eas/types/schema-list-item.type";
 
 export const OP_SAFE_ADDRESS = "0xf6937E015d5337F648fE01a03A74c9FAA4f90d54";
@@ -27,11 +28,14 @@ export const EAS_SCHEMAS: SchemaListItem[] = [
   },
   {
     name: "Regen Score",
-    uid: "0x808a1200857ee4e47a52b510cf85046ff05b7b4b15db40659b8143777564c4a7",
+    description: "On-chain reputation layer for regens in public goods.",
+    projectUrl: "https://regenscore.io/",
+    uid: "0xa1285d8c9b3164eb94f22a4084d4d01fc7fb66d27c56ddba32033c63a5ed76cd",
+    displayComponent: RegenScoreCustomDisplay,
     gqlWhere: {
       schemaId: {
         equals:
-          "0x808a1200857ee4e47a52b510cf85046ff05b7b4b15db40659b8143777564c4a7",
+          "0xa1285d8c9b3164eb94f22a4084d4d01fc7fb66d27c56ddba32033c63a5ed76cd",
       },
     },
   },
