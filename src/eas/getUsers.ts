@@ -6,7 +6,7 @@ import { getAllRecipients } from "./getAllRecipients";
 import { getPraiseUserByAddress } from "../praise/getPraiseUserByAddress";
 
 export async function getUsers(
-  sort: GetUsersSortBy = "attestations",
+  sort: GetUsersSortBy = "username",
   order: GetUsersSortOrder = "desc"
 ) {
   const recipients = await getAllRecipients();
@@ -19,6 +19,20 @@ export async function getUsers(
       attestations: recipient.attestations,
       praiseUser,
     };
+  });
+
+  users.sort((a, b) => {
+    let comparisonValue = 0;
+
+    if (sort === "username") {
+      const aUsername = a.praiseUser?.username || "";
+      const bUsername = b.praiseUser?.username || "";
+      comparisonValue = aUsername.localeCompare(bUsername);
+    } else if (sort === "attestations") {
+      comparisonValue = a.attestations - b.attestations;
+    }
+
+    return order === "asc" ? comparisonValue : -comparisonValue;
   });
 
   return users;

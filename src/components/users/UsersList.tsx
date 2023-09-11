@@ -15,7 +15,7 @@ type UsersListProps = {
 
 export async function UsersList({
   sortBy = "username",
-  sortOrder = "asc",
+  sortOrder = "desc",
   page,
 }: UsersListProps) {
   const users = await getUsers(sortBy, sortOrder);
