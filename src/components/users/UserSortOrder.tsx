@@ -20,22 +20,22 @@ export function UserSortOrder() {
   const router = useRouter();
   const pathName = usePathname();
 
-  const selectedOption = pathName.includes("desc") ? options[1] : options[0];
+  const selectedOption = pathName.includes("asc") ? options[0] : options[1];
 
   const changeOption = (option: SortOrderOption) => {
     if (option.id === 1) {
+      if (pathName.includes("by-attestations")) {
+        router.push("/users/by-attestations/asc/1");
+        return;
+      }
+      router.push("/users/asc/1");
+    }
+    if (option.id === 2) {
       if (pathName.includes("by-attestations")) {
         router.push("/users/by-attestations/1");
         return;
       }
       router.push("/users/1");
-    }
-    if (option.id === 2) {
-      if (pathName.includes("by-attestations")) {
-        router.push("/users/by-attestations/desc/1");
-        return;
-      }
-      router.push("/users/desc/1");
     }
   };
 
@@ -49,13 +49,13 @@ export function UserSortOrder() {
           </div>
         </Listbox.Button>
         <Listbox.Options className="absolute left-0 p-2 bg-white border-none top-12 rounded-xl shadow-theme-shadow-1 focus:shadow-theme-shadow-1">
-          {options.map((person) => (
+          {options.map((option) => (
             <Listbox.Option
-              key={person.id}
-              value={person}
+              key={option.id}
+              value={option}
               className="w-48 px-3 py-1 my-1 cursor-pointer ui-active:bg-theme-3 ui-active:bg-opacity-10 whitespace-nowrap"
             >
-              {person.name}
+              {option.name}
               <FontAwesomeIcon
                 icon={faCheck}
                 className="hidden ml-3 ui-selected:inline-block"

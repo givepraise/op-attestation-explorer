@@ -15,10 +15,10 @@ export default function UsersPage({
       <SubNav />
       <SearchAndSort />
       <Suspense fallback={<UsersLoadingList />}>
-        <UsersList page={params.pageNumber} sortOrder="desc" />
+        <UsersList page={params.pageNumber} sortOrder="asc" />
         <UsersPageChooser
           currentPage={params.pageNumber}
-          baseUrl="/users/desc"
+          baseUrl="/users/asc"
         />
       </Suspense>
     </>

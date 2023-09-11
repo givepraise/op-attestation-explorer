@@ -17,12 +17,12 @@ export default function UsersPage({
       <Suspense fallback={<UsersLoadingList />}>
         <UsersList
           page={params.pageNumber}
-          sortOrder="desc"
+          sortOrder="asc"
           sortBy="attestations"
         />
         <UsersPageChooser
           currentPage={params.pageNumber}
-          baseUrl="/users/by-attestations/desc"
+          baseUrl="/users/by-attestations/asc"
         />
       </Suspense>
     </>
