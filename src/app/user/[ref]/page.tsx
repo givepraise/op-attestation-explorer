@@ -18,42 +18,39 @@ export default async function UserPage({
 
   const users = await getAllPraiseUsers();
 
+  let address: string | undefined;
   let praiseUser: PraiseUser | undefined;
   if (ref.startsWith("0x")) {
+    address = ref;
     praiseUser = getPraiseUserByAddress(users, ref);
   } else {
     praiseUser = getPraiseUserByUsername(users, ref);
+    address = praiseUser?.identityEthAddress;
   }
 
-  if (!praiseUser?.identityEthAddress) {
+  if (!address) {
     return <div>User not found</div>;
   }
 
-  const attestations = await getAllRecipientAttestations(
-    praiseUser.identityEthAddress
-  );
+  const attestations = await getAllRecipientAttestations(address);
 
   return (
     <div className="flex flex-col items-center w-full gap-5">
       <div className="flex flex-col items-center justify-between w-full gap-5 p-5 bg-white sm:flex-row rounded-xl shadow-theme-shadow-1">
         <div className="flex items-center gap-10">
-          <UserIcon
-            address={praiseUser.identityEthAddress}
-            variant="square"
-            size="large"
-          />
+          <UserIcon address={address} variant="square" size="large" />
           <div className="flex flex-col items-start gap-2 whitespace-nowrap">
             {praiseUser?.username && (
               <div className="text-xl font-semibold">{praiseUser.username}</div>
             )}
             <div className="flex items-center gap-1">
               <a
-                href={`https://optimism.easscan.org/address/${praiseUser.identityEthAddress}`}
+                href={`https://optimism.easscan.org/address/${address}`}
                 target="_blank"
               >
-                {shortenEthAddress(praiseUser.identityEthAddress)}
+                {shortenEthAddress(address)}
               </a>
-              <CopyButton textToCopy={praiseUser.identityEthAddress} />
+              <CopyButton textToCopy={address} />
             </div>
           </div>
         </div>
