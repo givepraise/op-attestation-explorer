@@ -1,4 +1,4 @@
-import { AttestationList } from "../components/attestations/AttestationsList";
+import { AttestationsLandingPageList } from "../components/attestations/AttestationsLandingPageList";
 import Link from "next/link";
 
 export default function Page() {
@@ -24,7 +24,7 @@ export default function Page() {
 
       <div className="w-full">
         <h1>Latest Attestations</h1>
-        <AttestationList page={1} />
+        <AttestationsLandingPageList />
       </div>
 
       <div className="flex justify-center w-full">
