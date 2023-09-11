@@ -3,7 +3,7 @@ import {
   GetUsersSortOrder,
 } from "../../eas/types/get-users-sort.type";
 
-import { USERS_PER_PAGE } from "../../constants";
+import { USERS_PER_PAGE } from "../../config";
 import { UserCard } from "../user/UserCard";
 import { getUsers } from "../../eas/getUsers";
 

@@ -1,4 +1,4 @@
-import { WHERE_ALL_ATTESTATIONS } from "../constants";
+import { WHERE_ALL_ATTESTATIONS } from "../config";
 import { getClient } from "../apollo/getClient";
 import { gql } from "@apollo/client";
 

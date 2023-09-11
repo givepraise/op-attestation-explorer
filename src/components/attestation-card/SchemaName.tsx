@@ -1,5 +1,5 @@
 import { Attestation } from "../../eas/types/gql/attestation.type";
-import { EAS_SCHEMAS } from "../../constants";
+import { EAS_SCHEMAS } from "../../config";
 
 type SchemaNameProps = {
   attestation: Attestation;

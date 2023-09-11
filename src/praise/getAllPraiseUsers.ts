@@ -1,4 +1,4 @@
-import { PRAISE_API_URL } from "../constants";
+import { PRAISE_API_URL } from "../config";
 import { PraiseUser } from "./types/user";
 
 export async function getAllPraiseUsers(): Promise<PraiseUser[]> {

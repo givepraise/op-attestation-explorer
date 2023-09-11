@@ -1,4 +1,4 @@
-import { ATTESTATIONS_PER_PAGE } from "../../constants";
+import { ATTESTATIONS_PER_PAGE } from "../../config";
 import { AttestationCard } from "../attestation/AttestationCard";
 import { getAllAttestations } from "../../eas/getAllAttestations";
 
