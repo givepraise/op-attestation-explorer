@@ -1,0 +1,6 @@
+{
+  "name": "Optimism Attestation Explorer",
+  "short_name": "OP Attestation Explorer",
+  "description": "Browse attestations on Optimism.",
+  "start_url": "/"
+}

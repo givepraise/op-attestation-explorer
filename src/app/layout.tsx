@@ -6,7 +6,7 @@ import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Optimism Attestation Explorer",
-  description: "Browse Praise attestations on Optimism",
+  description: "rowse attestations on Optimism.",
 };
 
 export default function RootLayout({
