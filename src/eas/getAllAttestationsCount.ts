@@ -1,4 +1,4 @@
-import { WHERE_ALL_ATTESTATIONS } from "../config";
+import { WHERE_ALL_SCHEMAS } from "../config";
 import { getClient } from "../apollo/getClient";
 import { gql } from "@apollo/client";
 
@@ -16,7 +16,7 @@ export async function getAllAttestationsCount(): Promise<number> {
   const result = await getClient().query<AllAttestationsCountResult>({
     query,
     fetchPolicy: "cache-first",
-    variables: { where: WHERE_ALL_ATTESTATIONS },
+    variables: { where: WHERE_ALL_SCHEMAS },
   });
 
   if (result.error) {

@@ -10,4 +10,5 @@ export type SchemaListItem = {
   projectUrl?: string;
   uid: string;
   displayComponent?: (props: DisplayComponentProps) => JSX.Element;
+  gqlWhere?: any;
 };

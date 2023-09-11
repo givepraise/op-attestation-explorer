@@ -1,6 +1,6 @@
 import { AllAttestationsResult } from "./types/gql/all-attestations-result.type";
 import { Attestation } from "./types/gql/attestation.type";
-import { WHERE_ALL_ATTESTATIONS } from "../config";
+import { WHERE_ALL_SCHEMAS } from "../config";
 import { getClient } from "../apollo/getClient";
 import { gql } from "@apollo/client";
 
@@ -21,7 +21,7 @@ export async function getAllRecipientAttestations(
   address: string
 ): Promise<Attestation[]> {
   const where = {
-    ...WHERE_ALL_ATTESTATIONS,
+    ...WHERE_ALL_SCHEMAS,
     AND: [
       {
         recipient: {

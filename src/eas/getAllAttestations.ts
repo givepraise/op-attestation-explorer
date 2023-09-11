@@ -1,6 +1,6 @@
 import { AllAttestationsResult } from "./types/gql/all-attestations-result.type";
 import { Attestation } from "./types/gql/attestation.type";
-import { WHERE_ALL_ATTESTATIONS } from "../config";
+import { WHERE_ALL_SCHEMAS } from "../config";
 import { getClient } from "../apollo/getClient";
 import { gql } from "@apollo/client";
 
@@ -29,7 +29,7 @@ export async function getAllAttestations(
   const result = await getClient().query<AllAttestationsResult>({
     query,
     fetchPolicy: "cache-first",
-    variables: { where: WHERE_ALL_ATTESTATIONS, take, skip },
+    variables: { where: WHERE_ALL_SCHEMAS, take, skip },
   });
 
   if (result.error) {
