@@ -8,6 +8,7 @@ export function AttestationsLoadingList() {
       <AttestationLoadingCard />
       <AttestationLoadingCard />
       <AttestationLoadingCard />
+      <AttestationLoadingCard />
     </div>
   );
 }
