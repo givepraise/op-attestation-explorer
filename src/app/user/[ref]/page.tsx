@@ -36,7 +36,7 @@ export default async function UserPage({
 
   return (
     <div className="flex flex-col items-center w-full gap-5">
-      <div className="flex flex-col items-center justify-between w-full gap-5 p-5 bg-white sm:flex-row rounded-xl shadow-theme-shadow-1">
+      <div className="flex flex-col items-center justify-between w-full gap-5 p-5 bg-dots sm:flex-row rounded-xl shadow-theme-shadow-1">
         <div className="flex items-center gap-10">
           <UserIcon address={address} variant="square" size="large" />
           <div className="flex flex-col items-start gap-2 whitespace-nowrap">

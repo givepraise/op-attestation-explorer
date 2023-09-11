@@ -1,5 +1,6 @@
 import "./globals.css";
 
+import { Footer } from "../components/user/Footer";
 import { MainNav } from "../components/MainNav";
 import type { Metadata } from "next";
 import { Toaster } from "react-hot-toast";
@@ -19,11 +20,12 @@ export default function RootLayout({
       <body>
         <Toaster position="top-center" reverseOrder={false} />
         <MainNav />
-        <main className="flex flex-col items-center pt-10 pb-10">
+        <main className="flex flex-col items-center pt-10 pb-10 min">
           <div className="flex flex-col w-full px-5 lg:w-[1024px] items-center justify-between gap-5">
             {children}
           </div>
         </main>
+        <Footer />
       </body>
     </html>
   );

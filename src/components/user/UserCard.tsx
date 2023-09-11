@@ -10,7 +10,7 @@ type UserCardProps = {
 export async function UserCard({ user }: UserCardProps) {
   return (
     <Link href={`/user/${user.address}`}>
-      <div className="flex items-center justify-center p-5 bg-white h-36 gap-5 hover:ring-4 hover:ring-theme-3 hover:ring-opacity-40 rounded-xl shadow-theme-shadow-1">
+      <div className="flex items-center justify-center p-5 bg-dots h-36 gap-5 hover:ring-4 hover:ring-theme-3 hover:ring-opacity-40 rounded-xl shadow-theme-shadow-1">
         <UserIcon address={user.address} size="large" variant="square" />
         <div className="flex flex-col gap-2">
           {user.praiseUser?.username && (

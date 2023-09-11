@@ -15,3 +15,15 @@ h1 {
 *:focus {
   @apply outline-none;
 }
+
+.bg-dots {
+  background-image: url("/dots.png");
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+
+.bg-footer {
+  background-image: url("/footer.png");
+  background-repeat: no-repeat;
+  background-position: left bottom;
+}
