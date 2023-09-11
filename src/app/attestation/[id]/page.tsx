@@ -115,27 +115,26 @@ export default async function AttestationPage({
             />
           </div>
         </div>
+        {schemaData?.description && (
+          <>
+            <div className="w-full">
+              <div className="text-xl font-semibold">Description</div>
+            </div>
+
+            <div>{schemaData.description}</div>
+            <div className="w-full text-left">
+              Project link:{" "}
+              <a
+                href={schemaData.projectUrl}
+                target="_blank"
+                className="underline"
+              >
+                {schemaData.name}
+              </a>
+            </div>
+          </>
+        )}
       </div>
-
-      {schemaData?.description && (
-        <>
-          <div className="w-full border-b-4 border-theme-gray-1">
-            <div className="text-2xl font-semibold">Description</div>
-          </div>
-
-          <div>{schemaData.description}</div>
-          <div className="w-full text-left">
-            Project link:{" "}
-            <a
-              href={schemaData.projectUrl}
-              target="_blank"
-              className="underline"
-            >
-              {schemaData.name}
-            </a>
-          </div>
-        </>
-      )}
 
       <CustomDisplay attestation={attestation} />
 

@@ -2,7 +2,7 @@ import { EAS_SCHEMAS } from "../../config";
 import Link from "next/link";
 
 type SchemaButtonsProps = {
-  uid: string;
+  uid?: string;
 };
 
 export default function SchemaButtons({ uid }: SchemaButtonsProps) {

@@ -24,11 +24,18 @@ export function PraiseCustomDisplay({ attestation }: CustomDisplayProps) {
   return (
     <div className="flex flex-col w-full gap-10">
       <div className="flex flex-col w-full sm:flex-row gap-10">
-        <div className="flex flex-col">
-          <div className="text-2xl font-semibold">{receivedScore}</div>
+        <div className="flex flex-col p-4 border rounded-lg items-center w-48">
+          <div className="text-4xl font-semibold">{receivedScore}</div>
           <div className="text-sm text-gray-500">Received Score</div>
         </div>
 
+        <div className="flex flex-col p-4 border rounded-lg items-center w-48">
+          <div className="text-4xl font-semibold">{givenScore}</div>
+          <div className="text-sm text-gray-500">Given Score</div>
+        </div>
+      </div>
+
+      <div className="flex flex-col w-full sm:flex-row gap-10">
         {/* Top 10 receiver */}
         {typeof top10Receiver === "boolean" && top10Receiver && (
           <div className="flex p-2 border rounded-lg gap-1">
@@ -70,13 +77,6 @@ export function PraiseCustomDisplay({ attestation }: CustomDisplayProps) {
             </div>
           </div>
         )}
-      </div>
-
-      <div className="flex flex-col w-full sm:flex-row gap-10">
-        <div className="flex flex-col">
-          <div className="text-2xl font-semibold">{givenScore}</div>
-          <div className="text-sm text-gray-500">Given Score</div>
-        </div>
 
         {/* Top 10 giver */}
         {typeof top10Giver === "boolean" && top10Giver && (
