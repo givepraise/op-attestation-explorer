@@ -1,10 +1,12 @@
 import { AllAttestationsResult } from "./types/gql/all-attestations-result.type";
 import { Attestation } from "./types/gql/attestation.type";
+import { CORE_ATTESTATION_FIELDS } from "./types/fragments/core-attestation-fields.fragment";
 import { getClient } from "../apollo/getClient";
 import { getSchemaData } from "./getSchemaData";
 import { gql } from "@apollo/client";
 
 const query = gql`
+  ${CORE_ATTESTATION_FIELDS}
   query Attestations($where: AttestationWhereInput, $take: Int, $skip: Int) {
     attestations(
       orderBy: { time: desc }
@@ -12,12 +14,7 @@ const query = gql`
       take: $take
       skip: $skip
     ) {
-      id
-      time
-      attester
-      recipient
-      decodedDataJson
-      schemaId
+      ...CoreAttestationFields
     }
   }
 `;

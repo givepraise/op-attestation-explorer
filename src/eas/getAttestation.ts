@@ -1,19 +1,14 @@
 import { Attestation } from "./types/gql/attestation.type";
 import { AttestationResult } from "./types/gql/attestation-result.type";
+import { CORE_ATTESTATION_FIELDS } from "./types/fragments/core-attestation-fields.fragment";
 import { getClient } from "../apollo/getClient";
 import { gql } from "@apollo/client";
 
 const query = gql`
+  ${CORE_ATTESTATION_FIELDS}
   query Attestation($where: AttestationWhereUniqueInput!) {
     attestation(where: $where) {
-      id
-      time
-      attester
-      recipient
-      decodedDataJson
-      expirationTime
-      revoked
-      schemaId
+      ...CoreAttestationFields
     }
   }
 `;
