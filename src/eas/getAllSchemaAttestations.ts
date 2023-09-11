@@ -29,7 +29,7 @@ export async function getAllSchemaAttestations(
   const result = await getClient().query<AllAttestationsResult>({
     query,
     fetchPolicy: "cache-first",
-    variables: { where: schema?.gqlWhere, take, skip },
+    variables: { where: schema?.gqlWhere, take, skip: skip || undefined },
   });
 
   if (result.error) {
