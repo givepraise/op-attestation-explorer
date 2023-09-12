@@ -5,6 +5,7 @@ import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 
 import { Disclosure } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { getDecodedValue } from "../../eas/getDecodedValue";
 
 type RawDataProps = {
   data: DecodedData;
@@ -37,15 +38,18 @@ export function RawData({ data }: RawDataProps): JSX.Element {
                 <div className="col-span-2">
                   <strong>Value</strong>
                 </div>
-                {data.map((item: DataType) => (
-                  <>
-                    <div>{item.value.name}</div>
-                    <div>{item.value.type}</div>
-                    <div className="col-span-2 text-ellipsis overflow-clip">
-                      {item.value.value.toString()}
-                    </div>
-                  </>
-                ))}
+                {data.map((item: DataType) => {
+                  const value = getDecodedValue(data, item.name);
+                  return (
+                    <>
+                      <div>{item.value.name}</div>
+                      <div>{item.value.type}</div>
+                      <div className="col-span-2 text-ellipsis overflow-clip">
+                        {value ? value.toString() : ""}
+                      </div>
+                    </>
+                  );
+                })}
               </div>
             </Disclosure.Panel>
           </>

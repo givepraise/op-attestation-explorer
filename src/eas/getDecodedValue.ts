@@ -10,9 +10,10 @@ function isBigNumber(obj: any): obj is BigNumber {
 }
 
 export function getDecodedValue<T extends string | number | bigint | boolean>(
-  data: DecodedData,
-  valueName: string
+  data?: DecodedData,
+  valueName?: string
 ): T | undefined {
+  if (!data || !valueName) return undefined;
   const decodedData = data.find((item) => item.name === valueName);
   if (decodedData) {
     const value = decodedData.value.value;
