@@ -7,9 +7,9 @@ body {
 }
 
 h1 {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.7rem;
 }
 
 *:focus {
@@ -34,4 +34,12 @@ h1 {
   background-image: url("/dots.png");
   background-repeat: no-repeat;
   background-position: left top;
+}
+
+.landingpage-gradient-1 {
+  background-image: radial-gradient(
+    250px 70px ellipse at 50% 50%,
+    #fedcd2,
+    white
+  );
 }

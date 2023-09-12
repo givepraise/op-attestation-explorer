@@ -21,7 +21,7 @@ async function AttestationsPageChooser({
     <div className="flex items-baseline justify-between w-full">
       <div className="w-40">
         {/* First Button */}
-        <div className="inline-block mr-4 hover:border-b-2 hover:border-theme-1">
+        <div className="hidden mr-4 md:inline-block hover:border-b-2 hover:border-theme-1">
           {currentPage > 1 && (
             <Link href="/1">
               <FontAwesomeIcon icon={faArrowLeft} className="w-4 h-4 pr-2" />
@@ -59,7 +59,7 @@ async function AttestationsPageChooser({
         </div>
 
         {/* Last Button */}
-        <div className="inline-block hover:border-b-2 hover:border-theme-1">
+        <div className="hidden md:inline-block hover:border-b-2 hover:border-theme-1">
           {currentPage < totalPages && (
             <Link href={`/${totalPages}`}>
               Last

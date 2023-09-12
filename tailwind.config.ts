@@ -17,6 +17,9 @@ const config: Config = {
       boxShadow: {
         "theme-shadow-1": "0 0 10px 2px rgba(0, 0, 0, 0.1)",
       },
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+      },
     },
   },
   plugins: [
