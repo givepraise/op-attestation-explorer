@@ -17,9 +17,12 @@ export function SearchBox() {
           window.location.href = `/attestation/${value}`;
           return;
         }
-        // search by user address or username
-        window.location.href = `/user/${value}`;
-        return;
+        if (value.length === 42) {
+          // search by user address or username
+          window.location.href = `/user/${value}`;
+          return;
+        }
+        setError("ENS search is not yet supported");
       }
     }
   }
@@ -32,7 +35,7 @@ export function SearchBox() {
       />
       <input
         type="text"
-        placeholder="Search by Username / Address / Txn hash "
+        placeholder="Search by ENS / Address / Txn hash "
         className="w-full p-2 pl-10 border-none hover:ring-4 hover:ring-theme-3 hover:ring-opacity-40 focus:ring-1 focus:ring-theme-3 rounded-xl shadow-theme-shadow-1 focus:shadow-theme-shadow-1"
         onKeyUp={handleKeyUp}
         spellCheck={false}

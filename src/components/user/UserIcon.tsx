@@ -1,8 +1,14 @@
+import { DecodedData } from "../../eas/types/decoded-data.type";
 import { ImageIcon } from "./user-icon/ImageIcon";
 import { PraiseUserAccount } from "../../praise/types/user-account";
 import { SvgIcon } from "./user-icon/SvgIcon";
 import { getAllPraiseUsers } from "../../praise/getAllPraiseUsers";
+import { getAllRecipientAttestations } from "../../eas/getAllRecipientAttestations";
+import { getDecodedValue } from "../../eas/getDecodedValue";
+import { getEnsAvatar } from "../../viem/getEnsAvatar";
+import { getOptimistAttestation } from "../../eas/optimist/getOptimistAttestation";
 import { getPraiseUserByAddress } from "../../praise/getPraiseUserByAddress";
+import { getProfileMetaData } from "../../eas/optimist/getProfileMetadata";
 
 type UserIconProps = {
   address?: string;
@@ -23,17 +29,41 @@ export async function UserIcon({
     return <SvgIcon size={size} />;
   }
 
-  const praiseUsers = await getAllPraiseUsers();
-  const praiseUser = getPraiseUserByAddress(praiseUsers, address);
-
   let url;
-  if (praiseUser) {
-    if (Array.isArray(praiseUser.accounts) && praiseUser.accounts.length > 0) {
-      for (const account of praiseUser.accounts) {
-        // Prefer DISCORD over others
-        if (account.avatarId && account.platform === "DISCORD") {
-          url = discordAvatarUrl(account);
-          break;
+
+  // Get profile image from ENS
+  url = await getEnsAvatar(address);
+
+  // Get profile image from Optimist attestation
+  if (!url) {
+    const attestations = await getAllRecipientAttestations(address);
+    const optimistAttestation = getOptimistAttestation(attestations);
+    if (optimistAttestation) {
+      const json: DecodedData = JSON.parse(optimistAttestation.decodedDataJson);
+      const profileMetadataPtr = getDecodedValue<string>(
+        json,
+        "profileMetadataPtr"
+      );
+      const metadata = await getProfileMetaData(profileMetadataPtr);
+      url = metadata?.profileImageUrl;
+    }
+  }
+
+  // Get profile image from Praise
+  if (!url) {
+    const praiseUsers = await getAllPraiseUsers();
+    const praiseUser = getPraiseUserByAddress(praiseUsers, address);
+    if (praiseUser) {
+      if (
+        Array.isArray(praiseUser.accounts) &&
+        praiseUser.accounts.length > 0
+      ) {
+        for (const account of praiseUser.accounts) {
+          // Prefer DISCORD over others
+          if (account.avatarId && account.platform === "DISCORD") {
+            url = discordAvatarUrl(account);
+            break;
+          }
         }
       }
     }

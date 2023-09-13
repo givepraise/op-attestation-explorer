@@ -11,7 +11,7 @@ export function SchemaName({ attestation }: SchemaNameProps) {
   );
 
   return (
-    <div className="px-3 py-2 text-center border rounded-full bg-theme-gray-1">
+    <div className="px-2 py-1 text-center border rounded-full bg-theme-gray-1 text-xs md:w-32">
       {schema?.name}
     </div>
   );

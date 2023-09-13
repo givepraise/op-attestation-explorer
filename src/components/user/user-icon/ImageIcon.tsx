@@ -25,7 +25,7 @@ export function ImageIcon({
   }
 
   return (
-    <Image
+    <img
       src={url}
       onError={(): void => setImageLoadError(true)}
       alt="avatar"

@@ -1,5 +1,5 @@
-import { getAllPraiseUsers } from "../../praise/getAllPraiseUsers";
-import { getPraiseUserByAddress } from "../../praise/getPraiseUserByAddress";
+import { getEnsName } from "../../viem/getEnsName";
+import { getUserName } from "../../eas/getUserName";
 import { shortenEthAddress } from "../../util/string";
 
 type RecipientProps = {
@@ -7,16 +7,15 @@ type RecipientProps = {
 };
 
 export async function Recipient({ recipient }: RecipientProps) {
-  const praiseUsers = await getAllPraiseUsers();
-  const praiseUser = getPraiseUserByAddress(praiseUsers, recipient);
+  const username = await getUserName(recipient);
 
   if (recipient === "0x0000000000000000000000000000000000000000") {
     return <div>No recipient</div>;
   }
 
   return (
-    <div className="font-medium md:w-32 overflow-clip overflow-ellipsis">
-      {praiseUser?.username || shortenEthAddress(recipient)}
+    <div className="font-medium md:w-56 overflow-clip overflow-ellipsis text-center">
+      {username || shortenEthAddress(recipient)}
     </div>
   );
 }

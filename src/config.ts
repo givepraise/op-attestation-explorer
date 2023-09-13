@@ -6,6 +6,9 @@ import { SchemaListItem } from "./eas/types/schema-list-item.type";
 
 export const OP_SAFE_ADDRESS = "0xf6937E015d5337F648fE01a03A74c9FAA4f90d54";
 
+export const UID_OPTIMIST =
+  "0xac4c92fc5c7babed88f78a917cdbcdc1c496a8f4ab2d5b2ec29402736b2cf929";
+
 export const EAS_SCHEMAS: SchemaListItem[] = [
   {
     name: "Praise",
@@ -44,12 +47,11 @@ export const EAS_SCHEMAS: SchemaListItem[] = [
   {
     name: "Optimist",
     description: "",
-    uid: "0xac4c92fc5c7babed88f78a917cdbcdc1c496a8f4ab2d5b2ec29402736b2cf929",
+    uid: UID_OPTIMIST,
     displayComponent: OptimistCustomDisplay,
     gqlWhere: {
       schemaId: {
-        equals:
-          "0xac4c92fc5c7babed88f78a917cdbcdc1c496a8f4ab2d5b2ec29402736b2cf929",
+        equals: UID_OPTIMIST,
       },
     },
   },
