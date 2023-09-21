@@ -3,7 +3,6 @@ import { SchemaAttestationList } from "../../../../components/attestations/Schem
 import SchemaAttestationsPageChooser from "../../../../components/attestations/SchemaAttestationsPageChooser";
 import SchemaButtons from "../../../../components/attestations/SchemaButtons";
 import { SearchAndSort } from "../../../../components/attestations/SearchAndSort";
-import { SubNav } from "../../../../components/SubNav";
 import { Suspense } from "react";
 
 type SchemaAttestationListPageProps = {
@@ -20,7 +19,6 @@ export default async function SchemaAttestationListPage({
 
   return (
     <>
-      <SubNav />
       <SearchAndSort />
       <SchemaButtons uid={uid} />
       <Suspense fallback={<AttestationsLoadingList />}>
