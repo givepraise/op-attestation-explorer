@@ -14,7 +14,7 @@ export async function Recipient({ recipient }: RecipientProps) {
   }
 
   return (
-    <div className="font-medium md:w-56 overflow-clip overflow-ellipsis text-center">
+    <div className="font-medium w-32 md:w-48 overflow-clip overflow-ellipsis">
       {username || shortenEthAddress(recipient)}
     </div>
   );

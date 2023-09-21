@@ -13,7 +13,8 @@ import { getProfileMetaData } from "../../eas/optimist/getProfileMetadata";
 type UserIconProps = {
   address?: string;
   variant?: "round" | "square";
-  size?: "small" | "large";
+  size?: "tiny" | "small" | "large";
+  className?: string;
 };
 
 const discordAvatarUrl = (account: PraiseUserAccount): string => {
@@ -24,6 +25,7 @@ export async function UserIcon({
   address,
   variant = "round",
   size = "small",
+  className = "",
 }: UserIconProps) {
   if (!address) {
     return <SvgIcon size={size} />;
@@ -70,8 +72,8 @@ export async function UserIcon({
   }
 
   return url ? (
-    <ImageIcon url={url} variant={variant} size={size} />
+    <ImageIcon url={url} variant={variant} size={size} className={className} />
   ) : (
-    <SvgIcon size={size} />
+    <SvgIcon size={size} className={className} />
   );
 }

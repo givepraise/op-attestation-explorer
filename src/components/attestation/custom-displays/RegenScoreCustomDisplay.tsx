@@ -20,8 +20,18 @@ export function RegenScoreCustomDisplay({ attestation }: CustomDisplayProps) {
 
   const score = getDecodedValue<bigint>(json, "score");
   let meta = getDecodedValue<string>(json, "meta");
-  let metaParsed = meta && JSON.parse(meta);
-  metaParsed = metaParsed && JSON.parse(metaParsed);
+
+  let metaParsed;
+
+  try {
+    metaParsed = meta && JSON.parse(meta);
+    metaParsed = metaParsed && JSON.parse(metaParsed);
+  } catch (e) {
+    console.error(e);
+    return (
+      <div className="text-red-500">Couldn&apos;t parse attestation data.</div>
+    );
+  }
 
   const badges: scoreItem[] = [];
   for (let key in metaParsed) {

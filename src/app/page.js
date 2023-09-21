@@ -6,6 +6,8 @@ import Kristofer from "../components/images/kristofer.jpeg";
 import LandingPage1 from "../components/images/landingpage-1.svg";
 import LandingPage2 from "../components/images/landingpage-2.svg";
 import Link from "next/link";
+import Optimism from "../components/images/optimism.svg";
+import Passport from "../components/images/passport.svg";
 import Praise from "../components/images/praise.svg";
 import RegenScore from "../components/images/regenscore.svg";
 import { faQuoteLeft } from "@fortawesome/free-solid-svg-icons";
@@ -20,9 +22,11 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="flex items-center justify-center w-full gap-10">
+      <div className="flex items-center justify-center w-full gap-16">
         <Image src={Praise} alt="Praise" width={100} />
-        <Image src={RegenScore} alt="Regen Score" width={180} />
+        <Image src={Passport} alt="Gitcoin Passport" width={120} />
+        <Image src={Optimism} alt="Optimism" width={100} />
+        <Image src={RegenScore} alt="Regen Score" width={150} />
       </div>
 
       <div className="flex justify-center w-full">

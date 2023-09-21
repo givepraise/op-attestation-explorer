@@ -2,15 +2,12 @@ import { CopyButton } from "../../../components/CopyButton";
 import { CustomDisplay } from "../../../components/attestation/CustomDisplay";
 import { DecodedData } from "../../../eas/types/decoded-data.type";
 import Link from "next/link";
-import { MainNav } from "../../../components/MainNav";
 import { RawData } from "../../../components/attestation/RawData";
 import { SchemaName } from "../../../components/attestation-card/SchemaName";
 import { SearchAndSort } from "../../../components/attestations/SearchAndSort";
-import { SubNav } from "../../../components/SubNav";
 import { UserIcon } from "../../../components/user/UserIcon";
 import dayjs from "dayjs";
 import { getAttestation } from "../../../eas/getAttestation";
-import { getEnsName } from "../../../viem/getEnsName";
 import { getSchemaData } from "../../../eas/getSchemaData";
 import { getUserName } from "../../../eas/getUserName";
 import relativeTime from "dayjs/plugin/relativeTime";
@@ -34,36 +31,52 @@ export default async function AttestationPage({
   return (
     <>
       <SearchAndSort />
-      <div className="w-full mb-5 border-b-4 border-theme-gray-1">
+      <div className="w-full border-b-4 border-theme-gray-1">
         <div className="text-2xl font-semibold">Attestation</div>
       </div>
 
-      <div className="flex-col w-full p-5 bg-white rounded-xl shadow-theme-shadow-1 space-y-5">
+      <div className="flex-col w-full p-5 space-y-5 bg-white rounded-xl shadow-theme-shadow-1">
         <div className="flex justify-between">
           <div className="flex flex-col justify-center">
             <SchemaName attestation={attestation} />
           </div>
         </div>
 
-        <div className="flex flex-col w-full md:flex-row md:justify-between gap-5">
-          <div className="flex justify-between">
+        <div className="flex flex-col w-full gap-5 md:flex-row md:justify-between">
+          <div className="flex justify-between md:w-2/5">
             <div className="flex flex-col items-start">
               <div className="flex items-center">
-                <div className="w-12 text-sm text-gray-500">To </div>
-                <Link href={`/user/${attestation.recipient}`}>
+                <div className="w-12 text-xs text-gray-500">To </div>
+                <Link
+                  href={`/user/${attestation.recipient}`}
+                  className="flex items-center gap-1"
+                >
+                  <UserIcon
+                    address={attestation.recipient}
+                    className="inline-block"
+                    size="tiny"
+                  />
                   {recipientName || shortenEthAddress(attestation.recipient)}
                 </Link>
                 <CopyButton textToCopy={attestation.recipient} />
               </div>
-              <div className="flex items-center">
-                <div className="w-12 text-sm text-gray-500">From</div>
-                <Link href={`/user/${attestation.attester}`}>
+              <div className="flex items-center ">
+                <div className="w-12 text-xs text-gray-500">From</div>
+                <Link
+                  href={`/user/${attestation.attester}`}
+                  className="flex items-center gap-1"
+                >
+                  <UserIcon
+                    address={attestation.attester}
+                    className="inline-block"
+                    size="tiny"
+                  />
                   {attesterName || shortenEthAddress(attestation.attester)}
                 </Link>
                 <CopyButton textToCopy={attestation.attester} />
               </div>
               <div className="flex items-center">
-                <div className="w-12 text-sm text-gray-500">Uid</div>
+                <div className="w-12 text-xs text-gray-500">Uid</div>
                 <a
                   href={`https://optimism.easscan.org/attestation/view/${attestation.id}`}
                   target="_blank"
@@ -73,38 +86,24 @@ export default async function AttestationPage({
                 <CopyButton textToCopy={attestation.id} />
               </div>
             </div>
-            <div className="md:hidden">
-              <UserIcon
-                address={attestation.recipient}
-                variant="square"
-                size="large"
-              />
-            </div>
           </div>
-          <div className="flex flex-col justify-center">
-            <div className="text-sm text-gray-500">Created</div>
+          <div className="flex flex-col justify-center md:w-1/5">
+            <div className="text-xs text-gray-500">Created</div>
             <div>
               {dayjs.unix(parseInt(attestation.time.toString())).fromNow()}
             </div>
           </div>
-          <div className="flex flex-col justify-center">
-            <div className="text-sm text-gray-500">Expires</div>
+          <div className="flex flex-col justify-center md:w-1/5">
+            <div className="text-xs text-gray-500">Expires</div>
             <div>
               {attestation.expirationTime > 0
                 ? attestation.expirationTime.toString()
                 : "Does not expire"}
             </div>
           </div>
-          <div className="flex flex-col justify-center">
-            <div className="text-sm text-gray-500">Revoked</div>
+          <div className="flex flex-col justify-center md:w-1/5">
+            <div className="text-xs text-gray-500">Revoked</div>
             <div>{attestation.revoked ? "Yes" : "No"} </div>
-          </div>
-          <div className="hidden md:block">
-            <UserIcon
-              address={attestation.recipient}
-              variant="square"
-              size="large"
-            />
           </div>
         </div>
         {schemaData?.description && (

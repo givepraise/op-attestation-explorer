@@ -11,7 +11,7 @@ export function CustomDisplay({ attestation }: CustomDisplayProps) {
   if (schemaData?.displayComponent) {
     return (
       <>
-        <div className="w-full mb-5 border-b-4 border-theme-gray-1">
+        <div className="w-full border-b-4 border-theme-gray-1">
           <div className="text-2xl font-semibold">Details</div>
         </div>
         {schemaData.displayComponent({ attestation })}

@@ -1,9 +1,12 @@
 import "./globals.css";
 
-import { Footer } from "../components/user/Footer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Footer } from "../components/Footer";
 import { MainNav } from "../components/MainNav";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Toaster } from "react-hot-toast";
+import { faHourglassEnd } from "@fortawesome/free-solid-svg-icons";
 
 export const metadata: Metadata = {
   title: "Optimism Attestation Explorer",
@@ -22,7 +25,17 @@ export default function RootLayout({
         <main className="flex flex-col min-h-screen items-center">
           <MainNav />
           <div className="flex flex-grow flex-col w-full px-5 lg:w-[1024px] items-center gap-5">
-            {children}
+            <Suspense
+              fallback={
+                <FontAwesomeIcon
+                  icon={faHourglassEnd}
+                  spin
+                  className="text-theme-2 w-10 h-10"
+                />
+              }
+            >
+              {children}
+            </Suspense>
           </div>
           <Footer />
         </main>

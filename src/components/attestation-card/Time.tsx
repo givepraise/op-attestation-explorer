@@ -7,9 +7,5 @@ type TimeProps = {
 
 export function Time({ time }: TimeProps) {
   dayjs.extend(relativeTime);
-  return (
-    <div className="md:w-32 text-center">
-      {dayjs.unix(parseInt(time)).fromNow()}
-    </div>
-  );
+  return <div className="md:w-36">{dayjs.unix(parseInt(time)).fromNow()}</div>;
 }

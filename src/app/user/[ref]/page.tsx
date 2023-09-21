@@ -1,14 +1,11 @@
-import { Attestation } from "../../../eas/types/gql/attestation.type";
 import { AttestationCardAlt } from "../../../components/attestation/AttestationCardAlt";
 import { CopyButton } from "../../../components/CopyButton";
 import { DecodedData } from "../../../eas/types/decoded-data.type";
-import { UID_OPTIMIST } from "../../../config";
 import { UserIcon } from "../../../components/user/UserIcon";
-import { add } from "lodash";
+import { getAddressFromEnsName } from "../../../viem/getAddressFromEnsName";
 import { getAllPraiseUsers } from "../../../praise/getAllPraiseUsers";
 import { getAllRecipientAttestations } from "../../../eas/getAllRecipientAttestations";
 import { getDecodedValue } from "../../../eas/getDecodedValue";
-import { getEnsName } from "../../../viem/getEnsName";
 import { getOptimistAttestation } from "../../../eas/optimist/getOptimistAttestation";
 import { getPraiseUserByAddress } from "../../../praise/getPraiseUserByAddress";
 import { getUserName } from "../../../eas/getUserName";
@@ -19,16 +16,20 @@ export default async function UserPage({
 }: {
   params: { ref: string };
 }) {
-  // Ref is user address or username
+  // Ref is user address or ens name
   const { ref } = params;
 
-  let address = ref;
+  let address: string | null = ref;
+  if (ref.length < 42) {
+    address = await getAddressFromEnsName(ref);
+  }
+
   if (!address) {
     return <div>User not found</div>;
   }
 
   const attestations = await getAllRecipientAttestations(address);
-  const username = getUserName(address);
+  const username = await getUserName(address);
 
   const optimistAttestation = getOptimistAttestation(attestations);
   let optimistName;
@@ -63,17 +64,15 @@ export default async function UserPage({
           <div className="flex flex-col items-start gap-1">
             {optimistName && (
               <>
-                <div className="text-xs text-gray-500 uppercase">
-                  Optimist Profile Name{" "}
+                <div className="text-xs text-gray-500 ">
+                  Optimist Profile Name
                 </div>
                 {optimistName}
               </>
             )}
             {praiseUsername && (
               <>
-                <div className="text-xs text-gray-500 uppercase">
-                  Praise Username
-                </div>
+                <div className="text-xs text-gray-500">Praise Username</div>
                 {praiseUsername}
               </>
             )}

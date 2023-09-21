@@ -15,14 +15,33 @@ type AttestationCardProps = {
 export async function AttestationCard({ attestation }: AttestationCardProps) {
   return (
     <Link href={`/attestation/${attestation.id}`}>
-      <div className="flex items-center justify-between w-full p-5 text-sm bg-white md:text-base gap-x-5 hover:ring-4 hover:ring-theme-3 hover:ring-opacity-40 rounded-xl shadow-theme-shadow-1">
+      <div className="flex items-center justify-start w-full gap-10 p-5 text-sm bg-white md:text-base gap-x-5 hover:ring-4 hover:ring-theme-3 hover:ring-opacity-40 rounded-xl shadow-theme-shadow-1">
         <UserIcon address={attestation.recipient} />
-        <Recipient recipient={attestation.recipient} />
-        <Time time={attestation.time.toString()} />
-        <div className="@2xl:grid @2xl:grid-cols-3 @2xl:w-56 text-left hidden">
-          <div>From</div>
-          <From from={attestation.attester} className="col-span-2" />
-          <div>Uid</div>
+        <div className="flex flex-col">
+          <Recipient recipient={attestation.recipient} />
+          <div className="block md:hidden">
+            <Time time={attestation.time.toString()} />
+          </div>
+        </div>
+        <div className="hidden md:block">
+          <Time time={attestation.time.toString()} />
+        </div>
+        <div className="flex-grow"></div>
+        <div className="@3xl:grid @3xl:grid-cols-3 @3xl:w-56 text-left hidden">
+          <div className="flex items-center w-12 text-xs text-gray-500">
+            From
+          </div>
+          <div className="flex items-center col-span-2 gap-1">
+            <UserIcon
+              address={attestation.attester}
+              size="tiny"
+              className="inline-block"
+            />
+            <From from={attestation.attester} />
+          </div>
+          <div className="flex items-center w-12 text-xs text-gray-500">
+            Uid
+          </div>
           <Uid uid={attestation.id} className="col-span-2" />
         </div>
         <SchemaName attestation={attestation} />
