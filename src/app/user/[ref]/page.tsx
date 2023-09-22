@@ -70,25 +70,19 @@ export default async function UserPage({
           <div className="flex-grow hidden md:flex"></div>
           <div className="flex flex-col items-center gap-3">
             {optimistName && (
-              <>
-                <div className="flex flex-row items-baseline sm:flex-col md:items-start gap-3 sm:gap-1">
-                  <div className="text-xs text-gray-500 ">
-                    Optimist Profile Name
-                  </div>
-                  {optimistName}
+              <div className="flex flex-row items-baseline sm:flex-col md:items-start gap-3 sm:gap-1">
+                <div className="text-xs text-gray-500 ">
+                  Optimist Profile Name
                 </div>
-                <div className="flex flex-row items-baseline sm:flex-col md:items-start gap-3 sm:gap-1">
-                  <div className="text-xs text-gray-500 ">
-                    Optimist Profile Name
-                  </div>
-                  {optimistName}
-                </div>
-              </>
+                {optimistName}
+              </div>
             )}
             {praiseUsername && (
               <>
-                <div className="text-xs text-gray-500">Praise Username</div>
-                {praiseUsername}
+                <div className="flex flex-row items-baseline sm:flex-col md:items-start gap-3 sm:gap-1">
+                  <div className="text-xs text-gray-500">Praise Username</div>
+                  {praiseUsername}
+                </div>
               </>
             )}
           </div>
