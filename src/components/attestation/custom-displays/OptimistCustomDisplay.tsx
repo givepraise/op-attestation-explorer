@@ -21,7 +21,7 @@ export async function OptimistCustomDisplay({
 
   return (
     <div className="flex w-full gap-10">
-      <div className="flex flex-col w-full gap-5 sm:flex-row items-start">
+      <div className="flex flex-col items-start w-full gap-5 sm:flex-row">
         {metadata?.profileImageUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
           <ImageIcon url={metadata.profileImageUrl} size="large" />

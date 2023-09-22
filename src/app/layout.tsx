@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Toaster position="top-center" reverseOrder={false} />
-        <main className="flex flex-col min-h-screen items-center">
+        <main className="flex flex-col items-center min-h-screen">
           <MainNav />
           <div className="flex flex-grow flex-col w-full px-5 lg:w-[1024px] items-center gap-5">
             <Suspense
@@ -30,7 +30,7 @@ export default function RootLayout({
                 <FontAwesomeIcon
                   icon={faHourglassEnd}
                   spin
-                  className="text-theme-2 w-10 h-10"
+                  className="w-10 h-10 text-theme-2"
                 />
               }
             >

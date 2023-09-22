@@ -58,7 +58,7 @@ export function RegenScoreCustomDisplay({ attestation }: CustomDisplayProps) {
         {badges.map((badge, index) => {
           return (
             <div
-              className="flex flex-col items-center w-48 gap-1 p-4 text-center border rounded-lg"
+              className="flex flex-col items-center w-48 p-4 text-center border rounded-lg gap-1"
               key={index}
             >
               <div className="text-2xl font-semibold">{badge.scoreAdded}</div>

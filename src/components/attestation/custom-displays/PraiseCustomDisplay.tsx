@@ -38,7 +38,7 @@ export function PraiseCustomDisplay({ attestation }: CustomDisplayProps) {
       <div className="flex flex-col w-full gap-10 sm:flex-row">
         {/* Top 10 receiver */}
         {typeof top10Receiver === "boolean" && top10Receiver && (
-          <div className="flex gap-1 p-2 border rounded-lg">
+          <div className="flex p-2 border rounded-lg gap-1">
             <div>
               Top <strong>10</strong>
               <br />
@@ -52,7 +52,7 @@ export function PraiseCustomDisplay({ attestation }: CustomDisplayProps) {
 
         {/* Top 50 receiver */}
         {typeof top50Receiver === "boolean" && top50Receiver && (
-          <div className="flex gap-1 p-2 border rounded-lg">
+          <div className="flex p-2 border rounded-lg gap-1">
             <div>
               Top <strong>50</strong>
               <br />
@@ -66,7 +66,7 @@ export function PraiseCustomDisplay({ attestation }: CustomDisplayProps) {
 
         {/* Top 100 receiver */}
         {typeof top100Receiver === "boolean" && top100Receiver && (
-          <div className="flex gap-1 p-2 border rounded-lg">
+          <div className="flex p-2 border rounded-lg gap-1">
             <div>
               Top <strong>100</strong>
               <br />
@@ -80,7 +80,7 @@ export function PraiseCustomDisplay({ attestation }: CustomDisplayProps) {
 
         {/* Top 10 giver */}
         {typeof top10Giver === "boolean" && top10Giver && (
-          <div className="flex gap-1 p-2 border rounded-lg">
+          <div className="flex p-2 border rounded-lg gap-1">
             <div>
               Top <strong>10</strong>
               <br />
@@ -94,7 +94,7 @@ export function PraiseCustomDisplay({ attestation }: CustomDisplayProps) {
 
         {/* Top 50 giver */}
         {typeof top50Giver === "boolean" && top50Giver && (
-          <div className="flex gap-1 p-2 border rounded-lg">
+          <div className="flex p-2 border rounded-lg gap-1">
             <div>
               Top <strong>50</strong>
               <br />
@@ -108,7 +108,7 @@ export function PraiseCustomDisplay({ attestation }: CustomDisplayProps) {
 
         {/* Top 100 giver */}
         {typeof top100Giver === "boolean" && top100Giver && (
-          <div className="flex gap-1 p-2 border rounded-lg">
+          <div className="flex p-2 border rounded-lg gap-1">
             <div>
               Top <strong>100</strong>
               <br />

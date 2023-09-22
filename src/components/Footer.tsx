@@ -3,7 +3,7 @@ import { faPrayingHands } from "@fortawesome/free-solid-svg-icons";
 
 export function Footer() {
   return (
-    <div className="flex items-center w-full pt-3 px-7 bg-footer h-28 sticky">
+    <div className="sticky flex items-center w-full pt-3 px-7 bg-footer h-28">
       <div className="flex items-center justify-end w-full px-7">
         <div>
           Built by{" "}
@@ -11,7 +11,7 @@ export function Footer() {
             Praise
             <FontAwesomeIcon
               icon={faPrayingHands}
-              className="ml-1 w-4 h-4 inline-block"
+              className="inline-block w-4 h-4 ml-1"
             />
           </a>
         </div>

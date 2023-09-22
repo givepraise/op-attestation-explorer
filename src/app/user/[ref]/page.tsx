@@ -44,7 +44,7 @@ export default async function UserPage({
 
   return (
     <div className="flex flex-col items-center w-full gap-5">
-      <div className="flex flex-col items-center gap-10 w-full p-5 bg-dots sm:flex-row rounded-xl shadow-theme-shadow-1">
+      <div className="flex flex-col items-center w-full p-5 gap-10 bg-dots sm:flex-row rounded-xl shadow-theme-shadow-1">
         <UserIcon address={address} variant="square" size="large" />
         <div className="flex flex-col items-center sm:items-start gap-1 whitespace-nowrap">
           {username && <div className="text-xl font-semibold">{username}</div>}
@@ -62,13 +62,13 @@ export default async function UserPage({
         <div className="flex flex-col items-center gap-3">
           {optimistName && (
             <>
-              <div className="flex flex-row sm:flex-col items-baseline md:items-start gap-3 sm:gap-1">
+              <div className="flex flex-row items-baseline sm:flex-col md:items-start gap-3 sm:gap-1">
                 <div className="text-xs text-gray-500 ">
                   Optimist Profile Name
                 </div>
                 {optimistName}
               </div>
-              <div className="flex flex-row sm:flex-col items-baseline md:items-start gap-3 sm:gap-1">
+              <div className="flex flex-row items-baseline sm:flex-col md:items-start gap-3 sm:gap-1">
                 <div className="text-xs text-gray-500 ">
                   Optimist Profile Name
                 </div>

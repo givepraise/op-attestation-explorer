@@ -35,7 +35,7 @@ export default async function AttestationPage({
         <div className="text-2xl font-semibold">Attestation</div>
       </div>
 
-      <div className="flex-col w-full p-5 space-y-5 bg-white rounded-xl shadow-theme-shadow-1">
+      <div className="flex-col w-full p-5 bg-white space-y-5 rounded-xl shadow-theme-shadow-1">
         <div className="flex justify-between">
           <div className="flex flex-col justify-center">
             <SchemaName attestation={attestation} />

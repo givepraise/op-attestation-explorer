@@ -22,7 +22,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="relative overflow-hidden w-full">
+      <div className="relative w-full overflow-hidden">
         <div className="flex items-center justify-between w-[2304px] animate-scrollHorizontally">
           {/* Original Logos */}
           <Image src={Praise} alt="Praise" width={100} />
@@ -52,13 +52,13 @@ export default function Page() {
 
       <div className="flex justify-center w-full">
         <Link href="/1">
-          <div className="px-8 py-3 text-lg md:text-xl font-semibold text-white rounded-full bg-theme-1 hover:bg-theme-2">
+          <div className="px-8 py-3 font-semibold text-center text-white rounded-full text-md md:text-xl bg-theme-1 hover:bg-theme-2">
             Explore Attestations
           </div>
         </Link>
       </div>
 
-      <div className="flex flex-col items-start justify-center w-full gap-32 mt-10">
+      <div className="flex flex-col items-start justify-center w-full mt-10 gap-32">
         <div className="flex flex-col items-center w-full gap-10 md:flex-row">
           <Image
             src={LandingPage1}
@@ -113,7 +113,7 @@ export default function Page() {
 
         <div className="flex justify-center w-full">
           <Link href="/1">
-            <div className="px-8 py-3 text-lg md:text-xl font-semibold text-white rounded-full bg-theme-1 hover:bg-theme-2">
+            <div className="px-8 py-3 font-semibold text-center text-white rounded-full text-md md:text-xl bg-theme-1 hover:bg-theme-2">
               Explore Attestations
             </div>
           </Link>

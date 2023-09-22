@@ -10,8 +10,8 @@ import { WagmiConfig } from "wagmi";
 
 export function MainNav() {
   return (
-    <div className="flex items-start w-full pt-3 px-7 bg-header h-40">
-      <div className="flex flex-col md:flex-row items-center justify-between w-full px-7">
+    <div className="flex items-start w-full h-40 pt-3 px-7 bg-header">
+      <div className="flex flex-col items-center justify-between w-full md:flex-row px-7">
         <div className="flex items-center gap-5">
           <div className="py-5">
             <Link href="/">

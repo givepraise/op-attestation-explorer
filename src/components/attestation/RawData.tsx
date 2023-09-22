@@ -29,7 +29,7 @@ export function RawData({ data }: RawDataProps): JSX.Element {
               </div>
             </Disclosure.Button>
             <Disclosure.Panel className="w-full text-xs text-left sm:text-base">
-              <div className="grid w-full grid-cols-4 gap-2 font-mono text-xs">
+              <div className="w-full font-mono text-xs grid grid-cols-4 gap-2">
                 <div>
                   <strong>Name</strong>
                 </div>
@@ -45,7 +45,7 @@ export function RawData({ data }: RawDataProps): JSX.Element {
                     <React.Fragment key={item.value.name}>
                       <div>{item.value.name}</div>
                       <div>{item.value.type}</div>
-                      <div className="col-span-2 break-words">
+                      <div className="break-words col-span-2">
                         {value ? value.toString() : ""}
                       </div>
                     </React.Fragment>

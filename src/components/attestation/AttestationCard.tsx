@@ -15,7 +15,7 @@ type AttestationCardProps = {
 export async function AttestationCard({ attestation }: AttestationCardProps) {
   return (
     <Link href={`/attestation/${attestation.id}`}>
-      <div className="flex items-center justify-start w-full gap-10 p-5 text-sm bg-white md:text-base gap-x-5 hover:ring-4 hover:ring-theme-3 hover:ring-opacity-40 rounded-xl shadow-theme-shadow-1">
+      <div className="flex items-center justify-start w-full p-5 text-sm bg-white gap-10 md:text-base gap-x-5 hover:ring-4 hover:ring-theme-3 hover:ring-opacity-40 rounded-xl shadow-theme-shadow-1">
         <UserIcon address={attestation.recipient} />
         <div className="flex flex-col">
           <Recipient recipient={attestation.recipient} />
