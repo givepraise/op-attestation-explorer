@@ -1,6 +1,7 @@
 import { Attestation } from "../../../eas/types/gql/attestation.type";
 import { DecodedData } from "../../../eas/types/decoded-data.type";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ImageIcon } from "../../user/user-icon/ImageIcon";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { getDecodedValue } from "../../../eas/getDecodedValue";
 import { getProfileMetaData } from "../../../eas/optimist/getProfileMetadata";
@@ -22,7 +23,8 @@ export async function OptimistCustomDisplay({
     <div className="flex w-full gap-10">
       <div className="flex flex-col w-full gap-5 sm:flex-row items-start">
         {metadata?.profileImageUrl ? (
-          <img src={metadata.profileImageUrl} className="w-20 h-20" />
+          // eslint-disable-next-line @next/next/no-img-element
+          <ImageIcon url={metadata.profileImageUrl} size="large" />
         ) : (
           <FontAwesomeIcon icon={faUserCircle} className="w-20 h-20" />
         )}

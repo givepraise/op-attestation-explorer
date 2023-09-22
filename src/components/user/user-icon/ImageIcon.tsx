@@ -35,16 +35,18 @@ export function ImageIcon({
   }
 
   return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src={url}
-      onError={(): void => setImageLoadError(true)}
-      alt="avatar"
-      width={60}
-      height={60}
-      className={`object-contain ${roundedClass} ${sizeClass(
+    <div
+      className={`flex items-center justify-center ${sizeClass(
         size
       )} ${className}`}
-    />
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={url}
+        onError={(): void => setImageLoadError(true)}
+        alt="avatar"
+        className={`object-cover max-w-none ${roundedClass} ${sizeClass(size)}`}
+      />
+    </div>
   );
 }

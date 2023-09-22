@@ -30,8 +30,12 @@ export function AttestationCardAlt({ attestation }: AttestationCardAltProps) {
             Uid
           </div>
           <Uid uid={attestation.id} className="col-span-2" />
+          <Time
+            time={attestation.time.toString()}
+            className="block sm:hidden text-xs text-gray-500 mt-1"
+          />
         </div>
-        <Time time={attestation.time.toString()} />
+        <Time time={attestation.time.toString()} className="sm:block hidden" />
         <SchemaName attestation={attestation} />
       </div>
     </Link>
