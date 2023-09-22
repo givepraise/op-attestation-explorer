@@ -11,11 +11,11 @@ export default function SchemaButtons({ uid }: SchemaButtonsProps) {
     if (_uid === uid) {
       mark = "ring-4 ring-theme-3 ring-opacity-40";
     }
-    return `px-3 py-2 cursor-pointer shadow-theme-shadow-1 rounded-xl hover:ring-4 hover:ring-theme-3 hover:ring-opacity-40 ${mark}`;
+    return `px-3 py-2 cursor-pointer shadow-theme-shadow-1 rounded-xl hover:ring-4 whitespace-nowrap hover:ring-theme-3 hover:ring-opacity-40 ${mark}`;
   };
 
   return (
-    <div className="flex w-full p-2 overflow-scroll gap-5 md:p-0 md:overflow-visible">
+    <div className="flex w-full gap-5 p-2 overflow-scroll md:p-0 md:overflow-visible">
       <Link href="/1">
         <div className={className()}>All</div>
       </Link>

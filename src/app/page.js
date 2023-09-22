@@ -52,13 +52,13 @@ export default function Page() {
 
       <div className="flex justify-center w-full">
         <Link href="/1">
-          <div className="px-8 py-3 font-semibold text-center text-white rounded-full text-md md:text-xl bg-theme-1 hover:bg-theme-2">
+          <div className="px-4 py-2 text-base font-semibold text-center text-white rounded-full md:px-8 md:py-3 md:text-xl bg-theme-1 hover:bg-theme-2">
             Explore Attestations
           </div>
         </Link>
       </div>
 
-      <div className="flex flex-col items-start justify-center w-full mt-10 gap-32">
+      <div className="flex flex-col items-start justify-center w-full gap-32 mt-10">
         <div className="flex flex-col items-center w-full gap-10 md:flex-row">
           <Image
             src={LandingPage1}
@@ -113,7 +113,7 @@ export default function Page() {
 
         <div className="flex justify-center w-full">
           <Link href="/1">
-            <div className="px-8 py-3 font-semibold text-center text-white rounded-full text-md md:text-xl bg-theme-1 hover:bg-theme-2">
+            <div className="px-4 py-2 text-base font-semibold text-center text-white rounded-full md:px-8 md:py-3 md:text-xl bg-theme-1 hover:bg-theme-2">
               Explore Attestations
             </div>
           </Link>
