@@ -4,6 +4,7 @@ import { RainbowKitProvider, lightTheme } from "@rainbow-me/rainbowkit";
 import { chains, wagmiConfig } from "../wagmi/wagmiConfig";
 
 import ConnectWallet from "./ConnectWallet";
+import Image from "next/image";
 import Link from "next/link";
 import { WagmiConfig } from "wagmi";
 
@@ -14,9 +15,11 @@ export function MainNav() {
         <div className="flex items-center gap-5">
           <div className="py-5">
             <Link href="/">
-              <img
+              <Image
                 src="/optimism-attestations.svg"
                 alt="Optimism Attestations"
+                width={150}
+                height={20}
               />
             </Link>
           </div>

@@ -20,6 +20,9 @@ const config: Config = {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
       },
+      animation: {
+        scrollHorizontally: "scrollHorizontally 10s infinite linear",
+      },
     },
   },
   plugins: [

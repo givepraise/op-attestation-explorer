@@ -47,3 +47,12 @@ h1 {
 .underline-red {
   @apply underline decoration-4 decoration-theme-1;
 }
+
+@keyframes scrollHorizontally {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-34.5%);
+  }
+}

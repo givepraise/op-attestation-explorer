@@ -22,11 +22,26 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="flex items-center justify-center w-full gap-16">
-        <Image src={Praise} alt="Praise" width={100} />
-        <Image src={Passport} alt="Gitcoin Passport" width={120} />
-        <Image src={Optimism} alt="Optimism" width={100} />
-        <Image src={RegenScore} alt="Regen Score" width={150} />
+      <div className="relative overflow-hidden w-full">
+        <div className="flex items-center justify-between w-[2304px] animate-scrollHorizontally">
+          {/* Original Logos */}
+          <Image src={Praise} alt="Praise" width={100} />
+          <Image src={Passport} alt="Gitcoin Passport" width={120} />
+          <Image src={Optimism} alt="Optimism" width={100} />
+          <Image src={RegenScore} alt="Regen Score" width={150} />
+
+          {/* Duplicated Logos - 1st Set */}
+          <Image src={Praise} alt="Praise" width={100} />
+          <Image src={Passport} alt="Gitcoin Passport" width={120} />
+          <Image src={Optimism} alt="Optimism" width={100} />
+          <Image src={RegenScore} alt="Regen Score" width={150} />
+
+          {/* Duplicated Logos - 2nd Set */}
+          <Image src={Praise} alt="Praise" width={100} />
+          <Image src={Passport} alt="Gitcoin Passport" width={120} />
+          <Image src={Optimism} alt="Optimism" width={100} />
+          <Image src={RegenScore} alt="Regen Score" width={150} />
+        </div>
       </div>
 
       <div className="flex justify-center w-full">
@@ -37,7 +52,7 @@ export default function Page() {
 
       <div className="flex justify-center w-full">
         <Link href="/1">
-          <div className="px-8 py-3 text-xl font-semibold text-white rounded-full bg-theme-1 hover:bg-theme-2">
+          <div className="px-8 py-3 text-lg md:text-xl font-semibold text-white rounded-full bg-theme-1 hover:bg-theme-2">
             Explore Attestations
           </div>
         </Link>
@@ -98,7 +113,7 @@ export default function Page() {
 
         <div className="flex justify-center w-full">
           <Link href="/1">
-            <div className="px-8 py-3 text-xl font-semibold text-white rounded-full bg-theme-1 hover:bg-theme-2">
+            <div className="px-8 py-3 text-lg md:text-xl font-semibold text-white rounded-full bg-theme-1 hover:bg-theme-2">
               Explore Attestations
             </div>
           </Link>
