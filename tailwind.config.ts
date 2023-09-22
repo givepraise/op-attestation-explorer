@@ -21,7 +21,7 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
       },
       animation: {
-        scrollHorizontally: "scrollHorizontally 10s infinite linear",
+        scrollHorizontally: "scrollHorizontally 30s infinite linear",
       },
     },
   },
