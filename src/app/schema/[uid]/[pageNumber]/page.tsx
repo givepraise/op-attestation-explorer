@@ -1,4 +1,5 @@
 import { AttestationsLoadingList } from "../../../../components/attestations/AttestationsLoadingList";
+import { DEFAULT_REVALIDATE_TIME } from "../../../../config";
 import { SchemaAttestationList } from "../../../../components/attestations/SchemaAttestationsList";
 import SchemaAttestationsPageChooser from "../../../../components/attestations/SchemaAttestationsPageChooser";
 import SchemaButtons from "../../../../components/attestations/SchemaButtons";
@@ -28,3 +29,5 @@ export default async function SchemaAttestationListPage({
     </>
   );
 }
+
+export const revalidate = DEFAULT_REVALIDATE_TIME;

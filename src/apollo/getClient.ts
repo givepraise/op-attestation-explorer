@@ -1,9 +1,9 @@
+import { DEFAULT_REVALIDATE_TIME, EAS_API_URL } from "../config";
 import {
   NextSSRApolloClient,
   NextSSRInMemoryCache,
 } from "@apollo/experimental-nextjs-app-support/ssr";
 
-import { EAS_API_URL } from "../config";
 import { HttpLink } from "@apollo/client";
 import { registerApolloClient } from "@apollo/experimental-nextjs-app-support/rsc";
 
@@ -12,7 +12,7 @@ export const { getClient } = registerApolloClient(() => {
     cache: new NextSSRInMemoryCache({}),
     link: new HttpLink({
       uri: EAS_API_URL,
-      fetchOptions: { next: { revalidate: 900 } },
+      fetchOptions: { next: { revalidate: DEFAULT_REVALIDATE_TIME } },
     }),
   });
 });

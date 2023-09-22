@@ -1,5 +1,6 @@
 import { CopyButton } from "../../../components/CopyButton";
 import { CustomDisplay } from "../../../components/attestation/CustomDisplay";
+import { DEFAULT_REVALIDATE_TIME } from "../../../config";
 import { DecodedData } from "../../../eas/types/decoded-data.type";
 import Link from "next/link";
 import { RawData } from "../../../components/attestation/RawData";
@@ -133,3 +134,5 @@ export default async function AttestationPage({
     </>
   );
 }
+
+export const revalidate = DEFAULT_REVALIDATE_TIME;

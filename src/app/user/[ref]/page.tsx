@@ -1,5 +1,6 @@
 import { AttestationCardAlt } from "../../../components/attestation/AttestationCardAlt";
 import { CopyButton } from "../../../components/CopyButton";
+import { DEFAULT_REVALIDATE_TIME } from "../../../config";
 import { DecodedData } from "../../../eas/types/decoded-data.type";
 import { SearchAndSort } from "../../../components/attestations/SearchAndSort";
 import { UserIcon } from "../../../components/user/UserIcon";
@@ -110,3 +111,5 @@ export default async function UserPage({
     </>
   );
 }
+
+export const revalidate = DEFAULT_REVALIDATE_TIME;
