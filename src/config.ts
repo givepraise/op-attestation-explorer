@@ -58,6 +58,9 @@ export const EAS_SCHEMAS: SchemaListItem[] = [
       schemaId: {
         equals: UID_REGEN_SCORE,
       },
+      attester: {
+        equals: "0xd8dA8766431366E9aD63eA6D16d9199cece2aA08",
+      },
     },
   },
   {
