@@ -45,17 +45,17 @@ export default function Page() {
       </div>
 
       <div className="flex justify-center w-full">
-        <div className="w-[35rem] ">
-          <AttestationsLandingPageList />
-        </div>
-      </div>
-
-      <div className="flex justify-center w-full">
         <Link href="/1">
           <div className="px-4 py-2 text-base font-semibold text-center text-white rounded-full md:px-8 md:py-3 md:text-xl bg-theme-1 hover:bg-theme-2">
             Explore Attestations
           </div>
         </Link>
+      </div>
+
+      <div className="flex justify-center w-full">
+        <div className="w-[35rem] ">
+          <AttestationsLandingPageList />
+        </div>
       </div>
 
       <div className="flex flex-col items-start justify-center w-full gap-32 mt-10">
