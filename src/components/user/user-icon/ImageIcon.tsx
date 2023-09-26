@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { SvgIcon } from "./SvgIcon";
 import { useState } from "react";
 
@@ -40,11 +41,12 @@ export function ImageIcon({
         size
       )} ${className}`}
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      <Image
         src={url}
         onError={(): void => setImageLoadError(true)}
         alt="avatar"
+        width={60}
+        height={60}
         className={`object-cover max-w-none ${roundedClass} ${sizeClass(size)}`}
       />
     </div>
