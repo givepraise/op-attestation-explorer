@@ -1,4 +1,5 @@
 import { AllRecipientsResult } from "./types/gql/all-recipients-result.type";
+import React from "react";
 import { Recipient } from "./types/gql/recipient.type";
 import { WHERE_ALL_SCHEMAS } from "../config";
 import { getClient } from "../apollo/getClient";
@@ -12,7 +13,7 @@ const query = gql`
   }
 `;
 
-export async function getAllRecipients(): Promise<Recipient[]> {
+export const getAllRecipients = React.cache(async (): Promise<Recipient[]> => {
   const result = await getClient().query<AllRecipientsResult>({
     query,
     fetchPolicy: "cache-first",
@@ -35,4 +36,4 @@ export async function getAllRecipients(): Promise<Recipient[]> {
   );
 
   return aggregatedRecipients;
-}
+});
