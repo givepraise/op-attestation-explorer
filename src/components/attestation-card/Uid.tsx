@@ -1,3 +1,4 @@
+import React from "react";
 import { shortenEthAddress } from "../../util/string";
 
 type UidProps = {
@@ -5,6 +6,6 @@ type UidProps = {
   className?: string;
 };
 
-export function Uid({ uid, className }: UidProps) {
+export const Uid = React.memo(function Uid({ uid, className }: UidProps) {
   return <div className={className}>{shortenEthAddress(uid)}</div>;
-}
+});

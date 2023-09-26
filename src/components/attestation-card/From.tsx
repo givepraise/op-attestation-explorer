@@ -1,6 +1,5 @@
-import { getEnsName } from "../../viem/getEnsName";
+import React from "react";
 import { getUserName } from "../../eas/getUserName";
-import { publicClient } from "../../viem/client";
 import { shortenEthAddress } from "../../util/string";
 
 type FromProps = {
@@ -8,12 +7,26 @@ type FromProps = {
   className?: string;
 };
 
-export async function From({ from, className }: FromProps) {
+export async function FromInner({ from, className }: FromProps) {
   const username = await getUserName(from);
 
   return (
     <div className={`whitespace-nowrap ${className}`}>
       {username || shortenEthAddress(from)}
     </div>
+  );
+}
+
+export async function From({ from, className }: FromProps) {
+  return (
+    <React.Suspense
+      fallback={
+        <div className={`whitespace-nowrap ${className}`}>
+          {shortenEthAddress(from)}
+        </div>
+      }
+    >
+      <FromInner from={from} className={className} />
+    </React.Suspense>
   );
 }

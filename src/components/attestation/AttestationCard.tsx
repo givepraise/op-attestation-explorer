@@ -44,7 +44,7 @@ export async function AttestationCard({ attestation }: AttestationCardProps) {
           </div>
           <Uid uid={attestation.id} className="col-span-2" />
         </div>
-        <SchemaName attestation={attestation} />
+        <SchemaName uid={attestation.schemaId} />
       </div>
     </Link>
   );

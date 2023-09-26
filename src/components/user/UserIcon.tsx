@@ -1,6 +1,7 @@
 import { DecodedData } from "../../eas/types/decoded-data.type";
 import { ImageIcon } from "./user-icon/ImageIcon";
 import { PraiseUserAccount } from "../../praise/types/user-account";
+import React from "react";
 import { SvgIcon } from "./user-icon/SvgIcon";
 import { getAllPraiseUsers } from "../../praise/getAllPraiseUsers";
 import { getAllRecipientAttestations } from "../../eas/getAllRecipientAttestations";
@@ -21,7 +22,7 @@ const discordAvatarUrl = (account: PraiseUserAccount): string => {
   return `https://cdn.discordapp.com/avatars/${account.accountId}/${account.avatarId}.webp?size=128`;
 };
 
-export async function UserIcon({
+export async function UserIconInner({
   address,
   variant = "round",
   size = "small",
@@ -75,5 +76,23 @@ export async function UserIcon({
     <ImageIcon url={url} variant={variant} size={size} className={className} />
   ) : (
     <SvgIcon size={size} className={className} />
+  );
+}
+
+export async function UserIcon({
+  address,
+  variant = "round",
+  size = "small",
+  className = "",
+}: UserIconProps) {
+  return (
+    <React.Suspense fallback={<SvgIcon size={size} className={className} />}>
+      <UserIconInner
+        address={address}
+        variant={variant}
+        size={size}
+        className={className}
+      />
+    </React.Suspense>
   );
 }
