@@ -2,7 +2,7 @@ import "./globals.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Footer } from "../components/Footer";
-import { MainNav } from "../components/MainNav";
+import { Header } from "../components/Header";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Toaster } from "react-hot-toast";
@@ -23,7 +23,7 @@ export default function RootLayout({
       <body>
         <Toaster position="top-center" reverseOrder={false} />
         <main className="flex flex-col items-center min-h-screen">
-          <MainNav />
+          <Header />
           <div className="flex flex-grow flex-col w-full px-5 lg:w-[1024px] items-center gap-5">
             <Suspense
               fallback={

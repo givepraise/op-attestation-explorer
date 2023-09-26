@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { WagmiConfig } from "wagmi";
 
-export function MainNav() {
+export function Header() {
   return (
     <div className="flex items-start w-full h-40 pt-3 px-7 bg-header">
       <div className="flex flex-col items-center justify-between w-full md:flex-row px-7">
