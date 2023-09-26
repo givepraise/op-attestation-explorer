@@ -23,7 +23,13 @@ export async function RecipientInner({ recipient }: RecipientProps) {
 
 export async function Recipient({ recipient }: RecipientProps) {
   return (
-    <React.Suspense fallback={<div>{shortenEthAddress(recipient)}</div>}>
+    <React.Suspense
+      fallback={
+        <div className="w-32 font-medium md:w-48 overflow-clip overflow-ellipsis">
+          {shortenEthAddress(recipient)}
+        </div>
+      }
+    >
       <RecipientInner recipient={recipient} />
     </React.Suspense>
   );
