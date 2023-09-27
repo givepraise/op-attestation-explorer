@@ -28,21 +28,34 @@ export async function RegenScoreCustomDisplay({
           <div className="text-sm text-gray-500">Score</div>
         </div>
       </div>
-      <div className="grid grid-cols-6 gap-5 p-4 border rounded-lg">
-        <div className="text-xl font-semibold col-span-2">Behaviour</div>
-        <div className="text-xl font-semibold">Source</div>
-        <div className="text-xl font-semibold">Value</div>
-        <div className="text-xl font-semibold">Score Added</div>
-        <div className="text-xl font-semibold">Category</div>
+      <div className="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-5 p-4 border rounded-lg text-xs md:text-base">
+        <div className="text-xl font-semibold col-span-2 hidden md:block">
+          Behaviour
+        </div>
+        <div className="text-xl font-semibold hidden md:block">Source</div>
+        <div className="text-xl font-semibold hidden md:block">Value</div>
+        <div className="text-xl font-semibold hidden md:block">Score Added</div>
+        <div className="text-xl font-semibold hidden md:block">Category</div>
         {meta.map((item, index) => {
           if (!item.scoreAdded || item.scoreAdded === 0) return null;
           return (
             <>
+              <div className="block md:hidden">Behaviour</div>
               <div className="col-span-2">{item.behavior}</div>
-              <div>{item.source}</div>
-              <div>{item.value && item.value.toString()}</div>
-              <div>{item.scoreAdded}</div>
-              <div>{item.category}</div>
+              <div className="block md:hidden">Source</div>
+              <div className="col-span-2 md:col-span-1">{item.source}</div>
+              <div className="block md:hidden">Value</div>
+              <div className="col-span-2 md:col-span-1">
+                {" "}
+                {item.value && item.value.toString()}
+              </div>
+              <div className="block md:hidden">Score added</div>
+              <div className="col-span-2 md:col-span-1"> {item.scoreAdded}</div>
+              <div className="block md:hidden">Category</div>
+              <div className="pb-5 md:pb-0 col-span-2 md:col-span-1">
+                {" "}
+                {item.category}
+              </div>
             </>
           );
         })}
