@@ -12,7 +12,7 @@ export function CustomDisplay({ attestation }: CustomDisplayProps) {
     return (
       <>
         <div className="w-full border-b-4 border-theme-gray-1">
-          <div className="text-2xl font-semibold">Details</div>
+          <div className="text-2xl font-semibold">Attestation Details</div>
         </div>
         {schemaData.displayComponent({ attestation })}
       </>

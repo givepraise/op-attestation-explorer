@@ -1,6 +1,10 @@
+import Optimism from "./components/images/optimism.svg";
 import { OptimistCustomDisplay } from "./components/attestation/custom-displays/OptimistCustomDisplay";
+import Passport from "./components/images/passport.svg";
 import { PassportCustomDisplay } from "./components/attestation/custom-displays/PassportCustomDisplay";
+import Praise from "./components/images/praise.svg";
 import { PraiseCustomDisplay } from "./components/attestation/custom-displays/PraiseCustomDisplay";
+import RegenScore from "./components/images/regenscore.svg";
 import { RegenScoreCustomDisplay } from "./components/attestation/custom-displays/RegenScoreCustomDisplay";
 import { SchemaListItem } from "./eas/types/schema-list-item.type";
 
@@ -35,6 +39,7 @@ export const EAS_SCHEMAS: SchemaListItem[] = [
     projectUrl: "https://givepraise.xyz/",
     uid: UID_PRAISE,
     displayComponent: PraiseCustomDisplay,
+    logo: Praise,
     gqlWhere: {
       attester: {
         equals: OP_PRAISE_SAFE_ADDRESS,
@@ -54,6 +59,7 @@ export const EAS_SCHEMAS: SchemaListItem[] = [
     projectUrl: "https://regenscore.io/",
     uid: UID_REGEN_SCORE,
     displayComponent: RegenScoreCustomDisplay,
+    logo: RegenScore,
     gqlWhere: {
       schemaId: {
         equals: UID_REGEN_SCORE,
@@ -70,6 +76,7 @@ export const EAS_SCHEMAS: SchemaListItem[] = [
     projectUrl: "https://gov.optimism.io/",
     uid: UID_OPTIMIST,
     displayComponent: OptimistCustomDisplay,
+    logo: Optimism,
     gqlWhere: {
       schemaId: {
         equals: UID_OPTIMIST,
@@ -83,6 +90,7 @@ export const EAS_SCHEMAS: SchemaListItem[] = [
     projectUrl: "https://passport.gitcoin.co",
     uid: UID_PASSPORT_SCORE,
     displayComponent: PassportCustomDisplay,
+    logo: Passport,
     gqlWhere: {
       schemaId: {
         equals: UID_PASSPORT_SCORE,

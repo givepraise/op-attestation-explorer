@@ -12,5 +12,6 @@ export type SchemaListItem = {
   displayComponent?: (
     props: DisplayComponentProps
   ) => JSX.Element | Promise<JSX.Element>;
+  logo?: any;
   gqlWhere?: any;
 };

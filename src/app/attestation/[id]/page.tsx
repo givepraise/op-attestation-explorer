@@ -2,6 +2,7 @@ import { CopyButton } from "../../../components/CopyButton";
 import { CustomDisplay } from "../../../components/attestation/CustomDisplay";
 import { DEFAULT_REVALIDATE_TIME } from "../../../config";
 import { DecodedData } from "../../../eas/types/decoded-data.type";
+import Image from "next/image";
 import Link from "next/link";
 import { RawData } from "../../../components/attestation/RawData";
 import { SchemaName } from "../../../components/attestation-card/SchemaName";
@@ -13,36 +14,45 @@ import { getSchemaData } from "../../../eas/getSchemaData";
 import { getUserName } from "../../../eas/getUserName";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { shortenEthAddress } from "../../../util/string";
-
 export default async function AttestationPage({
   params,
 }: {
   params: { id: string };
 }) {
-  const { id } = params;
   dayjs.extend(relativeTime);
 
+  const { id } = params;
   const attestation = await getAttestation(id);
-
   const json: DecodedData = JSON.parse(attestation.decodedDataJson);
   const schemaData = getSchemaData(attestation.schemaId);
-
   const recipientName = await getUserName(attestation.recipient);
   const attesterName = await getUserName(attestation.attester);
+
   return (
     <>
       <SearchAndSort />
       <div className="w-full border-b-4 border-theme-gray-1">
-        <div className="text-2xl font-semibold">Attestation</div>
+        <div className="text-2xl font-semibold">
+          {schemaData?.name} Attestation
+        </div>
       </div>
 
       <div className="flex-col w-full p-5 bg-white space-y-5 rounded-xl shadow-theme-shadow-1">
-        <div className="flex justify-between">
-          <div className="flex flex-col justify-center">
-            <SchemaName uid={attestation.schemaId} />
+        {schemaData?.description && (
+          <div className="flex items-center gap-5">
+            <div className="flex-grow">{schemaData.description}</div>
+            <div className="w-28 hidden md:block">
+              <a href={schemaData.projectUrl} target="_blank">
+                <Image
+                  src={schemaData.logo}
+                  width="100"
+                  alt={schemaData?.name}
+                  className="w-28 max-w-none"
+                />
+              </a>
+            </div>
           </div>
-        </div>
-
+        )}
         <div className="flex flex-col w-full gap-5 md:flex-row md:justify-between">
           <div className="flex justify-between md:w-2/5">
             <div className="flex flex-col items-start">
@@ -107,25 +117,6 @@ export default async function AttestationPage({
             <div>{attestation.revoked ? "Yes" : "No"} </div>
           </div>
         </div>
-        {schemaData?.description && (
-          <>
-            <div className="w-full">
-              <div className="text-xl font-semibold">Description</div>
-            </div>
-
-            <div>{schemaData.description}</div>
-            <div className="w-full text-left">
-              Project link:{" "}
-              <a
-                href={schemaData.projectUrl}
-                target="_blank"
-                className="underline"
-              >
-                {schemaData.name}
-              </a>
-            </div>
-          </>
-        )}
       </div>
 
       <CustomDisplay attestation={attestation} />
