@@ -2,8 +2,10 @@ import { AttestationCardAlt } from "../../../components/attestation/AttestationC
 import { CopyButton } from "../../../components/CopyButton";
 import { DEFAULT_REVALIDATE_TIME } from "../../../config";
 import { DecodedData } from "../../../eas/types/decoded-data.type";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SearchAndSort } from "../../../components/attestations/SearchAndSort";
 import { UserIcon } from "../../../components/user/UserIcon";
+import { faFaceSadCry } from "@fortawesome/free-solid-svg-icons";
 import { getAddressFromEnsName } from "../../../viem/getAddressFromEnsName";
 import { getAllPraiseUsers } from "../../../praise/getAllPraiseUsers";
 import { getAllRecipientAttestations } from "../../../eas/getAllRecipientAttestations";
@@ -22,12 +24,24 @@ export default async function UserPage({
   const { ref } = params;
 
   let address: string | null = ref;
-  if (ref.length < 42) {
-    address = await getAddressFromEnsName(ref);
+
+  try {
+    if (ref.length < 42) {
+      address = await getAddressFromEnsName(ref);
+    }
+  } catch (e) {
+    address = null;
   }
 
   if (!address) {
-    return <div>User not found</div>;
+    return (
+      <div className="absolute top-0 flex flex-col justify-center h-screen">
+        <div className="flex flex-col items-center gap-5 text-xl">
+          <FontAwesomeIcon icon={faFaceSadCry} className="w-10 h-10" />
+          <div>User not found</div>
+        </div>
+      </div>
+    );
   }
 
   const attestations = await getAllRecipientAttestations(address);

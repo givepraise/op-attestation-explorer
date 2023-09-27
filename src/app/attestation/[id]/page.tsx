@@ -2,6 +2,7 @@ import { CopyButton } from "../../../components/CopyButton";
 import { CustomDisplay } from "../../../components/attestation/CustomDisplay";
 import { DEFAULT_REVALIDATE_TIME } from "../../../config";
 import { DecodedData } from "../../../eas/types/decoded-data.type";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
 import { RawData } from "../../../components/attestation/RawData";
@@ -9,6 +10,7 @@ import { SchemaName } from "../../../components/attestation-card/SchemaName";
 import { SearchAndSort } from "../../../components/attestations/SearchAndSort";
 import { UserIcon } from "../../../components/user/UserIcon";
 import dayjs from "dayjs";
+import { faFaceSadCry } from "@fortawesome/free-solid-svg-icons";
 import { getAttestation } from "../../../eas/getAttestation";
 import { getSchemaData } from "../../../eas/getSchemaData";
 import { getUserName } from "../../../eas/getUserName";
@@ -23,6 +25,18 @@ export default async function AttestationPage({
 
   const { id } = params;
   const attestation = await getAttestation(id);
+
+  if (!attestation) {
+    return (
+      <div className="absolute top-0 flex flex-col justify-center h-screen">
+        <div className="flex flex-col items-center gap-5 text-xl">
+          <FontAwesomeIcon icon={faFaceSadCry} className="w-10 h-10" />
+          <div>Attestation not found</div>
+        </div>
+      </div>
+    );
+  }
+
   const json: DecodedData = JSON.parse(attestation.decodedDataJson);
   const schemaData = getSchemaData(attestation.schemaId);
   const recipientName = await getUserName(attestation.recipient);
