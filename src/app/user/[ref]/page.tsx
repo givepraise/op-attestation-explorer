@@ -69,7 +69,7 @@ export default async function UserPage({
             </div>
           </div>
           <div className="flex-grow hidden md:flex"></div>
-          <div className="flex flex-col items-center gap-3">
+          <div className="flex flex-col items-start gap-3">
             {optimistName && (
               <div className="flex flex-row items-baseline sm:flex-col md:items-start gap-3 sm:gap-1">
                 <div className="text-xs text-gray-500 ">
