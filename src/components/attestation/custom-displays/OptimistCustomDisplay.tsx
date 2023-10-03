@@ -5,7 +5,7 @@ import { ImageIcon } from "../../user/user-icon/ImageIcon";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { getDecodedValue } from "../../../eas/getDecodedValue";
 import { getProfileMetaData } from "../../../eas/optimist/getProfileMetadata";
-import { isEmpty } from "lodash";
+import isEmpty from "lodash/isEmpty";
 
 type CustomDisplayProps = {
   attestation: Attestation;
