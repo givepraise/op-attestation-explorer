@@ -35,7 +35,7 @@ export async function UserIconInner({
   let url;
 
   // Get profile image from ENS
-  url = await getEnsAvatar(address);
+  //url = await getEnsAvatar(address);
 
   // Get profile image from Optimist attestation
   if (!url) {
