@@ -3,9 +3,10 @@ import { publicClient } from "./client";
 
 export const getAddressFromEnsName = React.cache(async (name: string) => {
   try {
-    return publicClient.getEnsAddress({
+    const ensAddress = await publicClient.getEnsAddress({
       name: name,
     });
+    return ensAddress;
   } catch (e) {
     console.error(e);
     return null;
