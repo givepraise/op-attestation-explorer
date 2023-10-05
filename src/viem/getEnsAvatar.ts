@@ -8,9 +8,10 @@ export const getEnsAvatar = React.cache(async (address: string) => {
       address: address as `0x${string}`,
     });
     if (ensName) {
-      return publicClient.getEnsAvatar({
+       const ensAvatar = await publicClient.getEnsAvatar({
         name: normalize(ensName),
       });
+      return ensAvatar;
     }
   } catch (e) {
     console.error(e);
