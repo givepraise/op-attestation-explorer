@@ -21,7 +21,7 @@ export const DEFAULT_REVALIDATE_TIME = 60 * 15; // 15 minutes
 export const UID_OPTIMIST =
   "0xac4c92fc5c7babed88f78a917cdbcdc1c496a8f4ab2d5b2ec29402736b2cf929";
 export const UID_PRAISE =
-  "0x1c622d3fdb24759ed71266b218c4750ad54549a7612451851f3b0432ce167e68";
+  "0x5f2b0ffc7e874c2624e38aea44a5e68bebe69dbd7e181cdbb8ab657d05b74301";
 export const UID_REGEN_SCORE =
   "0xa1285d8c9b3164eb94f22a4084d4d01fc7fb66d27c56ddba32033c63a5ed76cd";
 export const UID_PASSPORT_SCORE =
