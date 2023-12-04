@@ -1,5 +1,6 @@
+import { DEFAULT_REVALIDATE_TIME, WHERE_ALL_SCHEMAS } from "../config";
+
 import React from "react";
-import { WHERE_ALL_SCHEMAS } from "../config";
 import { getClient } from "../apollo/getClient";
 import { getSchemaData } from "./getSchemaData";
 import { gql } from "@apollo/client";
@@ -31,5 +32,7 @@ export const getAllSchemaAttestationsCount = unstable_cache(
     }
 
     return result.data.aggregateAttestation._count.id;
-  }
+  },
+  ["getAllSchemaAttestationsCount"],
+  { revalidate: DEFAULT_REVALIDATE_TIME }
 );
