@@ -31,3 +31,4 @@ export default async function SchemaAttestationListPage({
 }
 
 export const revalidate = DEFAULT_REVALIDATE_TIME;
+export const dynamic = "force-static";

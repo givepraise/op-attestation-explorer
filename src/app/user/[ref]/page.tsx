@@ -127,3 +127,4 @@ export default async function UserPage({
 }
 
 export const revalidate = DEFAULT_REVALIDATE_TIME;
+export const dynamic = "force-static";
