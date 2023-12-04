@@ -1,5 +1,4 @@
 import React from "react";
-import { getEnsName } from "../../viem/getEnsName";
 import { getUserName } from "../../eas/getUserName";
 import { shortenEthAddress } from "../../util/string";
 
