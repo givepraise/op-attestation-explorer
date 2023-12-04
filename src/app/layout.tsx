@@ -11,6 +11,7 @@ import { faHourglassEnd } from "@fortawesome/free-solid-svg-icons";
 export const metadata: Metadata = {
   title: "Optimism Attestation Explorer",
   description: "Browse attestations on Optimism.",
+  metadataBase: new URL("https://citizen-attestations.xyz"),
 };
 
 export default function RootLayout({
