@@ -64,7 +64,6 @@ export default async function UserPage({
       <div className="w-full border-b-4 border-theme-gray-1">
         <div className="text-2xl font-semibold">User</div>
       </div>
-
       <div className="flex flex-col items-center w-full gap-5">
         <div className="flex flex-col items-center w-full p-5 gap-10 bg-dots sm:flex-row rounded-xl shadow-theme-shadow-1">
           <UserIcon address={address} variant="square" size="large" />
