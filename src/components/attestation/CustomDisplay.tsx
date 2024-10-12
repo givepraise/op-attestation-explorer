@@ -1,12 +1,12 @@
 import { Attestation } from "../../eas/types/gql/attestation.type";
-import { getSchemaData } from "../../eas/getSchemaData";
+import { getSchemaByUid } from "../../eas/getSchemaData";
 
 type CustomDisplayProps = {
   attestation: Attestation;
 };
 
 export function CustomDisplay({ attestation }: CustomDisplayProps) {
-  const schemaData = getSchemaData(attestation.schemaId);
+  const schemaData = getSchemaByUid(attestation.schemaId);
 
   if (schemaData?.displayComponent) {
     return (

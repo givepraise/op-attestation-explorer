@@ -1,20 +1,21 @@
-import { Attestation } from "../../eas/types/gql/attestation.type";
-import { From } from "../attestation-card/From";
+import {Attestation} from "../../eas/types/gql/attestation.type";
+import {From} from "../attestation-card/From";
 import Link from "next/link";
-import { Recipient } from "../attestation-card/Recipient";
-import { SchemaName } from "../attestation-card/SchemaName";
-import { Time } from "../attestation-card/Time";
-import { Uid } from "../attestation-card/Uid";
-import { UserIcon } from "../user/UserIcon";
-import { getUserName } from "../../eas/getUserName";
+import {Recipient} from "../attestation-card/Recipient";
+import {SchemaName} from "../attestation-card/SchemaName";
+import {Time} from "../attestation-card/Time";
+import {Uid} from "../attestation-card/Uid";
+import {UserIcon} from "../user/UserIcon";
+import {chains} from "@/config";
 
 type AttestationCardProps = {
   attestation: Attestation;
+  chain?: chains;
 };
 
-export async function AttestationCard({ attestation }: AttestationCardProps) {
+export async function AttestationCard({ attestation, chain }: AttestationCardProps) {
   return (
-    <Link href={`/attestation/${attestation.id}`}>
+    <Link href={`/attestation/${attestation.id}/${chain || chains.OP}`}>
       <div className="flex items-center justify-start w-full p-5 text-sm bg-white gap-10 md:text-base gap-x-5 hover:ring-4 hover:ring-theme-3 hover:ring-opacity-40 rounded-xl shadow-theme-shadow-1">
         <UserIcon address={attestation.recipient} />
         <div className="flex flex-col">

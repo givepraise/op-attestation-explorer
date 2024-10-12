@@ -1,10 +1,9 @@
-import { DEFAULT_REVALIDATE_TIME, WHERE_ALL_SCHEMAS } from "../config";
-
-import React from "react";
-import { getClient } from "../apollo/getClient";
-import { getSchemaData } from "./getSchemaData";
-import { gql } from "@apollo/client";
+import { DEFAULT_REVALIDATE_TIME } from "../config";
+import { getClient} from "../apollo/getClient";
+import { getSchemaByUid } from "./getSchemaData";
+import {gql} from "@apollo/client";
 import { unstable_cache } from "next/cache";
+import {SchemaListItem} from "@/eas/types/schema-list-item.type";
 
 const query = gql`
   query AggregateAttestation($where: AttestationWhereInput) {
@@ -17,13 +16,12 @@ const query = gql`
 `;
 
 export const getAllSchemaAttestationsCount = unstable_cache(
-  async (uid: string): Promise<number> => {
-    const schema = getSchemaData(uid);
-
-    const result = await getClient().query<AllAttestationsCountResult>({
-      query,
-      fetchPolicy: "cache-first",
-      variables: { where: schema?.gqlWhere },
+  async (schema: SchemaListItem): Promise<number> => {
+    const chain = schema.chain;
+    const result = await getClient(chain).query<AllAttestationsCountResult>({
+        query,
+        fetchPolicy: "cache-first",
+        variables: { where: schema.gqlWhere },
     });
 
     if (result.error) {

@@ -6,17 +6,20 @@ import Link from "next/link";
 import React from "react";
 import { getAllAttestationsCount } from "../../eas/getAllAttestationsCount";
 import { getAllSchemaAttestationsCount } from "../../eas/getAllSchemaAttestationsCount";
+import {getSchemaBySlug} from "@/eas/getSchemaData";
 
 type SchemaAttestationsPageChooserProps = {
-  uid: string;
+    slug: string;
   currentPage: number;
 };
 
 async function SchemaAttestationsPageChooser({
-  uid,
+                                                 slug,
   currentPage,
 }: SchemaAttestationsPageChooserProps) {
-  const attestationsCount = await getAllSchemaAttestationsCount(uid);
+    const schema = getSchemaBySlug(slug);
+    if (!schema) return null;
+  const attestationsCount = await getAllSchemaAttestationsCount(schema);
   const totalPages = Math.ceil(attestationsCount / ATTESTATIONS_PER_PAGE);
   currentPage = Number(currentPage);
 
@@ -26,7 +29,7 @@ async function SchemaAttestationsPageChooser({
         {/* First Button */}
         <div className="hidden mr-4 md:inline-block hover:border-b-2 hover:border-theme-1">
           {currentPage > 1 && (
-            <Link href={`/schema/${uid}/1`}>
+            <Link href={`/name/${slug}/1`}>
               <FontAwesomeIcon icon={faArrowLeft} className="w-4 h-4 pr-2" />
               First
             </Link>
@@ -36,7 +39,7 @@ async function SchemaAttestationsPageChooser({
         {/* Previous Button */}
         <div className="inline-block hover:border-b-2 hover:border-theme-1">
           {currentPage > 1 && (
-            <Link href={`/schema/${uid}/${currentPage - 1}`}>
+            <Link href={`/name/${slug}/${currentPage - 1}`}>
               {" "}
               <FontAwesomeIcon icon={faArrowLeft} className="w-4 h-4 pr-2" />
               Previous
@@ -54,7 +57,7 @@ async function SchemaAttestationsPageChooser({
         {/* Next Button */}
         <div className="inline-block mr-4 hover:border-b-2 hover:border-theme-1">
           {currentPage < totalPages && (
-            <Link href={`/schema/${uid}/${currentPage + 1}`}>
+            <Link href={`/name/${slug}/${currentPage + 1}`}>
               Next
               <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4 pl-2" />
             </Link>
@@ -64,7 +67,7 @@ async function SchemaAttestationsPageChooser({
         {/* Last Button */}
         <div className="hidden md:inline-block hover:border-b-2 hover:border-theme-1">
           {currentPage < totalPages && (
-            <Link href={`/schema/${uid}/${totalPages}`}>
+            <Link href={`/name/${slug}/${totalPages}`}>
               Last
               <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4 pl-2" />
             </Link>

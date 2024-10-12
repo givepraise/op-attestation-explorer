@@ -1,5 +1,4 @@
 import { AttestationsLoadingList } from "../../../../components/attestations/AttestationsLoadingList";
-import { DEFAULT_REVALIDATE_TIME } from "../../../../config";
 import { SchemaAttestationList } from "../../../../components/attestations/SchemaAttestationsList";
 import SchemaAttestationsPageChooser from "../../../../components/attestations/SchemaAttestationsPageChooser";
 import SchemaButtons from "../../../../components/attestations/SchemaButtons";
@@ -8,7 +7,7 @@ import { Suspense } from "react";
 
 type SchemaAttestationListPageProps = {
   params: {
-    uid: string;
+      slug: string;
     pageNumber: number;
   };
 };
@@ -16,18 +15,16 @@ type SchemaAttestationListPageProps = {
 export default async function SchemaAttestationListPage({
   params,
 }: SchemaAttestationListPageProps) {
-  const { uid, pageNumber } = params;
+  const { slug, pageNumber } = params;
 
   return (
     <>
       <SearchAndSort />
-      <SchemaButtons uid={uid} />
+      <SchemaButtons slug={slug} />
       <Suspense fallback={<AttestationsLoadingList />}>
-        <SchemaAttestationList uid={uid} page={pageNumber} />
+        <SchemaAttestationList slug={slug} page={pageNumber} />
       </Suspense>
-      <SchemaAttestationsPageChooser uid={uid} currentPage={pageNumber} />
+      <SchemaAttestationsPageChooser slug={slug} currentPage={pageNumber} />
     </>
   );
 }
-
-export const revalidate = DEFAULT_REVALIDATE_TIME;

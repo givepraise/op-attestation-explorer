@@ -1,14 +1,19 @@
 import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
-import { DEFAULT_REVALIDATE_TIME, EAS_API_URL } from "../config";
+import {chains, DEFAULT_REVALIDATE_TIME, getEASApiUrl} from "../config";
 
 import { registerApolloClient } from "@apollo/experimental-nextjs-app-support/rsc";
 
-export const { getClient } = registerApolloClient(() => {
+function createApolloClient(uri: string) {
   return new ApolloClient({
     cache: new InMemoryCache(),
     link: new HttpLink({
-      uri: EAS_API_URL,
+      uri,
       fetchOptions: { next: { revalidate: DEFAULT_REVALIDATE_TIME } },
     }),
   });
-});
+}
+
+export const getClient = (chain?: chains) => {
+  const {getClient} = registerApolloClient(() => createApolloClient(getEASApiUrl(chain)));
+    return getClient();
+};
