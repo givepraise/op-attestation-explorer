@@ -16,9 +16,9 @@ export function Header() {
           <div className="py-5">
             <Link href="/">
               <Image
-                src="/optimism-attestations.svg"
+                src="/logo.svg"
                 alt="Optimism Attestations"
-                width={150}
+                width={20}
                 height={20}
               />
             </Link>

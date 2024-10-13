@@ -6,15 +6,23 @@ import {SchemaName} from "../attestation-card/SchemaName";
 import {Time} from "../attestation-card/Time";
 import {Uid} from "../attestation-card/Uid";
 import {UserIcon} from "../user/UserIcon";
-import {chainLogos, chains} from "@/config";
+import {chainLogos, chains, UID_PASSPORT_SCORE} from "@/config";
 import Image from "next/image";
+import {SchemaListItem} from "@/eas/types/schema-list-item.type";
+import {extractPassportScore} from "@/util/helpers";
 
 type AttestationCardProps = {
   attestation: Attestation;
-  chain?: chains;
+  schema?: SchemaListItem;
 };
 
-export async function AttestationCard({ attestation, chain }: AttestationCardProps) {
+export async function AttestationCard({ attestation, schema }: AttestationCardProps) {
+  const {chain, uid} = schema || {};
+  const isPassportScore = uid === UID_PASSPORT_SCORE;
+  let passportScore = '0';
+  if (isPassportScore) {
+    passportScore = extractPassportScore(attestation);
+  }
   return (
     <Link href={`/attestation/${attestation.id}/${chain || chains.OP}`}>
       <div className="flex items-center justify-start w-full p-5 text-sm bg-white gap-10 md:text-base gap-x-5 hover:ring-4 hover:ring-theme-3 hover:ring-opacity-40 rounded-xl shadow-theme-shadow-1">
@@ -28,6 +36,7 @@ export async function AttestationCard({ attestation, chain }: AttestationCardPro
         <div className="hidden md:block">
           <Time time={attestation.time.toString()} />
         </div>
+        {isPassportScore && <div>{passportScore}</div>}
         <Image src={chainLogos[chain || chains.OP]} width={20} height={20} alt='chain logo'/>
         <div className="flex-grow"></div>
         <div className="@3xl:grid @3xl:grid-cols-3 @3xl:w-56 text-left hidden">

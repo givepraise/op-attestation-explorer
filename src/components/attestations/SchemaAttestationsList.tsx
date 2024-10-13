@@ -19,13 +19,12 @@ export async function SchemaAttestationList({
     ATTESTATIONS_PER_PAGE,
     (page - 1) * ATTESTATIONS_PER_PAGE,
   );
-  const chain = schema?.chain;
 
   return (
     <ol className="w-full @container">
       {attestations.map((att) => (
         <li key={att.id} className="pb-5">
-          <AttestationCard attestation={att} chain={chain} />
+          <AttestationCard attestation={att} schema={schema} />
         </li>
       ))}
     </ol>
