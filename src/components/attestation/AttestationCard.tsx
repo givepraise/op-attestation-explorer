@@ -6,7 +6,8 @@ import {SchemaName} from "../attestation-card/SchemaName";
 import {Time} from "../attestation-card/Time";
 import {Uid} from "../attestation-card/Uid";
 import {UserIcon} from "../user/UserIcon";
-import {chains} from "@/config";
+import {chainLogos, chains} from "@/config";
+import Image from "next/image";
 
 type AttestationCardProps = {
   attestation: Attestation;
@@ -27,6 +28,7 @@ export async function AttestationCard({ attestation, chain }: AttestationCardPro
         <div className="hidden md:block">
           <Time time={attestation.time.toString()} />
         </div>
+        <Image src={chainLogos[chain || chains.OP]} width={20} height={20} alt='chain logo'/>
         <div className="flex-grow"></div>
         <div className="@3xl:grid @3xl:grid-cols-3 @3xl:w-56 text-left hidden">
           <div className="flex items-center w-12 text-xs text-gray-500">

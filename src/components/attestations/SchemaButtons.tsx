@@ -15,7 +15,7 @@ export default function SchemaButtons({ slug }: SchemaButtonsProps) {
   };
 
   return (
-    <div className="flex w-full gap-5 p-2 overflow-scroll md:p-0 md:overflow-visible">
+    <div className="flex flex-wrap w-full gap-5 p-2 overflow-scroll md:p-0 md:overflow-visible">
       <Link href="/1">
         <div className={className()}>All</div>
       </Link>

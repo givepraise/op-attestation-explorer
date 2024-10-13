@@ -7,10 +7,17 @@ import { PraiseCustomDisplay } from "./components/attestation/custom-displays/Pr
 import RegenScore from "./components/images/regenscore.svg";
 import { RegenScoreCustomDisplay } from "./components/attestation/custom-displays/RegenScoreCustomDisplay";
 import { SchemaListItem } from "./eas/types/schema-list-item.type";
+import OPImage from "./components/images/optimism-logo.png";
+import BaseImage from "./components/images/base-logo.webp";
 
 export enum chains {
   OP = "optimism",
   BASE = "base",
+}
+
+export const chainLogos = {
+    [chains.OP]: OPImage,
+    [chains.BASE]: BaseImage,
 }
 
 export const getEASApiUrl = (chain?: chains) => `https://${chain || chains.OP}.easscan.org/graphql`;
@@ -20,7 +27,7 @@ export const PRAISE_API_URL = "https://gnosisdao.givepraise.xyz/api/users";
 export const USERS_PER_PAGE = 15;
 export const ATTESTATIONS_PER_PAGE = 15;
 
-export const DEFAULT_REVALIDATE_TIME = 1; // 15 minutes
+export const DEFAULT_REVALIDATE_TIME = 60 * 16; // 15 minutes
 
 // The schema IDs for the EAS schemas
 export const UID_OPTIMIST =
@@ -43,8 +50,8 @@ export const OP_PRAISE_SAFE_ADDRESS =
 
 export const EAS_SCHEMAS: SchemaListItem[] = [
   {
-    name: "Praise",
-    slug: "praise",
+    name: "Praise Discord Bot",
+    slug: "praise-discord-bot",
     description:
       "Praise is a community intelligence system that promotes active participation and collaboration through peer recognition and rewards. We help communities become more intelligent, productive and inclusive by providing a simple way for community members to acknowledge, praise and reward each other’s contributions.",
     projectUrl: "https://givepraise.xyz/",

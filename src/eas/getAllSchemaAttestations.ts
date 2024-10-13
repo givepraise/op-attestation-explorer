@@ -3,8 +3,7 @@ import { Attestation } from "./types/gql/attestation.type";
 import { CORE_ATTESTATION_FIELDS } from "./types/fragments/core-attestation-fields.fragment";
 import { DEFAULT_REVALIDATE_TIME } from "../config";
 import { getClient} from "../apollo/getClient";
-import { getSchemaByUid } from "./getSchemaData";
-import {gql, HttpLink, OperationVariables, QueryOptions} from "@apollo/client";
+import {gql} from "@apollo/client";
 import { unstable_cache } from "next/cache";
 import {SchemaListItem} from "@/eas/types/schema-list-item.type";
 

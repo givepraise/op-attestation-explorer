@@ -1,6 +1,6 @@
 # Optimism Citizen Attestations
 
-An attestation explorer for Optimism focusing on attestations that are relevant for the OP Citizens eligibility process.
+An attestation explorer for the Superchain, focusing on the reputation of people and projects relevant to OP governance.
 
 ## What Are Attestations?
 

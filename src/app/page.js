@@ -17,8 +17,7 @@ export default function Page() {
     <div className="flex flex-col items-start justify-center w-full gap-20 md:max-w-3xl">
       <div className="flex justify-center w-full landingpage-gradient-1">
         <div className="max-w-2xl text-3xl md:text-4xl mt-10 md:mt-0 font-bold leading-[2.5rem] md:leading-[3.5rem] text-center">
-          An attestation explorer for Optimism focusing on attestations that are
-          relevant for the OP Citizens eligibility process.
+          An attestation explorer for the Superchain, focusing on the reputation of people and projects relevant to OP governance.
         </div>
       </div>
 
