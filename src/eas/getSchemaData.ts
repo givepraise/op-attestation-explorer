@@ -1,5 +1,9 @@
 import { EAS_SCHEMAS } from "../config";
 
-export function getSchemaData(schemaUid: string) {
+export function getSchemaByUid(schemaUid: string) {
   return EAS_SCHEMAS.find((schema) => schema.uid === schemaUid);
+}
+
+export function getSchemaBySlug(schemaSlug: string) {
+  return EAS_SCHEMAS.find((schema) => schema.slug === schemaSlug);
 }

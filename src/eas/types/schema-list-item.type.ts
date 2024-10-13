@@ -1,4 +1,5 @@
 import { Attestation } from "./gql/attestation.type";
+import {chains} from "@/config";
 
 type DisplayComponentProps = {
   attestation: Attestation;
@@ -6,6 +7,7 @@ type DisplayComponentProps = {
 
 export type SchemaListItem = {
   name: string;
+  slug: string;
   description?: string;
   projectUrl?: string;
   uid: string;
@@ -14,4 +16,5 @@ export type SchemaListItem = {
   ) => JSX.Element | Promise<JSX.Element>;
   logo?: any;
   gqlWhere?: any;
+  chain?: chains;
 };

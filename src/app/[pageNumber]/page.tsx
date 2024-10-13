@@ -22,5 +22,3 @@ export default async function AttestationListPage({
     </>
   );
 }
-
-export const revalidate = DEFAULT_REVALIDATE_TIME;
