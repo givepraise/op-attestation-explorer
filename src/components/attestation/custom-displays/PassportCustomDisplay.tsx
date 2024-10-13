@@ -1,24 +1,12 @@
-import { Attestation } from "../../../eas/types/gql/attestation.type";
-import { DecodedData } from "../../../eas/types/decoded-data.type";
-import { getDecodedValue } from "../../../eas/getDecodedValue";
+import { Attestation } from "@/eas/types/gql/attestation.type";
+import {extractPassportScore} from "@/util/helpers";
 
 type CustomDisplayProps = {
   attestation: Attestation;
 };
 
 export function PassportCustomDisplay({ attestation }: CustomDisplayProps) {
-  const json: DecodedData = JSON.parse(attestation.decodedDataJson);
-
-  const score = getDecodedValue<bigint>(json, "score");
-  const divisor = BigInt(1000000000000000000);
-  let formattedScore = "0";
-  if (score) {
-    formattedScore = `${(score / divisor).toString()}.${(
-      score % divisor
-    ).toString()}`;
-    formattedScore = formattedScore.replace(/\.?0+$/, "");
-  }
-
+  const formattedScore = extractPassportScore(attestation);
   return (
     <div className="flex flex-col w-full gap-10">
       <div className="flex flex-col w-full gap-10 sm:flex-row">

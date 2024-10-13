@@ -9,6 +9,9 @@ import { RegenScoreCustomDisplay } from "./components/attestation/custom-display
 import { SchemaListItem } from "./eas/types/schema-list-item.type";
 import OPImage from "./components/images/optimism-logo.png";
 import BaseImage from "./components/images/base-logo.webp";
+import MetricsGardenLogo from "./components/images/metrics-garden.png";
+import DevouchLogo from "./components/images/devouch.svg";
+import ColinksLogo from "./components/images/colinks-logo.png";
 
 export enum chains {
   OP = "optimism",
@@ -125,8 +128,7 @@ export const EAS_SCHEMAS: SchemaListItem[] = [
         "Praise is a community intelligence system that promotes active participation and collaboration through peer recognition and rewards. We help communities become more intelligent, productive and inclusive by providing a simple way for community members to acknowledge, praise and reward each other’s contributions.",
     projectUrl: "https://givepraise.xyz/",
     uid: UID_PRAISE_FARCASTER,
-    displayComponent: PassportCustomDisplay,
-    logo: Passport,
+    logo: Praise,
     gqlWhere: {
       schemaId: {
         equals: UID_PRAISE_FARCASTER,
@@ -144,8 +146,7 @@ export const EAS_SCHEMAS: SchemaListItem[] = [
         "Coordinape is a decentralized, trustless, and permissionless protocol for distributing funds and reputation in a community. It is designed to be a simple, transparent, and fair way to distribute funds and reputation in a community.",
     projectUrl: "https://coordinape.com/",
     uid: UID_PRAISE_FARCASTER,
-    displayComponent: PassportCustomDisplay,
-    logo: Passport,
+    logo: ColinksLogo,
     gqlWhere: {
       schemaId: {
         equals: UID_PRAISE_FARCASTER,
@@ -160,10 +161,9 @@ export const EAS_SCHEMAS: SchemaListItem[] = [
     name: "DeVouch",
     slug: "devouch",
     description: "DeVouch is a decentralized, trustless, and permissionless protocol for distributing funds and reputation in a community. It is designed to be a simple, transparent, and fair way to distribute funds and reputation in a community.",
-    projectUrl: "https://coordinape.com/",
+    projectUrl: "https://devouch.xyz/",
     uid: UID_DEVOUCH,
-    displayComponent: PassportCustomDisplay,
-    logo: Passport,
+    logo: DevouchLogo,
     gqlWhere: {
       schemaId: {
         equals: UID_DEVOUCH,
@@ -176,8 +176,7 @@ export const EAS_SCHEMAS: SchemaListItem[] = [
     description: "Metrics Garden is a decentralized, trustless, and permissionless protocol for distributing funds and reputation in a community. It is designed to be a simple, transparent, and fair way to distribute funds and reputation in a community.",
     projectUrl: "https://www.metricsgarden.xyz/",
     uid: UID_METRICS_GARDEN,
-    displayComponent: PassportCustomDisplay,
-    logo: Passport,
+    logo: MetricsGardenLogo,
     gqlWhere: {
       schemaId: {
         equals: UID_METRICS_GARDEN,
