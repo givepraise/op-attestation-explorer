@@ -18,8 +18,8 @@ export function Header() {
               <Image
                 src="/logo.svg"
                 alt="Optimism Attestations"
-                width={20}
-                height={20}
+                width={40}
+                height={40}
               />
             </Link>
           </div>
