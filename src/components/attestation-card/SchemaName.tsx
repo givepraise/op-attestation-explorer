@@ -1,18 +1,18 @@
-import { EAS_SCHEMAS } from "../../config";
-import React from "react";
+import { EAS_SCHEMAS } from '../../config';
+import React from 'react';
 
 type SchemaNameProps = {
-  uid: string;
+	uid: string;
 };
 
 export const SchemaName = React.memo(function SchemaName({
-  uid,
+	uid,
 }: SchemaNameProps) {
-  const schema = EAS_SCHEMAS.find((schema) => schema.uid === uid);
+	const schema = EAS_SCHEMAS.find(schema => schema.uid === uid);
 
-  return (
-    <div className="w-32 px-2 py-1 text-xs text-center border rounded-md bg-theme-gray-1">
-      {schema?.name}
-    </div>
-  );
+	return (
+		<div className='w-32 px-2 py-1 text-xs text-center border rounded-md bg-theme-gray-1'>
+			{schema?.name}
+		</div>
+	);
 });

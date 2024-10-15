@@ -1,4 +1,4 @@
 export interface Recipient {
-  address: string;
-  attestations: number;
+	address: string;
+	attestations: number;
 }

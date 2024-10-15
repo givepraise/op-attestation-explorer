@@ -7,8 +7,8 @@
  * @returns {string}
  */
 export const shortenEthAddress = (address?: string): string | undefined => {
-  if (!address) return address;
-  return `${address.substring(0, 6)}...${address.substring(
-    address.length - 4
-  )}`;
+	if (!address) return address;
+	return `${address.substring(0, 6)}...${address.substring(
+		address.length - 4,
+	)}`;
 };

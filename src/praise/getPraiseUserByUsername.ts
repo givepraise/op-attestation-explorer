@@ -1,5 +1,5 @@
-import { PraiseUser } from "./types/user";
+import { PraiseUser } from './types/user';
 
 export function getPraiseUserByUsername(users: PraiseUser[], username: string) {
-  return users.find((user) => user.username === username);
+	return users.find(user => user.username === username);
 }

@@ -1,7 +1,7 @@
 type AllAttestationsCountResult = {
-  aggregateAttestation: {
-    _count: {
-      id: number;
-    };
-  };
+	aggregateAttestation: {
+		_count: {
+			id: number;
+		};
+	};
 };

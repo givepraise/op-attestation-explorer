@@ -1,5 +1,5 @@
-import { Recipient } from "./recipient.type";
+import { Recipient } from './recipient.type';
 
 export type AllRecipientsResult = {
-  recipients: Recipient[];
+	recipients: Recipient[];
 };

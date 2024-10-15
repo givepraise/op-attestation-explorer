@@ -1,3 +1,3 @@
-export type GetUsersSortBy = "username" | "attestations";
+export type GetUsersSortBy = 'username' | 'attestations';
 
-export type GetUsersSortOrder = "asc" | "desc";
+export type GetUsersSortOrder = 'asc' | 'desc';
