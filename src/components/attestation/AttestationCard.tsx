@@ -64,7 +64,7 @@ export async function AttestationCard({
 					</div>
 					<Uid uid={attestation.id} className='col-span-2' />
 				</div>
-				<SchemaName uid={attestation.schemaId} />
+				<SchemaName name={schema?.name} uid={attestation.schemaId} />
 			</div>
 		</Link>
 	);

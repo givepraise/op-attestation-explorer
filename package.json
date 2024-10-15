@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --ext .ts --ext .tsx",
-    "lint:fix": "eslint . --ext .ts --ext .tsx --fix"
+    "lint": "eslint . --ext .ts --ext .tsx --ext .js",
+    "lint:fix": "eslint . --ext .ts --ext .tsx --fix --ext .js"
   },
   "dependencies": {
     "@apollo/client": "^3.8.8",
