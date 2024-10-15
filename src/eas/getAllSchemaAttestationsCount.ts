@@ -1,6 +1,5 @@
 import { DEFAULT_REVALIDATE_TIME } from '../config';
 import { getClient } from '../apollo/getClient';
-import { getSchemaByUid } from './getSchemaData';
 import { gql } from '@apollo/client';
 import { unstable_cache } from 'next/cache';
 import { SchemaListItem } from '@/eas/types/schema-list-item.type';

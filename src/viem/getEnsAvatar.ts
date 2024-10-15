@@ -1,4 +1,3 @@
-import React from 'react';
 import { normalize } from 'viem/ens';
 import { publicClient } from './client';
 import { unstable_cache } from 'next/cache';

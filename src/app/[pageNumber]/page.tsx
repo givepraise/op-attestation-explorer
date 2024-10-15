@@ -1,7 +1,6 @@
 import { AttestationList } from '../../components/attestations/AttestationsList';
 import { AttestationsLoadingList } from '../../components/attestations/AttestationsLoadingList';
 import AttestationsPageChooser from '../../components/attestations/AttestationsPageChooser';
-import { DEFAULT_REVALIDATE_TIME } from '../../config';
 import SchemaButtons from '../../components/attestations/SchemaButtons';
 import { SearchAndSort } from '../../components/attestations/SearchAndSort';
 import { Suspense } from 'react';

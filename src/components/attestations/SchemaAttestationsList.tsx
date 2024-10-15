@@ -1,8 +1,7 @@
 import { ATTESTATIONS_PER_PAGE } from '../../config';
 import { AttestationCard } from '../attestation/AttestationCard';
-import { getAllAttestations } from '../../eas/getAllAttestations';
 import { getAllSchemaAttestations } from '../../eas/getAllSchemaAttestations';
-import { getSchemaBySlug, getSchemaByUid } from '@/eas/getSchemaData';
+import { getSchemaBySlug } from '@/eas/getSchemaData';
 
 type AttestationListProps = {
 	slug: string;

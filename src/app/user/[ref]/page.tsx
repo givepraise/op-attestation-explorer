@@ -1,6 +1,5 @@
 import { AttestationCardAlt } from '../../../components/attestation/AttestationCardAlt';
 import { CopyButton } from '../../../components/CopyButton';
-import { DEFAULT_REVALIDATE_TIME } from '../../../config';
 import { DecodedData } from '../../../eas/types/decoded-data.type';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SearchAndSort } from '../../../components/attestations/SearchAndSort';

@@ -1,10 +1,12 @@
 {
+  "plugins": ["import", "unused-imports"],
   "extends": [
     "next/core-web-vitals",
     "plugin:@next/next/recommended",
     "plugin:prettier/recommended"
   ],
   "rules": {
+    "unused-imports/no-unused-imports": "error",
     "prettier/prettier": ["error"]
   }
 }
