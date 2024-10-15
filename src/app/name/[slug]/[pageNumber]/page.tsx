@@ -1,9 +1,9 @@
+import { Suspense } from 'react';
 import { AttestationsLoadingList } from '../../../../components/attestations/AttestationsLoadingList';
 import { SchemaAttestationList } from '../../../../components/attestations/SchemaAttestationsList';
 import SchemaAttestationsPageChooser from '../../../../components/attestations/SchemaAttestationsPageChooser';
 import SchemaButtons from '../../../../components/attestations/SchemaButtons';
 import { SearchAndSort } from '../../../../components/attestations/SearchAndSort';
-import { Suspense } from 'react';
 
 type SchemaAttestationListPageProps = {
 	params: {

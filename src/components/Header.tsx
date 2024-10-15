@@ -1,12 +1,11 @@
 'use client';
 
 import { RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
-import { chains, wagmiConfig } from '../wagmi/wagmiConfig';
-
-import ConnectWallet from './ConnectWallet';
 import Image from 'next/image';
 import Link from 'next/link';
 import { WagmiConfig } from 'wagmi';
+import ConnectWallet from './ConnectWallet';
+import { chains, wagmiConfig } from '../wagmi/wagmiConfig';
 
 export function Header() {
 	return (

@@ -1,11 +1,13 @@
 {
   "plugins": ["import", "unused-imports"],
+  "parser": "@typescript-eslint/parser",
   "extends": [
     "next/core-web-vitals",
     "plugin:@next/next/recommended",
     "plugin:prettier/recommended"
   ],
   "rules": {
+    "react/no-unescaped-entities": "warn",
     "unused-imports/no-unused-imports": "error",
     "unused-imports/no-unused-vars": [
       "error",
@@ -16,6 +18,21 @@
         "argsIgnorePattern": "^_"
       }
     ],
-    "prettier/prettier": ["error"]
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          ["internal", "parent", "sibling"],
+          "index",
+          "object",
+          "type"
+        ]
+      }
+    ],
+    "prettier/prettier": ["error"],
+    "import/named": "error",
+    "import/no-duplicates": ["error", { "considerQueryString": true }]
   }
 }

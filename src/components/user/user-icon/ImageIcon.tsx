@@ -1,8 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import { SvgIcon } from './SvgIcon';
 import { useState } from 'react';
+import { SvgIcon } from './SvgIcon';
 
 type ImageIconProps = {
 	url: string;

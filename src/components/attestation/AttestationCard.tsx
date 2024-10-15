@@ -1,13 +1,13 @@
+import Link from 'next/link';
+import Image from 'next/image';
 import { Attestation } from '../../eas/types/gql/attestation.type';
 import { From } from '../attestation-card/From';
-import Link from 'next/link';
 import { Recipient } from '../attestation-card/Recipient';
 import { SchemaName } from '../attestation-card/SchemaName';
 import { Time } from '../attestation-card/Time';
 import { Uid } from '../attestation-card/Uid';
 import { UserIcon } from '../user/UserIcon';
 import { chainLogos, chains, UID_PASSPORT_SCORE } from '@/config';
-import Image from 'next/image';
 import { SchemaListItem } from '@/eas/types/schema-list-item.type';
 import { extractPassportScore } from '@/util/helpers';
 

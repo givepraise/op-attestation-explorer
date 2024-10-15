@@ -1,12 +1,12 @@
 import './globals.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Footer } from '../components/Footer';
-import { Header } from '../components/Header';
-import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { faHourglassEnd } from '@fortawesome/free-solid-svg-icons';
+import { Footer } from '../components/Footer';
+import { Header } from '../components/Header';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
 	title: 'Optimism Attestation Explorer',

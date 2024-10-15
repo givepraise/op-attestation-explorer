@@ -1,7 +1,6 @@
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
-import { chains, DEFAULT_REVALIDATE_TIME, getEASApiUrl } from '../config';
-
 import { registerApolloClient } from '@apollo/experimental-nextjs-app-support/rsc';
+import { chains, DEFAULT_REVALIDATE_TIME, getEASApiUrl } from '../config';
 
 function createApolloClient(uri: string) {
 	return new ApolloClient({

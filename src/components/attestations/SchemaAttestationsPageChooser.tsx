@@ -1,9 +1,8 @@
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-
-import { ATTESTATIONS_PER_PAGE } from '../../config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 import React from 'react';
+import { ATTESTATIONS_PER_PAGE } from '../../config';
 import { getAllSchemaAttestationsCount } from '../../eas/getAllSchemaAttestationsCount';
 import { getSchemaBySlug } from '@/eas/getSchemaData';
 

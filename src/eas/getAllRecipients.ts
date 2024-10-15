@@ -1,10 +1,9 @@
+import { gql } from '@apollo/client';
+import { unstable_cache } from 'next/cache';
 import { DEFAULT_REVALIDATE_TIME, WHERE_ALL_SCHEMAS } from '../config';
-
 import { AllRecipientsResult } from './types/gql/all-recipients-result.type';
 import { Recipient } from './types/gql/recipient.type';
 import { getClient } from '../apollo/getClient';
-import { gql } from '@apollo/client';
-import { unstable_cache } from 'next/cache';
 
 const query = gql`
 	query Attestations($where: AttestationWhereInput) {

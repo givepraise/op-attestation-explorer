@@ -1,8 +1,7 @@
 import { faAward, faCheckToSlot } from '@fortawesome/free-solid-svg-icons';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Attestation } from '../../../eas/types/gql/attestation.type';
 import { DecodedData } from '../../../eas/types/decoded-data.type';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getDecodedValue } from '../../../eas/getDecodedValue';
 
 type CustomDisplayProps = {

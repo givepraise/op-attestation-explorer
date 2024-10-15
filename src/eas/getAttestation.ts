@@ -1,10 +1,10 @@
+import { gql } from '@apollo/client';
+import { unstable_cache } from 'next/cache';
 import { Attestation } from './types/gql/attestation.type';
 import { AttestationResult } from './types/gql/attestation-result.type';
 import { CORE_ATTESTATION_FIELDS } from './types/fragments/core-attestation-fields.fragment';
 import { chains, DEFAULT_REVALIDATE_TIME } from '../config';
 import { getClient } from '../apollo/getClient';
-import { gql } from '@apollo/client';
-import { unstable_cache } from 'next/cache';
 
 const query = gql`
 	${CORE_ATTESTATION_FIELDS}

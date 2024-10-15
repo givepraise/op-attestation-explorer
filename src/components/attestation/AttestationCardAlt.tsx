@@ -1,6 +1,6 @@
+import Link from 'next/link';
 import { Attestation } from '../../eas/types/gql/attestation.type';
 import { From } from '../attestation-card/From';
-import Link from 'next/link';
 import { SchemaName } from '../attestation-card/SchemaName';
 import { Time } from '../attestation-card/Time';
 import { Uid } from '../attestation-card/Uid';

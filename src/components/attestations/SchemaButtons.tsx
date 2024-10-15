@@ -1,5 +1,5 @@
-import { EAS_SCHEMAS } from '../../config';
 import Link from 'next/link';
+import { EAS_SCHEMAS } from '../../config';
 
 type SchemaButtonsProps = {
 	slug?: string;

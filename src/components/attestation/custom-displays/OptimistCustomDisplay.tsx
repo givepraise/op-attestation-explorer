@@ -1,11 +1,11 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import isEmpty from 'lodash/isEmpty';
 import { Attestation } from '../../../eas/types/gql/attestation.type';
 import { DecodedData } from '../../../eas/types/decoded-data.type';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ImageIcon } from '../../user/user-icon/ImageIcon';
-import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { getDecodedValue } from '../../../eas/getDecodedValue';
 import { getProfileMetaData } from '../../../eas/optimist/getProfileMetadata';
-import isEmpty from 'lodash/isEmpty';
 
 type CustomDisplayProps = {
 	attestation: Attestation;

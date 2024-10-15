@@ -1,7 +1,7 @@
+import React from 'react';
 import { DecodedData } from '../../eas/types/decoded-data.type';
 import { ImageIcon } from './user-icon/ImageIcon';
 import { PraiseUserAccount } from '../../praise/types/user-account';
-import React from 'react';
 import { SvgIcon } from './user-icon/SvgIcon';
 import { getAllPraiseUsers } from '../../praise/getAllPraiseUsers';
 import { getAllRecipientAttestations } from '../../eas/getAllRecipientAttestations';

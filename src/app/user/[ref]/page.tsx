@@ -1,10 +1,10 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFaceSadCry } from '@fortawesome/free-solid-svg-icons';
 import { AttestationCardAlt } from '../../../components/attestation/AttestationCardAlt';
 import { CopyButton } from '../../../components/CopyButton';
 import { DecodedData } from '../../../eas/types/decoded-data.type';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SearchAndSort } from '../../../components/attestations/SearchAndSort';
 import { UserIcon } from '../../../components/user/UserIcon';
-import { faFaceSadCry } from '@fortawesome/free-solid-svg-icons';
 import { getAddressFromEnsName } from '../../../viem/getAddressFromEnsName';
 import { getAllPraiseUsers } from '../../../praise/getAllPraiseUsers';
 import { getAllRecipientAttestations } from '../../../eas/getAllRecipientAttestations';

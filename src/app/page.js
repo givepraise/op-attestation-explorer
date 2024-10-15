@@ -1,16 +1,16 @@
-import { AttestationsLandingPageList } from '../components/attestations/AttestationsLandingPageList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
+import Link from 'next/link';
+import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
+import { AttestationsLandingPageList } from '../components/attestations/AttestationsLandingPageList';
 import Jonas from '../components/images/jonas.png';
 import Kristofer from '../components/images/kristofer.jpeg';
 import LandingPage1 from '../components/images/landingpage-1.svg';
 import LandingPage2 from '../components/images/landingpage-2.svg';
-import Link from 'next/link';
 import Optimism from '../components/images/optimism.svg';
 import Passport from '../components/images/passport.svg';
 import Praise from '../components/images/praise.svg';
 import RegenScore from '../components/images/regenscore.svg';
-import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
 
 export default function Page() {
 	return (

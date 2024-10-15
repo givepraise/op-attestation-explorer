@@ -1,5 +1,5 @@
-import { EAS_SCHEMAS } from '../../config';
 import React from 'react';
+import { EAS_SCHEMAS } from '../../config';
 
 type SchemaNameProps = {
 	uid: string;

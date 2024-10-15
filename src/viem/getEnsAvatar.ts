@@ -1,6 +1,6 @@
 import { normalize } from 'viem/ens';
-import { publicClient } from './client';
 import { unstable_cache } from 'next/cache';
+import { publicClient } from './client';
 
 export const getEnsAvatar = unstable_cache(async (address: string) => {
 	const ensName = await publicClient.getEnsName({

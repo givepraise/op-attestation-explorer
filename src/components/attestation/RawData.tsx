@@ -1,11 +1,10 @@
 'use client';
 
-import { DataType, DecodedData } from '../../eas/types/decoded-data.type';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
-
 import { Disclosure } from '@headlessui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import { DataType, DecodedData } from '../../eas/types/decoded-data.type';
 import { getDecodedValue } from '../../eas/getDecodedValue';
 
 type RawDataProps = {
