@@ -1,13 +1,11 @@
 'use client';
 
-import { KeyboardEvent, useState } from 'react';
+import { KeyboardEvent } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 export function SearchBox() {
-	const [error, setError] = useState<string>();
-
 	function handleKeyUp(event: KeyboardEvent) {
 		if (event.key === 'Enter') {
 			if (event.target instanceof HTMLInputElement) {
@@ -37,7 +35,6 @@ export function SearchBox() {
 				onKeyUp={handleKeyUp}
 				spellCheck={false}
 			/>
-			{error && <div className='pt-2 text-red-500'>{error}</div>}
 		</div>
 	);
 }

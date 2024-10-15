@@ -11,7 +11,7 @@ export async function getUserName(address: string) {
 
 	try {
 		username = await getEnsName(address);
-	} catch (e) {
+	} catch {
 		// Ignore
 	}
 

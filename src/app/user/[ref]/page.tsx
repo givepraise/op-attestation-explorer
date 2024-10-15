@@ -28,7 +28,7 @@ export default async function UserPage({
 		if (ref.length < 42) {
 			address = await getAddressFromEnsName(ref);
 		}
-	} catch (e) {
+	} catch {
 		address = null;
 	}
 

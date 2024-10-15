@@ -3,6 +3,7 @@ import { getClient } from '../apollo/getClient';
 import { gql } from '@apollo/client';
 import { unstable_cache } from 'next/cache';
 import { SchemaListItem } from '@/eas/types/schema-list-item.type';
+import { AllAttestationsCountResult } from '@/eas/types/gql/all-attestations-count-result.type';
 
 const query = gql`
 	query AggregateAttestation($where: AttestationWhereInput) {

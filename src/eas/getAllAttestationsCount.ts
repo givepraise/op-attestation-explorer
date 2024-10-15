@@ -1,8 +1,8 @@
-import { DEFAULT_REVALIDATE_TIME, WHERE_ALL_SCHEMAS } from '../config';
-
-import { getClient } from '../apollo/getClient';
+import { DEFAULT_REVALIDATE_TIME, WHERE_ALL_SCHEMAS } from '@/config';
+import { getClient } from '@/apollo/getClient';
 import { gql } from '@apollo/client';
 import { unstable_cache } from 'next/cache';
+import { AllAttestationsCountResult } from '@/eas/types/gql/all-attestations-count-result.type';
 
 const query = gql`
 	query AggregateAttestation($where: AttestationWhereInput) {

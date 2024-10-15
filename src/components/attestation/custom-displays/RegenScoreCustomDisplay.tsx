@@ -15,7 +15,7 @@ export async function RegenScoreCustomDisplay({
 	const score = getDecodedValue<bigint>(json, 'score');
 	let regenScoreData = await getRegenScoreData(attestation.recipient);
 	const meta = Object.entries(regenScoreData.meta).map(
-		([key, item]) => item,
+		([_key, item]) => item,
 	) as MetaItem[];
 
 	return (
@@ -36,7 +36,7 @@ export async function RegenScoreCustomDisplay({
 				<div className='text-xl font-semibold hidden md:block'>Value</div>
 				<div className='text-xl font-semibold hidden md:block'>Score Added</div>
 				<div className='text-xl font-semibold hidden md:block'>Category</div>
-				{meta.map((item, index) => {
+				{meta.map(item => {
 					if (!item.scoreAdded || item.scoreAdded === 0) return null;
 					return (
 						<>

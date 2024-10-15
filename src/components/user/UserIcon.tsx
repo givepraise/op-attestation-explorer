@@ -37,7 +37,7 @@ export async function UserIconInner({
 	// Get profile image from ENS
 	try {
 		url = await getEnsAvatar(address);
-	} catch (e) {
+	} catch {
 		// Ignore
 	}
 
