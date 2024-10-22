@@ -13,10 +13,9 @@ export async function RegenScoreCustomDisplay({
 }: CustomDisplayProps) {
 	const json: DecodedData = JSON.parse(attestation.decodedDataJson);
 	const score = getDecodedValue<bigint>(json, 'score');
-	let regenScoreData = await getRegenScoreData(attestation.recipient);
-	const meta = Object.entries(regenScoreData.meta).map(
-		([_key, item]) => item,
-	) as MetaItem[];
+
+	const regenScoreData = await getRegenScoreData(attestation.recipient);
+	const meta = Object.values(regenScoreData.meta) as MetaItem[];
 
 	return (
 		<div className='flex flex-col w-full gap-5'>

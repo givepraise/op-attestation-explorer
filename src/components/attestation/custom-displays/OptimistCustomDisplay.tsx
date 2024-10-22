@@ -15,9 +15,12 @@ export async function OptimistCustomDisplay({
 	attestation,
 }: CustomDisplayProps) {
 	const json: DecodedData = JSON.parse(attestation.decodedDataJson);
-	let profileName = getDecodedValue<string>(json, 'name');
-	let profileMetadataPtr = getDecodedValue<string>(json, 'profileMetadataPtr');
-	let metadata = await getProfileMetaData(profileMetadataPtr);
+	const profileName = getDecodedValue<string>(json, 'name');
+	const profileMetadataPtr = getDecodedValue<string>(
+		json,
+		'profileMetadataPtr',
+	);
+	const metadata = await getProfileMetaData(profileMetadataPtr);
 
 	return (
 		<div className='flex w-full gap-10'>
